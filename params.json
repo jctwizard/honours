@@ -1,0 +1,6 @@
+{
+  "name": "HonoursJournal",
+  "tagline": "Intelligent user interfaces for virtual reality",
+  "body": "### Hello World *16/09/16*\r\nAfter listening to the various pieces of advice given to us I decided the best way to find a topic for my proposal would be to find a problem I would enjoy researching and solving. Having closely followed developments in Virtual Reality over the past years I know that user interfaces still have many issues associated with them. When using any controller with positional tracking it is harder to design a single interface for every user, due to different heights, arm lengths and dexterity. Thus my preliminary concept for a topic is to make a user interface back end that can easily adapt and intelligently evolve based on the user.",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
