@@ -1,0 +1,21 @@
+Rift.js - projection matrix for rift rendering
+OpenVR - library for rendering to multiple headsets
+
+page 3/9 of survey of plasticity table
+
+
+links:
+
+http://www.uxofvr.com/
+crytek: http://www.gdcvault.com/play/1023652/Building-3-Dimensional-UI-for-VR
+valve: https://www.youtube.com/watch?v=_vQo0ApkAtI
+manifesto: https://www.youtube.com/watch?v=n3b8hZ5NV2E
+owlchemy: https://www.youtube.com/watch?v=hjc7AJwZ4DI
+usability: http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.115.945&rep=rep1&type=pdf
+human factors: http://web.mit.edu/16.459/www/Stanney.pdf
+fatigue: http://www.sfu.ca/~shaw/papers/gi98-PainFatigue-Shaw.pdf
+gaze: http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.494.7489&rep=rep1&type=pdf
+fitts law: http://e.guigon.free.fr/rsc/article/MurataIwase01.pdf
+ux design: https://www.smashingmagazine.com/2012/12/fittss-law-and-user-experience/
+usability vr: https://omobono.com/insights/blog/designing-vr-applying-usability-heuristics-virtual-reality
+ustwo: https://ustwo.com/blog/designing-for-virtual-reality-google-cardboard/
