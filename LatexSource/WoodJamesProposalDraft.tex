@@ -1,6 +1,10 @@
 \documentclass[11pt]{article}
 \usepackage{graphicx, hyperref, subcaption}
 
+\makeatletter
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\makeatother
+
 \begin{document}
 
 \begin{titlepage}
@@ -46,7 +50,7 @@ Dr. Paul \textsc{Robertson}
 
 \paragraph{}
 \textbf{Context:}
-The resurgence of consumer virtual reality allows intuitive and immersive 3D interaction using head mounted displays and tracked wireless controllers. In virtual reality users experience applications from within, looking around and reaching out naturally. No longer constrained to a 2D surface, developers in virtual reality are experimenting with different approaches to 3D user interfaces.
+The resurgence of consumer virtual reality allows intuitive and immersive 3D interaction using head mounted displays and tracked wireless controllers. In virtual reality, users experience applications from within, looking around and reaching out naturally. No longer constrained to a 2D surface, developers in virtual reality are experimenting with different approaches to 3D user interfaces.
 \paragraph{}
 \textbf{Aim:}
 This paper seeks to explore the possible benefits to usability afforded by making interfaces adaptive and dynamic in virtual reality. The research will focus on using head mounted displays and handheld tracked controllers as input.
@@ -69,24 +73,21 @@ Virtual reality (VR) head mounted displays are rapidly becoming a part of mainst
 \centering
 \begin{subfigure}{.5\textwidth}
   \centering
-  \includegraphics[width=.85\linewidth]{2dui.jpg}
-  \caption{2D colour picker (unreal engine)}
+  \includegraphics[width=.82\linewidth]{2dui.jpg}
+  \caption{2D picker (UnrealEngine4 2012)}
 \end{subfigure}%
 \begin{subfigure}{.5\textwidth}
   \centering
   \includegraphics[width=1\linewidth]{3dui.png}
-  \caption{3D colour picker (tilt brush)}
+  \caption{3D colour picker (Tilt Brush 2016)}
 \end{subfigure}
 \end{figure}
 
 \paragraph{} 
-These features combined provide a sense of immersion or ‘presence' not available using traditional 2D monitors. On the horizon is the next step in immersive technology, augmented reality (AR). This will allow a wireless experience and build upon the work in mobile virtual reality by Google and Samsung. Microsoft's Hololens provides a glimpse at this future, one of seamless multi-user interaction overlaid onto reality.
+These features combined provide a sense of immersion or 'presence' not available using traditional 2D monitors. On the horizon is the next step in immersive technology, augmented reality (AR). This will allow a wireless experience and build upon the work in mobile virtual reality by Google and Samsung. Microsoft's Hololens provides a glimpse at this future, one of seamless multi-user interaction overlaid onto reality.
 
 \paragraph{} 
-Current virtual reality interfaces tend to focus on using handheld virtual objects for natural interaction, a pen to draw on a surface or a handle to open a drawer. Other applications utilise traditional 2D elements positioned in 3D spaces. Issues arise in both of these interfaces when the objects or elements are not within reach. A common solution is a 3D pointer used to select distant items but for smaller targets or complex scenarios, pointers can be imprecise and slow to use. (Malaika 2015)
-
-\paragraph{} 
-This project will look at how the usability of interfaces in VR can benefit from being dynamic and adaptive. It will reference concepts and techniques such as gaze-based interaction, error analysis and user modelling explored previously by other researchers in 2D and 3D.
+Current virtual reality interfaces tend to focus on using handheld virtual objects for natural interaction, a pen to draw on a surface or a handle to open a drawer. Other applications utilise traditional 2D elements positioned in 3D spaces. Issues arise in both of these interfaces when the objects or elements are not within reach. A common solution is a 3D pointer used to select distant items but for smaller targets or complex scenarios, pointers can be imprecise and slow to use. (Malaika 2015) This project will look at how the usability of interfaces in VR can benefit from being dynamic and adaptive. It will reference concepts and techniques such as gaze-based interaction, error analysis and user modelling explored previously by other researchers in 2D and 3D.
 
 \paragraph{} 
 \textbf{Research Question:} \\
@@ -134,10 +135,10 @@ Most user interfaces in our digital lives are static with adaptive interfaces re
 The companies and developers at the forefront of the new wave of virtual reality hardware and software have faced many challenges in comfort and usability. Issues with nausea and motion sickness plagued early iterations of head mounted displays. The addition of positional tracking and a greater understanding of significant design choices like locomotion have overcome most of these growing pains.
 
 \paragraph{} 
-Now the focus of research is around usability of interfaces in VR. Valve a driving force in desktop VR presented some factors of usability at the Game Developer's Conference. When discussing interactions outside the user's area of reach they cited Fitt's law. (Malaika 2015) This law has been extended from one dimensional interfaces into 2D interfaces and now into 3D and states that the speed at which a user acquires a target is exponentially proportionate to the size of the target at a given distance. (Atsuo 2001) When using a pointer based system small interface elements at a distance away become very slow to interact with.
+Now the focus of research is around usability of interfaces in VR. Valve, a driving force in desktop VR, presented some factors of usability at the Game Developer's Conference. When discussing interactions outside the user's area of reach they cited Fitt's law. (Malaika 2015) This law has been extended from one dimensional interfaces into 2D interfaces and now into 3D and states that the speed at which a user acquires a target is exponentially proportionate to the size of the target at a given distance. (Atsuo 2001) When using a pointer based system small interface elements at a distance away become very slow to interact with.
 
 \paragraph{} 
-Another notable aspects of ease-of-use regards the placement of interface elements around the user. Due to the 360 degree nature of a 3D interface if the user is constantly required to turn around in order to perform actions it will become fatiguing. Owlchemy labs, developers of Job Simulator and strong proponents of non-diegetic interfaces build scenarios in such a way that users do not have to turn frequently and generally have direct access to everything they may need at a given time. (Schwartz 2015)
+Another notable aspect of ease-of-use regards the placement of interface elements around the user. Due to the 360 degree nature of a 3D interface if the user is constantly required to turn around in order to perform actions it will become fatiguing. Owlchemy labs, developers of Job Simulator and strong proponents of diegetic interfaces build scenarios in such a way that users do not have to turn frequently and generally have direct access to everything they may need at a given time. (Schwartz 2015)
 
 
 \section{Methodology}
@@ -160,6 +161,12 @@ The implementation of the application and interfaces will use C++ within Unreal 
 \paragraph{} 
 Once these techniques and any others are implemented the evaluation of the interfaces will take place. Users will be gathered and surveyed through both the error analysis and feedback forms. There are also some existing analytics systems for VR that have been researched, (Merki 2016) but a simpler focused custom system will be used in the project. This data will then be used to evaluate the effectiveness of each individual technique and the overall impact of adaptive interfaces for virtual reality. The usability survey given to each tester will break down into several short sections borrowing from 'Applying Usability Heuristics to VR' (Jen 2016). The speed at which they felt they were able to interact, the number of errors they made during interactions and the general intuitiveness of the application or any adaptive techniques used.
 
+\paragraph{}
+Using the qualitative and quantitative data gathered during the testing various representations of the user experience will be generated. Simple graphing of interactions and errors against time will hopefully demonstrate certain correlations. It is expected that all users will gradually become faster at performing interactions as they learn the interface and this will need to be accounted for when determining the experience of the adaptive interface versus the static interface. By comparing these graphs against the user's evaluation of their experience it will give an idea of how many errors a user makes before becoming frustrated, again this will be affected by the learning experience and the personality of the user. 
+
+\paragraph{}
+There may be other points of interest revealed by the data such as one error leading to a chain of errors or an error leading to a slow down in interaction time. All of these factors will help determine the effectiveness of the adaptive elements. If a user performs fewer errors in the adaptive system than in the static interface the qualitative data should support that the user experience was better in general.
+
 
 \section{Summary}
 
@@ -167,26 +174,31 @@ Once these techniques and any others are implemented the evaluation of the inter
 The use of adaptive user interfaces should provide benefits to the usability of the 3D interfaces as well as the speed at which the user can interact with them. This will allow for more complex interfaces capable of performing more meaningful and productive tasks. With a future that could be rooted in virtual reality, it is the opportune time to re-evaluate what an interface can be and how the system reacts to the user. With the promise of wireless headsets and augmented reality on the horizon, traditional 2D displays could quickly become obsolete. If our walls, floor and hands can be our displays then the interfaces will need to become more dynamic and versatile. Adaptive user interfaces have been researched for a long time and could soon become essential to our everyday interactions.
 
 \paragraph{} 
-Improving upon the language of 2D interfaces will be a huge challenge as they are so deeply engrained in our digital lives. For virtual reality to improve our productivity when using complex interfaces, the addition of dynamic systems for adaptation could be a huge step forward.
+Improving upon the language of 2D interfaces will be a huge challenge as they are so deeply engrained in our digital lives. The transition so far has been fairly slow with the majority of virtual reality interfaces using 2D elements in 3D space or 3D objects that mirror those in reality. The interesting interfaces will hopefully begin to emerge as more abstract interactions emerge. The first of these is beginning to trickle through in the likes of Fantastic Contraption which asks you to put on a space helmet to access the menu environment. The evolution of virtual reality and augmented reality will depend on developers detaching themselves from our preconceptions about what an interface can be and embracing concepts like adaptivity.
 
 \section{References}
 
+\paragraph{}
 Seeto, D. 2016 \emph{Gamestop: PSVR Exceeding Expectations As More Units Are Received For Holiday Season} Online. \url{http://attackofthefanboy.com/news/gamestop-playstation-vr-exceeding-expectations-units-received-holiday-season/} \\
 
-Pino, N. 2016 \emph{HTC Vive review} Online. \url{http://www.techradar.com/reviews/wearables/htc-vive-1286775/review/3} \\
+\emph{Unreal Engine 4.} 2012. [software]. Windows. Epic Games. \\
+
+\emph{Tilt Brush.} 2016. [software]. HTC Vive. Google. \\
+
+Pino, N. 2016 \emph{HTC Vive review} Available from: \url{http://www.techradar.com/reviews/wearables/htc-vive-1286775/review/3} \\
 
 Karthik, R. 2011. \emph{Modeling error-based Adaptive User Interfaces} Iowa State University. \\
 
-Merki, R. 2016. \emph{How VR Analytics Makes Your Product Better} Online. \url{http://cognitivevr.co/blog/how-vr-analytics-makes-your-product-better/} \\
+Merki, R. 2016. \emph{How VR Analytics Makes Your Product Better} Available from: \url{http://cognitivevr.co/blog/how-vr-analytics-makes-your-product-better/} \\
 
 Morgan, K. 1998. \emph{Intelligent UserInterfaces: An Introduction} San Fransisco. RUIU \\
 
 Jeremy, L. 2014. \emph{A survey of plasticity in 3D user interfaces} Minneapolis. IEEE. \\
 
 Malaika, Y. 2015. \emph{Interaction Design in VR: Valve's Lessons
-} \url{https://www.youtube.com/watch?v=_vQo0ApkAtI} \\
+} Available from: \url{https://www.youtube.com/watch?v=_vQo0ApkAtI} \\
 
-Schwartz, A. 2015. \emph{Being There: Designing Standing VR Experiences with Tracked Controllers} \url{https://www.youtube.com/watch?v=hjc7AJwZ4DI
+Schwartz, A. 2015. \emph{Being There: Designing Standing VR Experiences with Tracked Controllers} Available from: \url{https://www.youtube.com/watch?v=hjc7AJwZ4DI
 } \\
 
 Robert, Z. \emph{Look-That-There: Exploiting Gaze in Virtual Reality Interactions} Providence. Brown University. \\
@@ -195,7 +207,7 @@ Atsuo, M. 2001. \emph{Extending Fitts' law to a three-dimensional pointing task}
 
 Anastasios, K. 2012. \emph{When You Shouldn't Use Fitts's Law To Measure User Experience} Online. Smashing. \\
 
-Meyer, R. 2015 \emph{Even Early Focus Groups Hated Clippy} Online. \url{http://www.theatlantic.com/technology/archive/2015/06/clippy-the-microsoft-office-assistant-is-the-patriarchys-fault/396653/} \\
+Meyer, R. 2015 \emph{Even Early Focus Groups Hated Clippy} Available from: \url{http://www.theatlantic.com/technology/archive/2015/06/clippy-the-microsoft-office-assistant-is-the-patriarchys-fault/396653/} \\
 
 Brusilovsky, P. 2000. \emph{Adaptive Hypermedia and Adaptive Web-Based Systems} Italy. Springer.\\
 
@@ -203,9 +215,9 @@ Jen, H. 2016. \emph{Designing for VR: Applying Usability Heuristics to Virtual R
 
 \section{Bibliography}
 
-Alger, M. 2015. \emph{VR Interface Design Manifesto} \url{https://www.youtube.com/watch?v=n3b8hZ5NV2E} \\
+Alger, M. 2015. \emph{VR Interface Design Manifesto} Available from: \url{https://www.youtube.com/watch?v=n3b8hZ5NV2E} \\
 
-Rhino, K. 2016. \emph{Building 3-Dimensional UI for VR} \url{http://www.gdcvault.com/play/1023652/Building-3-Dimensional-UI-for-VR} \\
+Rhino, K. 2016. \emph{Building 3-Dimensional UI for VR} Available from: \url{http://www.gdcvault.com/play/1023652/Building-3-Dimensional-UI-for-VR} \\
 
 Viano, G. 2000. \emph{Adaptive User Interface for Process Control based on Multi-Agent approach} Italy. ACM. \\
 
@@ -213,7 +225,7 @@ Julie, J. 2011. \emph{Human-Computer Interaction} 2011. Springer. \\
 
 Nasoz, F. 2004. \emph{Adaptive Intelligent User Interfaces with Emotion Recognition} Orlando State University. \\
 
-Max, G. \emph{The UX of VR} \url{http://www.uxofvr.com/} \\
+Max, G. \emph{The UX of VR} Available from: \url{http://www.uxofvr.com/} \\
 
 Sutcliffe, A.G. \emph{A Usability Evaluation Method for Virtual Reality User Interfaces} Manchester. UMIST. \\
 
