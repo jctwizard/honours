@@ -1,2 +1,2 @@
-# HonoursProject
-Intelligent user interfaces for virtual reality
+# HonoursProject by jctwood
+Adaptive User Interfaces for Virtual Reality
