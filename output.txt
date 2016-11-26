@@ -1,0 +1,32 @@
+Anastasios, K. 2012. \emph{When You Shouldn't Use Fitts's Law To Measure User Experience} Online. Smashing. \\
+
+Atsuo, M. 2001. \emph{Extending Fitts' law to a three-dimensional pointing task} Japan. Elsevier. \\
+
+Brusilovsky, P. 2000. \emph{Adaptive Hypermedia and Adaptive Web-Based Systems} Italy. Springer.\\
+
+Jen, H. 2016. \emph{Designing for VR: Applying Usability Heuristics to Virtual Reality} Online. Omobono. \\
+Jeremy, L. 2014. \emph{A survey of plasticity in 3D user interfaces} Minneapolis. IEEE. \\
+
+Karthik, R. 2011. \emph{Modeling error-based Adaptive User Interfaces} Iowa State University. \\
+
+Malaika, Y. 2015. \emph{Interaction Design in VR: Valve's Lessons } Available from: \url{https://www.youtube.com/watch?v=_vQo0ApkAtI} \\
+
+Merki, R. 2016. \emph{How VR Analytics Makes Your Product Better} Available from: \url{http://cognitivevr.co/blog/how-vr-analytics-makes-your-product-better/} \\
+
+Meyer, R. 2015 \emph{Even Early Focus Groups Hated Clippy} Available from: \url{http://www.theatlantic.com/technology/archive/2015/06/clippy-the-microsoft-office-assistant-is-the-patriarchys-fault/396653/} \\
+
+Morgan, K. 1998. \emph{Intelligent UserInterfaces: An Introduction} San Fransisco. RUIU \\
+
+Pino, N. 2016 \emph{HTC Vive review} Available from: \url{http://www.techradar.com/reviews/wearables/htc-vive-1286775/review/3} \\
+
+Robert, Z. \emph{Look-That-There: Exploiting Gaze in Virtual Reality Interactions} Providence. Brown University. \\
+
+Schwartz, A. 2015. \emph{Being There: Designing Standing VR Experiences with Tracked Controllers} Available from: \url{https://www.youtube.com/watch?v=hjc7AJwZ4DI
+
+Seeto, D. 2016 \emph{Gamestop: PSVR Exceeding Expectations As More Units Are Received For Holiday Season} Online. \url{http://attackofthefanboy.com/news/gamestop-playstation-vr-exceeding-expectations-units-received-holiday-season/} \\
+
+\emph{Tilt Brush.} 2016. [software]. HTC Vive. Google. \\
+
+\emph{Unreal Engine 4.} 2012. [software]. Windows. Epic Games. \\
+
+} \\
