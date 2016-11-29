@@ -1,9 +1,0 @@
-{
-	"Changelist" : 3195953,
-	"CompatibleChangelist" : 0,
-	"BuildId" : "",
-	"Modules" : 
-	{
-		"tiny_island" : "UE4Editor-tiny_island.dll"
-	}
-}

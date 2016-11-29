@@ -1,3 +1,0 @@
-C:\Users\Abertay\Documents\jctwood honours\tiny_island\Source\tiny_island\tiny_island.Build.cs
-C:\Users\Abertay\Documents\jctwood honours\tiny_island\Source\tiny_island.Target.cs
-C:\Users\Abertay\Documents\jctwood honours\tiny_island\Source\tiny_islandEditor.Target.cs
