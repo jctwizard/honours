@@ -3,7 +3,6 @@
 #include "tiny_island.h"
 #include "MotionControllerPawn.h"
 
-
 // Sets default values
 AMotionControllerPawn::AMotionControllerPawn()
 {
@@ -16,13 +15,25 @@ AMotionControllerPawn::AMotionControllerPawn()
 
 	DataFile.open(*SessionName);
 	DataFile.close();
+
+	VROrigin = CreateDefaultSubobject<USceneComponent>(TEXT("VROrigin"));
+	VROrigin->AttachTo(RootComponent);
+
+	Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
+	Camera->AttachTo(VROrigin);
 }
 
 // Called when the game starts or when spawned
 void AMotionControllerPawn::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
+	IHeadMountedDisplay* HMDDevice = (IHeadMountedDisplay*)(GEngine->HMDDevice.Get());
+
+	if (HMDDevice)
+	{
+		HMDDevice->ResetOrientationAndPosition();
+	}
 }
 
 // Called every frame
