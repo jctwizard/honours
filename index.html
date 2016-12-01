@@ -109,6 +109,13 @@
 <a id="211116-feasability-demo" class="anchor" href="#211116-feasability-demo" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><em>21/11/16</em> Feasability Demo</h3>
 
 <p>I have spent the past weeks working on my other AR module which has also fed into ideas for my honours application. Today I am setting up a new UE4 4.14 project with basic vr interaction and the beginnings of the demo. By the end of the week I hope to have the various manipulations working and the analytics outputting. Then it is on to building the actual gameplay the player will be completing. The more I think about it the more I realise it will need to be something that can be pressurised. A series of tasks that need to be done rapidly. This will allow me to force the player to use the interface quickly and not cautiously as it would be in fast complex games. I am still settling on the exact gameplay.</p>
+
+<h3>
+<a id="011216-vr-in-c-in-ue4" class="anchor" href="#011216-vr-in-c-in-ue4" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><em>01/12/16</em> VR in C++ in UE4</h3>
+
+<p>With my other coursework handed in I have begun implementing the basic VR controller in unreal engine. In order to allow multiple types of interaction model later on I am implementing everything in C++ using the VR template blueprints as a guide for the undocumented VR api. It took a while to find the correct includes to get access to the VR functions but it seems to be in order. I booked the HIVE to test my progress on saturday so today and tomorrow will be spent finishing the implementation in C++.</p>
+
+<p>Another benefit of C++ is that I can use the standard libraries to read and write files for easy analytics. I currently write to a text file stored in the project named with the timestamp the session was started at. Inside the text file I store every time the user makes an action, where they were when they made the action and whether it was successful along with a description. This should allow me to later visualise in 3D the movement and actions of the players and in theory create a heat map of all the testers interactions and movement later down the line.</p>
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/jctwood">jctwood</a></p>
