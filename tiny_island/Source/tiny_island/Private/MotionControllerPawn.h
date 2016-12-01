@@ -1,12 +1,12 @@
 // Fill out your copyright notice in the Description page of Project Settings.
-
 #pragma once
 
 #include "GameFramework/Pawn.h"
 #include <iostream>
 #include <fstream>
-#include "HeadMountedDisplay.h"
-#include "MotionControllerComponent.h"
+#include "Runtime/HeadMountedDisplay/Public/HeadMountedDisplay.h"
+#include "Runtime/HeadMountedDisplay/Public/MotionControllerComponent.h"
+#include "MotionControllerActor.h"
 #include "MotionControllerPawn.generated.h"
 
 using namespace std;
@@ -47,13 +47,22 @@ public:
 	UFUNCTION(BlueprintImplementableEvent, Category = "Actions")
 	void ReleaseRightAction();
 
-	FString SessionName;
-
 	void AddDataPoint(FString Description, FVector Location, bool Success);
+
+	FString SessionName;
 
 	UPROPERTY(VisibleAnywhere, Category = "Components")
 	UCameraComponent* Camera;
 
 	UPROPERTY(VisibleAnywhere, Category = "Components")
 	USceneComponent* VROrigin;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
+	AMotionControllerActor* LeftController;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
+	AMotionControllerActor* RightController;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Properties")
+	float BasePlayerHeight;
 };
