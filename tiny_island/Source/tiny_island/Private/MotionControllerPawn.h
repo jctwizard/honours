@@ -65,4 +65,7 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Properties")
 	float BasePlayerHeight;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Properties")
+	USkeletalMesh* HandMeshAsset;
 };

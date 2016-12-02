@@ -53,11 +53,13 @@ void AMotionControllerPawn::BeginPlay()
 	LeftController->SetOwner(this);
 	LeftController->AttachToComponent(VROrigin, FAttachmentTransformRules::SnapToTargetNotIncludingScale);
 	LeftController->SetHand(EControllerHand::Left);
+	LeftController->SetHandMesh(HandMeshAsset);
 
 	RightController = (AMotionControllerActor*) GetWorld()->SpawnActor(AMotionControllerActor::StaticClass());
 	RightController->SetOwner(this);
 	RightController->AttachToComponent(VROrigin, FAttachmentTransformRules::SnapToTargetNotIncludingScale);
 	RightController->SetHand(EControllerHand::Right);
+	RightController->SetHandMesh(HandMeshAsset);
 }
 
 // Called every frame

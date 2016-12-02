@@ -127,3 +127,11 @@ void AMotionControllerActor::SetHand(EControllerHand Hand)
 {
 	MotionController->Hand = Hand;
 }
+
+void AMotionControllerActor::SetHandMesh(USkeletalMesh* HandMeshAsset)
+{
+	if (HandMeshAsset->IsValidLowLevel())
+	{
+		HandMesh->SetSkeletalMesh(HandMeshAsset);
+	}
+}

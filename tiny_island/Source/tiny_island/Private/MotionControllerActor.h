@@ -24,6 +24,7 @@ public:
 	bool Release();
 
 	void SetHand(EControllerHand Hand);
+	void SetHandMesh(USkeletalMesh* HandMeshAsset);
 
 	AActor* GetNearestActor();
 
