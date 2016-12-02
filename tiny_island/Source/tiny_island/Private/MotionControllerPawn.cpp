@@ -20,10 +20,10 @@ AMotionControllerPawn::AMotionControllerPawn() :
 
 	// Set up the origin and camera
 	VROrigin = CreateDefaultSubobject<USceneComponent>(TEXT("VROrigin"));
-	VROrigin->AttachTo(RootComponent);
+	VROrigin->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepRelativeTransform);
 
 	Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
-	Camera->AttachTo(VROrigin);
+	Camera->AttachToComponent(VROrigin, FAttachmentTransformRules::KeepRelativeTransform);
 }
 
 // Called when the game starts or when spawned
@@ -52,10 +52,12 @@ void AMotionControllerPawn::BeginPlay()
 	LeftController = (AMotionControllerActor*) GetWorld()->SpawnActor(AMotionControllerActor::StaticClass());
 	LeftController->SetOwner(this);
 	LeftController->AttachToComponent(VROrigin, FAttachmentTransformRules::SnapToTargetNotIncludingScale);
+	LeftController->SetHand(EControllerHand::Left);
 
 	RightController = (AMotionControllerActor*) GetWorld()->SpawnActor(AMotionControllerActor::StaticClass());
 	RightController->SetOwner(this);
 	RightController->AttachToComponent(VROrigin, FAttachmentTransformRules::SnapToTargetNotIncludingScale);
+	RightController->SetHand(EControllerHand::Right);
 }
 
 // Called every frame
@@ -80,26 +82,26 @@ void AMotionControllerPawn::SetupPlayerInputComponent(class UInputComponent* InI
 
 void AMotionControllerPawn::GrabLeft()
 {
-	LeftController->Grab();
-	AddDataPoint("Grab Left", GetActorLocation(), true);
+	bool Success = LeftController->Grab();
+	AddDataPoint("Grab Left", GetActorLocation(), Success);
 }
 
 void AMotionControllerPawn::GrabRight()
 {
-	RightController->Grab();
-	AddDataPoint("Grab Right", GetActorLocation(), true);
+	bool Success = RightController->Grab();
+	AddDataPoint("Grab Right", GetActorLocation(), Success);
 }
 
 void AMotionControllerPawn::ReleaseLeft()
 {
-	LeftController->Release();
-	AddDataPoint("Release Left", GetActorLocation(), true);
+	bool Success = LeftController->Release();
+	AddDataPoint("Release Left", GetActorLocation(), Success);
 }
 
 void AMotionControllerPawn::ReleaseRight()
 {
-	RightController->Release();
-	AddDataPoint("Release Right", GetActorLocation(), true);
+	bool Success = RightController->Release();
+	AddDataPoint("Release Right", GetActorLocation(), Success);
 }
 
 void AMotionControllerPawn::AddDataPoint(FString Description, FVector Location, bool Success)

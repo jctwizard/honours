@@ -1,9 +1,8 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
 #pragma once
 
 #include "GameFramework/Actor.h"
 #include "Runtime/HeadMountedDisplay/Public/MotionControllerComponent.h"
+#include "GrabbableInterface.h"
 #include "MotionControllerActor.generated.h"
 
 UCLASS()
@@ -21,9 +20,25 @@ public:
 	// Called every frame
 	virtual void Tick( float DeltaSeconds ) override;
 
-	void Grab();
-	void Release();
+	bool Grab();
+	bool Release();
 
-	UPROPERTY(VisibleAnywhere, Category = "Components")
+	void SetHand(EControllerHand Hand);
+
+	AActor* GetNearestActor();
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Motion")
 	UMotionControllerComponent* MotionController;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Hand")
+	USkeletalMeshComponent* HandMesh;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Grabbing")
+	USphereComponent* GrabSphere;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Grabbing")
+	AActor* GrabbedActor;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Grabbing")
+	bool bWantsToGrab;
 };
