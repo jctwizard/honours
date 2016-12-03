@@ -116,6 +116,13 @@
 <p>With my other coursework handed in I have begun implementing the basic VR controller in unreal engine. In order to allow multiple types of interaction model later on I am implementing everything in C++ using the VR template blueprints as a guide for the undocumented VR api. It took a while to find the correct includes to get access to the VR functions but it seems to be in order. I booked the HIVE to test my progress on saturday so today and tomorrow will be spent finishing the implementation in C++.</p>
 
 <p>Another benefit of C++ is that I can use the standard libraries to read and write files for easy analytics. I currently write to a text file stored in the project named with the timestamp the session was started at. Inside the text file I store every time the user makes an action, where they were when they made the action and whether it was successful along with a description. This should allow me to later visualise in 3D the movement and actions of the players and in theory create a heat map of all the testers interactions and movement later down the line.</p>
+
+<h3>
+<a id="031216-evaluation-questions" class="anchor" href="#031216-evaluation-questions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><em>03/12/16</em> Evaluation Questions</h3>
+
+<p>I stumbled across a great guide for usability evaluation called SUS (System Usability Scale). The questions are fairly vague but ask the questions I am looking to ask in ways that will hopefully help draw out the user's feelings on the matter. Each question seems to mirror the last giving the user a positively phrased question like, "was it easy to use?" next to a negatively phrased but similar question, "was it cumbersome to use?". This will hopefully give a good indication of how people are finding it and remove any bias they have toward giving positive answers. Other than directly asking about usability the questions also cover how easy the system is to learn and how much the system made sense, was it too complex? etc. I am still trying to pin down exactly how the questions will be asked in regards to the various adaptive techniques being analysed.</p>
+
+<p>Testing the VR C++ implementation just now, hopefully it works as intended and will provide a good base to start experimenting with the interfaces.</p>
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/jctwood">jctwood</a></p>
