@@ -35,18 +35,6 @@ public:
 	void ReleaseLeft();
 	void ReleaseRight();
 
-	UFUNCTION(BlueprintImplementableEvent, Category = "Actions")
-	void GrabLeftAction();
-
-	UFUNCTION(BlueprintImplementableEvent, Category = "Actions")
-	void GrabRightAction();
-
-	UFUNCTION(BlueprintImplementableEvent, Category = "Actions")
-	void ReleaseLeftAction();
-
-	UFUNCTION(BlueprintImplementableEvent, Category = "Actions")
-	void ReleaseRightAction();
-
 	void AddDataPoint(FString Description, FVector Location, bool Success);
 
 	FString SessionName;
@@ -66,6 +54,9 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Properties")
 	float BasePlayerHeight;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Properties")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Grabbing")
+	float BaseGrabRadius;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Components")
 	USkeletalMesh* HandMeshAsset;
 };

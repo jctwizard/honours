@@ -25,6 +25,8 @@ public:
 
 	void SetHand(EControllerHand Hand);
 	void SetHandMesh(USkeletalMesh* HandMeshAsset);
+	void SetGrabRadius(float GrabRadius);
+	FVector GetControllerLocation();
 
 	AActor* GetNearestActor();
 

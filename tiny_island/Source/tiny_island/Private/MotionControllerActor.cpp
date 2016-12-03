@@ -12,17 +12,20 @@ AMotionControllerActor::AMotionControllerActor() :
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
-	// Create the motion controller component and attach it to the root
-	MotionController = CreateDefaultSubobject<UMotionControllerComponent>(TEXT("MotionController"));
-	MotionController->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepWorldTransform);
+	if (!MotionController)
+	{
+		// Create the motion controller component and attach it to the root
+		MotionController = CreateDefaultSubobject<UMotionControllerComponent>(TEXT("MotionController"));
+		MotionController->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepWorldTransform);
 
-	// Create the hand mesh and attach it to the root component
-	HandMesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("HandMesh"));
-	HandMesh->AttachToComponent(MotionController, FAttachmentTransformRules::KeepWorldTransform);
+		// Create the hand mesh and attach it to the root component
+		HandMesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("HandMesh"));
+		HandMesh->AttachToComponent(MotionController, FAttachmentTransformRules::KeepWorldTransform);
 
-	// Create the grab sphere and attach it to the hand mesh
-	GrabSphere = CreateDefaultSubobject<USphereComponent>(TEXT("GrabSphere"));
-	GrabSphere->AttachToComponent(HandMesh, FAttachmentTransformRules::KeepWorldTransform);
+		// Create the grab sphere and attach it to the hand mesh
+		GrabSphere = CreateDefaultSubobject<USphereComponent>(TEXT("GrabSphere"));
+		GrabSphere->AttachToComponent(HandMesh, FAttachmentTransformRules::KeepWorldTransform);
+	}
 }
 
 // Called when the game starts or when spawned
@@ -53,14 +56,13 @@ bool AMotionControllerActor::Grab()
 	// Get the closest actor overlapping the hand
 	if (NearestActor->IsValidLowLevel())
 	{
-		IGrabbableInterface* GrabbableInterface = Cast<IGrabbableInterface>(NearestActor);
-
 		// Check if the actor is grabbable
-		if (GrabbableInterface)
+		if (NearestActor->GetClass()->ImplementsInterface(UGrabbableInterface::StaticClass()))
 		{
 			GrabbedActor = NearestActor;
-			GrabbableInterface->Execute_OnGrab(GrabbedActor);
-			GrabbedActor->AttachToComponent(MotionController, FAttachmentTransformRules::SnapToTargetNotIncludingScale);
+			IGrabbableInterface::Execute_OnGrab(GrabbedActor);
+			GrabbedActor->AttachToComponent(MotionController, FAttachmentTransformRules::KeepWorldTransform);
+			HandMesh->SetVisibility(false);
 
 			return true;
 		}
@@ -78,15 +80,14 @@ bool AMotionControllerActor::Release()
 		// Check if the actor is still being grabbed
 		if (GrabbedActor->GetRootComponent()->GetAttachParent() == MotionController)
 		{
-			IGrabbableInterface* GrabbableInterface = Cast<IGrabbableInterface>(GrabbedActor);
-
 			// Check if the actor is grabbable
-			if (GrabbableInterface)
+			if (GrabbedActor->GetClass()->ImplementsInterface(UGrabbableInterface::StaticClass()))
 			{
 				// Drop the actor
-				GrabbableInterface->Execute_OnRelease(GrabbedActor);
+				IGrabbableInterface::Execute_OnRelease(GrabbedActor);
 				GrabbedActor->GetRootComponent()->DetachFromComponent(FDetachmentTransformRules::KeepWorldTransform);
 				GrabbedActor = nullptr;
+				HandMesh->SetVisibility(true);
 
 				return true;
 			}
@@ -134,4 +135,14 @@ void AMotionControllerActor::SetHandMesh(USkeletalMesh* HandMeshAsset)
 	{
 		HandMesh->SetSkeletalMesh(HandMeshAsset);
 	}
+}
+
+void AMotionControllerActor::SetGrabRadius(float GrabRadius)
+{
+	GrabSphere->SetSphereRadius(GrabRadius);
+}
+
+FVector AMotionControllerActor::GetControllerLocation()
+{
+	return MotionController->GetComponentLocation();
 }

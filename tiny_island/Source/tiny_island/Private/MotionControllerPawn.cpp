@@ -5,25 +5,24 @@
 
 // Sets default values
 AMotionControllerPawn::AMotionControllerPawn() :
-	BasePlayerHeight(180.0f)
+	BasePlayerHeight(180.0f),
+	BaseGrabRadius(15.0f)
 {
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
 	// Initialise the analytics file
-	ofstream DataFile;
-
-	SessionName = FDateTime::Now().ToString() + ".txt";
-
-	DataFile.open(*SessionName);
-	DataFile.close();
+	SessionName = FPaths::GameContentDir() + FDateTime::Now().ToString() + ".txt";
 
 	// Set up the origin and camera
-	VROrigin = CreateDefaultSubobject<USceneComponent>(TEXT("VROrigin"));
-	VROrigin->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepRelativeTransform);
+	if (!VROrigin)
+	{
+		VROrigin = CreateDefaultSubobject<USceneComponent>(TEXT("VROrigin"));
+		VROrigin->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepWorldTransform);
 
-	Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
-	Camera->AttachToComponent(VROrigin, FAttachmentTransformRules::KeepRelativeTransform);
+		Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
+		Camera->AttachToComponent(VROrigin, FAttachmentTransformRules::KeepWorldTransform);
+	}
 }
 
 // Called when the game starts or when spawned
@@ -54,12 +53,14 @@ void AMotionControllerPawn::BeginPlay()
 	LeftController->AttachToComponent(VROrigin, FAttachmentTransformRules::SnapToTargetNotIncludingScale);
 	LeftController->SetHand(EControllerHand::Left);
 	LeftController->SetHandMesh(HandMeshAsset);
+	LeftController->SetGrabRadius(BaseGrabRadius);
 
 	RightController = (AMotionControllerActor*) GetWorld()->SpawnActor(AMotionControllerActor::StaticClass());
 	RightController->SetOwner(this);
 	RightController->AttachToComponent(VROrigin, FAttachmentTransformRules::SnapToTargetNotIncludingScale);
 	RightController->SetHand(EControllerHand::Right);
 	RightController->SetHandMesh(HandMeshAsset);
+	RightController->SetGrabRadius(BaseGrabRadius);
 }
 
 // Called every frame
@@ -85,25 +86,25 @@ void AMotionControllerPawn::SetupPlayerInputComponent(class UInputComponent* InI
 void AMotionControllerPawn::GrabLeft()
 {
 	bool Success = LeftController->Grab();
-	AddDataPoint("Grab Left", GetActorLocation(), Success);
+	AddDataPoint("Grab Left", LeftController->GetControllerLocation(), Success);
 }
 
 void AMotionControllerPawn::GrabRight()
 {
 	bool Success = RightController->Grab();
-	AddDataPoint("Grab Right", GetActorLocation(), Success);
+	AddDataPoint("Grab Right", LeftController->GetControllerLocation(), Success);
 }
 
 void AMotionControllerPawn::ReleaseLeft()
 {
 	bool Success = LeftController->Release();
-	AddDataPoint("Release Left", GetActorLocation(), Success);
+	AddDataPoint("Release Left", RightController->GetControllerLocation(), Success);
 }
 
 void AMotionControllerPawn::ReleaseRight()
 {
 	bool Success = RightController->Release();
-	AddDataPoint("Release Right", GetActorLocation(), Success);
+	AddDataPoint("Release Right", RightController->GetControllerLocation(), Success);
 }
 
 void AMotionControllerPawn::AddDataPoint(FString Description, FVector Location, bool Success)
