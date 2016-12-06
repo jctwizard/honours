@@ -123,6 +123,11 @@
 <p>I stumbled across a great guide for usability evaluation called SUS (System Usability Scale). The questions are fairly vague but ask the questions I am looking to ask in ways that will hopefully help draw out the user's feelings on the matter. Each question seems to mirror the last giving the user a positively phrased question like, "was it easy to use?" next to a negatively phrased but similar question, "was it cumbersome to use?". This will hopefully give a good indication of how people are finding it and remove any bias they have toward giving positive answers. Other than directly asking about usability the questions also cover how easy the system is to learn and how much the system made sense, was it too complex? etc. I am still trying to pin down exactly how the questions will be asked in regards to the various adaptive techniques being analysed.</p>
 
 <p>Testing the VR C++ implementation just now, hopefully it works as intended and will provide a good base to start experimenting with the interfaces.</p>
+
+<h3>
+<a id="061216-data-visualisation" class="anchor" href="#061216-data-visualisation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><em>06/12/16</em> Data Visualisation</h3>
+
+<p>I worked on visualising the data being output by the vr pawn. This involved creating a spline component using the data points read from a text file. Each data point contains its position which is used to move a mesh and visualise the path of the player's hands. The next step is to have the description of actions and timestamp implemented into the visualisation before building heatmaps from the data to see where the most errors were made. Doing this in 3D will be interesting and currently the visualisation is a static non inter-actable demo. </p>
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/jctwood">jctwood</a></p>
