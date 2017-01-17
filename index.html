@@ -128,6 +128,11 @@
 <a id="061216-data-visualisation" class="anchor" href="#061216-data-visualisation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><em>06/12/16</em> Data Visualisation</h3>
 
 <p>I worked on visualising the data being output by the vr pawn. This involved creating a spline component using the data points read from a text file. Each data point contains its position which is used to move a mesh and visualise the path of the player's hands. The next step is to have the description of actions and timestamp implemented into the visualisation before building heatmaps from the data to see where the most errors were made. Doing this in 3D will be interesting and currently the visualisation is a static non inter-actable demo. </p>
+
+<h3>
+<a id="170117-research" class="anchor" href="#170117-research" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><em>17/01/17</em> Research</h3>
+
+<p>I took a break to work on other projects over the holidays and have been researching the developments in VR ui over the past week. CES happened and a few new headsets powered by microsoft holographic were announced. These tend to have hand tracking and inisde out room positional tracking which removes the need for motion controllers or external sensors. Apparently they will be sold for a lower price than oculus/vive with a higher resolution and lower min specs which altogether seems like a good move. I will definitely be sticking with motion controlled input for now but I can see a simple 'click' gesture or the tap that hololens uses would maybe allow my system to be ported over to any of those other platforms. The more I watch and use VR the more I realise interaction at a distance (not the spooky kind) is where may of the issues lie. The next biggest area of error is dense interaction where there are maybe five objects in close proximity and you want to select only one. Although I will start with the error analysis that I planned initially I am thinking maybe some kind of 3D picker tool that allows objects or elements to have a kind of pin that expands out as you approach it making it easier to select. I also want to look into more gaze based interaction although I will not use a gaze tracking headset like teh FOVE I can interpret the direction the user is facing as being their gaze. One game that is using this very well is the management game Tethered. It has some very interesting interfaces. An interesting game very similar to a prototype I made a while back is VRISH DREAMS I think it is called, by Twisted Oak. I will continue my research this week while building systems for laser pointer based interaction and improving error analysis. </p>
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/jctwood">jctwood</a></p>
@@ -135,6 +140,6 @@
       </footer>
     </div>
     <script src="javascripts/scale.fix.js"></script>
-    
+
   </body>
 </html>
