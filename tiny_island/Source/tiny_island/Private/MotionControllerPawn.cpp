@@ -81,6 +81,9 @@ void AMotionControllerPawn::SetupPlayerInputComponent(class UInputComponent* InI
 
 	InInputComponent->BindAction("GrabLeft", IE_Released, this, &AMotionControllerPawn::ReleaseLeft);
 	InInputComponent->BindAction("GrabRight", IE_Released, this, &AMotionControllerPawn::ReleaseRight);
+
+	InInputComponent->BindAction("ToggleLaserLeft", IE_Pressed, this, &AMotionControllerPawn::ToggleLaserLeft);
+	InInputComponent->BindAction("ToggleLaserRight", IE_Pressed, this, &AMotionControllerPawn::ToggleLaserRight);
 }
 
 void AMotionControllerPawn::GrabLeft()
@@ -92,19 +95,31 @@ void AMotionControllerPawn::GrabLeft()
 void AMotionControllerPawn::GrabRight()
 {
 	bool Success = RightController->Grab();
-	AddDataPoint("Grab Right", LeftController->GetControllerLocation(), Success);
+	AddDataPoint("Grab Right", RightController->GetControllerLocation(), Success);
 }
 
 void AMotionControllerPawn::ReleaseLeft()
 {
 	bool Success = LeftController->Release();
-	AddDataPoint("Release Left", RightController->GetControllerLocation(), Success);
+	AddDataPoint("Release Left", LeftController->GetControllerLocation(), Success);
 }
 
 void AMotionControllerPawn::ReleaseRight()
 {
 	bool Success = RightController->Release();
 	AddDataPoint("Release Right", RightController->GetControllerLocation(), Success);
+}
+
+void AMotionControllerPawn::ToggleLaserLeft()
+{
+	LeftController->ToggleLaser();
+	AddDataPoint("Toggle Laser Left", LeftController->GetControllerLocation());
+}
+
+void AMotionControllerPawn::ToggleLaserRight()
+{
+	RightController->ToggleLaser();
+	AddDataPoint("Toggle Laser Right", RightController->GetControllerLocation());
 }
 
 void AMotionControllerPawn::AddDataPoint(FString Description, FVector Location, bool Success)

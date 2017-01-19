@@ -35,7 +35,10 @@ public:
 	void ReleaseLeft();
 	void ReleaseRight();
 
-	void AddDataPoint(FString Description, FVector Location, bool Success);
+	void ToggleLaserLeft();
+	void ToggleLaserRight();
+
+	void AddDataPoint(FString Description, FVector Location, bool Success = true);
 
 	FString SessionName;
 

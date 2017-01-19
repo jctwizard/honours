@@ -20,8 +20,11 @@ public:
 	// Called every frame
 	virtual void Tick( float DeltaSeconds ) override;
 
+	void DrawLaser();
+
 	bool Grab();
 	bool Release();
+	void ToggleLaser();
 
 	void SetHand(EControllerHand Hand);
 	void SetHandMesh(USkeletalMesh* HandMeshAsset);
@@ -29,6 +32,7 @@ public:
 	FVector GetControllerLocation();
 
 	AActor* GetNearestActor();
+	AActor* GetNearestLaserActor();
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Motion")
 	UMotionControllerComponent* MotionController;
@@ -44,4 +48,6 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Grabbing")
 	bool bWantsToGrab;
+
+	bool bUseLaser;
 };
