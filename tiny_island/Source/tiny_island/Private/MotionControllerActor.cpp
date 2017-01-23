@@ -6,8 +6,8 @@
 // Sets default values
 AMotionControllerActor::AMotionControllerActor() :
 	bWantsToGrab(false),
-	bUseLaser(false),
-	GrabbedActor(nullptr)
+	GrabbedActor(nullptr),
+	GrabMethod(EGrabMethod::GM_Sphere)
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
@@ -36,7 +36,7 @@ void AMotionControllerActor::BeginPlay()
 	// Flip the Mesh of the left hand
 	if (MotionController->Hand == EControllerHand::Left)
 	{
-		HandMesh->SetWorldScale3D(FVector(1.0f, 1.0f, -1.0f));
+		HandMesh->SetWorldScale3D(FVector(1.0f, -1.0f, 1.0f));
 	}
 }
 
@@ -45,7 +45,7 @@ void AMotionControllerActor::Tick( float DeltaTime )
 {
 	Super::Tick( DeltaTime );
 
-	if (bUseLaser)
+	if (GrabMethod == EGrabMethod::GM_Laser)
 	{
 		DrawLaser();
 	}
@@ -53,39 +53,14 @@ void AMotionControllerActor::Tick( float DeltaTime )
 
 void AMotionControllerActor::DrawLaser()
 {
-	// Set up the trace parameters to find where the laser ends
-	FCollisionQueryParams TraceParams = FCollisionQueryParams(FName(TEXT("Laser Trace")), true, this);
-	TraceParams.bTraceComplex = true;
-	TraceParams.bTraceAsyncScene = true;
-	TraceParams.bReturnPhysicalMaterial = false;
-
-	float TraceDistance = 1000.0f;
-
-	FHitResult HitOut(ForceInit);
-
-	// Trace for an actor in the direction of the controller
-	GetWorld()->LineTraceSingleByChannel(
-		HitOut,
-		GrabSphere->GetComponentLocation(),
-		GrabSphere->GetComponentLocation() + GetActorForwardVector() * TraceDistance,
-		ECC_WorldDynamic,
-		TraceParams
-	);
-
-	// Check if an actor is being hit by the laser
-	if (HitOut.GetActor() != NULL)
-	{
-		TraceDistance = HitOut.Distance;
-	}
-
-	// Draw a line to the actor
+	// Draw a line in the direction of the controller
 	DrawDebugLine(
 		GetWorld(),
 		GrabSphere->GetComponentLocation(),
-		GrabSphere->GetComponentLocation() + GetActorForwardVector() * TraceDistance,
+		GrabSphere->GetComponentLocation() + GetActorForwardVector() * 1000.0f,
 		FColor(255, 0, 0),
 		false, -1, 0,
-		12.333
+		0.5f
 	);
 }
 
@@ -93,8 +68,27 @@ bool AMotionControllerActor::Grab()
 {
 	bWantsToGrab = true;
 
-	// Get the closest actor overlapping the hand
-	AActor* NearestActor = GetNearestActor();
+	AActor* NearestActor = nullptr;
+	FAttachmentTransformRules AttachmentRules = FAttachmentTransformRules::KeepWorldTransform;
+
+	// Get the nearest actor based on the grab method
+	switch (GrabMethod)
+	{
+		case EGrabMethod::GM_Sphere:
+		{
+			// Get the closest actor overlapping the sphere
+			NearestActor = GetNearestActor();
+			AttachmentRules = FAttachmentTransformRules::KeepWorldTransform;
+			break;
+		}
+		case EGrabMethod::GM_Laser:
+		{
+			// Get the closest actor overlapping the laser
+			NearestActor = GetNearestLaserActor();
+			AttachmentRules = FAttachmentTransformRules::SnapToTargetNotIncludingScale;
+			break;
+		}
+	}
 
 	if (NearestActor->IsValidLowLevel())
 	{
@@ -103,29 +97,10 @@ bool AMotionControllerActor::Grab()
 		{
 			GrabbedActor = NearestActor;
 			IGrabbableInterface::Execute_OnGrab(GrabbedActor);
-			GrabbedActor->AttachToComponent(MotionController, FAttachmentTransformRules::KeepWorldTransform);
+			GrabbedActor->AttachToComponent(MotionController, AttachmentRules);
 			HandMesh->SetVisibility(false);
 
 			return true;
-		}
-	}
-	else if (bUseLaser)
-	{
-		// Get the closest actor overlapping the laser
-		AActor* NearestLaserActor = GetNearestLaserActor();
-		
-		if (NearestLaserActor->IsValidLowLevel())
-		{
-			// Check if the actor is grabbable
-			if (NearestLaserActor->GetClass()->ImplementsInterface(UGrabbableInterface::StaticClass()))
-			{
-				GrabbedActor = NearestLaserActor;
-				IGrabbableInterface::Execute_OnGrab(GrabbedActor);
-				GrabbedActor->AttachToComponent(MotionController, FAttachmentTransformRules::SnapToTargetNotIncludingScale);
-				HandMesh->SetVisibility(false);
-
-				return true;
-			}
 		}
 	}
 
@@ -165,7 +140,14 @@ bool AMotionControllerActor::Release()
 void AMotionControllerActor::ToggleLaser()
 {
 	// Toggle the laser on and off
-	bUseLaser = !bUseLaser;
+	if (GrabMethod == EGrabMethod::GM_Laser)
+	{
+		GrabMethod = EGrabMethod::GM_Sphere;
+	}
+	else
+	{
+		GrabMethod = EGrabMethod::GM_Laser;
+	}
 }
 
 AActor* AMotionControllerActor::GetNearestActor()
@@ -201,21 +183,30 @@ AActor* AMotionControllerActor::GetNearestLaserActor()
 
 	float TraceDistance = 1000.0f;
 
-	FHitResult HitOut(ForceInit);
+	TArray<FHitResult> HitsOut;
 
-	GetWorld()->LineTraceSingleByChannel(
-		HitOut,
+	GetWorld()->LineTraceMultiByChannel(
+		HitsOut,
 		GrabSphere->GetComponentLocation(),
 		GrabSphere->GetComponentLocation() + GetActorForwardVector() * TraceDistance,
-		ECC_WorldDynamic,
+		ECC_PhysicsBody,
 		TraceParams
 	);
 
 	AActor* HitActor = nullptr;
 
-	if (HitOut.Actor.IsValid())
+	for (FHitResult HitOut : HitsOut)
 	{
-		HitActor = HitOut.GetActor();
+		AActor* HitOutActor = HitOut.GetActor();
+		
+		if (HitOutActor != nullptr)
+		{
+			if (HitOutActor->GetClass()->ImplementsInterface(UGrabbableInterface::StaticClass()))
+			{
+				HitActor = HitOutActor;
+				break;
+			}
+		}
 	}
 
 	return HitActor;

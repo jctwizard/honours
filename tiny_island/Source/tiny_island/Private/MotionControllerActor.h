@@ -5,6 +5,13 @@
 #include "GrabbableInterface.h"
 #include "MotionControllerActor.generated.h"
 
+UENUM(BlueprintType)
+enum class EGrabMethod : uint8
+{
+	GM_Sphere 	UMETA(DisplayName = "Sphere"),
+	GM_Laser 	UMETA(DisplayName = "Laser")
+};
+
 UCLASS()
 class AMotionControllerActor : public AActor
 {
@@ -49,5 +56,6 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Grabbing")
 	bool bWantsToGrab;
 
-	bool bUseLaser;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Grabbing")
+	EGrabMethod GrabMethod;
 };
