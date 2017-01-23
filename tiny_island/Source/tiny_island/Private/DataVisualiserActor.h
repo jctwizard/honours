@@ -48,5 +48,10 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Visualisation")
 	USkeletalMeshComponent* PlaceholderRight;
 
-	float ElapsedTime;
+	TArray<float> LeftSplinePointTimes, RightSplinePointTimes;
+	int LeftSplinePoint, RightSplinePoint;
+	float CurrentSplineTime;
+
+private:
+	float ToSeconds(FDateTime TimeStamp);
 };
