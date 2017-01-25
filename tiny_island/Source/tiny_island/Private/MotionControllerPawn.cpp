@@ -11,9 +11,6 @@ AMotionControllerPawn::AMotionControllerPawn() :
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
-	// Initialise the analytics file
-	SessionName = FPaths::GameContentDir() + FDateTime::Now().ToString() + ".txt";
-
 	// Set up the origin and camera
 	if (!VROrigin)
 	{
@@ -61,6 +58,11 @@ void AMotionControllerPawn::BeginPlay()
 	RightController->SetHand(EControllerHand::Right);
 	RightController->SetHandMesh(HandMeshAsset);
 	RightController->SetGrabRadius(BaseGrabRadius);
+
+	// Initialise the Data Generator
+	DataGenerator = CreateDefaultSubobject<UDataGeneratorComponent>(TEXT("DataGenerator"));
+	DataGenerator->SetOwner(this);
+	DataGenerator->SetupAttachment(RootComponent);
 }
 
 // Called every frame
@@ -89,67 +91,35 @@ void AMotionControllerPawn::SetupPlayerInputComponent(class UInputComponent* InI
 void AMotionControllerPawn::GrabLeft()
 {
 	bool Success = LeftController->Grab();
-	AddDataPoint("Grab Left", LeftController->GetControllerLocation(), Success);
+	DataGenerator->GenerateEvent("GrabLeft", Success);
 }
 
 void AMotionControllerPawn::GrabRight()
 {
 	bool Success = RightController->Grab();
-	AddDataPoint("Grab Right", RightController->GetControllerLocation(), Success);
+	DataGenerator->GenerateEvent("GrabRight", Success);
 }
 
 void AMotionControllerPawn::ReleaseLeft()
 {
 	bool Success = LeftController->Release();
-	AddDataPoint("Release Left", LeftController->GetControllerLocation(), Success);
+	DataGenerator->GenerateEvent("ReleaseLeft", Success);
 }
 
 void AMotionControllerPawn::ReleaseRight()
 {
 	bool Success = RightController->Release();
-	AddDataPoint("Release Right", RightController->GetControllerLocation(), Success);
+	DataGenerator->GenerateEvent("ReleaseRight", Success);
 }
 
 void AMotionControllerPawn::ToggleLaserLeft()
 {
 	LeftController->ToggleLaser();
-	AddDataPoint("Toggle Laser Left", LeftController->GetControllerLocation());
+	DataGenerator->GenerateEvent("ToggleLaseLeft");
 }
 
 void AMotionControllerPawn::ToggleLaserRight()
 {
 	RightController->ToggleLaser();
-	AddDataPoint("Toggle Laser Right", RightController->GetControllerLocation());
-}
-
-void AMotionControllerPawn::AddDataPoint(FString Description, FVector Location, bool Success)
-{
-	ofstream DataFile;
-	DataFile.open(*SessionName, ios::out | ios::app);
-
-	// Open the analytics file and save the action to it along with the timestamp, success type and location
-	if (DataFile.is_open())
-	{
-		DataFile << TCHAR_TO_UTF8((TEXT("%s"), *(FDateTime::Now().ToString())));
-
-		DataFile << "\t\t";
-
-		if (Success)
-		{
-			DataFile << "Success";
-		}
-		else
-		{
-			DataFile << "Failed";
-		}
-
-		DataFile << "\t\t";
-		DataFile << TCHAR_TO_UTF8((TEXT("%s"), *(Location.ToString())));
-
-		DataFile << "\t\t";
-		DataFile << TCHAR_TO_UTF8((TEXT("%s"), *Description));
-
-		DataFile << "\r\n";
-		DataFile.close();
-	}
+	DataGenerator->GenerateEvent("ToggleLaserRight");
 }

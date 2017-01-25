@@ -3,6 +3,7 @@
 #include "GameFramework/Actor.h"
 #include "Runtime/HeadMountedDisplay/Public/MotionControllerComponent.h"
 #include "GrabbableInterface.h"
+#include "DataGeneratorComponent.h"
 #include "MotionControllerActor.generated.h"
 
 UENUM(BlueprintType)
@@ -58,4 +59,7 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Grabbing")
 	EGrabMethod GrabMethod;
+
+private:
+	UDataGeneratorComponent* DataGenerator;
 };

@@ -3,6 +3,7 @@
 #pragma once
 
 #include "Components/ActorComponent.h"
+#include "DataGathererActor.h"
 #include "DataGeneratorComponent.generated.h"
 
 
@@ -21,6 +22,9 @@ public:
 	// Called every frame
 	virtual void TickComponent( float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction ) override;
 
-		
-	
+	// Create an event in the data gatherer
+	void GenerateEvent(FString EventName, bool Success = true);
+
+private:
+	ADataGathererActor* DataGathererActor;
 };

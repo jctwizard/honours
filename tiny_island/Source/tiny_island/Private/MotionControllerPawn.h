@@ -7,6 +7,7 @@
 #include "Runtime/HeadMountedDisplay/Public/HeadMountedDisplay.h"
 #include "Runtime/HeadMountedDisplay/Public/MotionControllerComponent.h"
 #include "MotionControllerActor.h"
+#include "DataGeneratorComponent.h"
 #include "MotionControllerPawn.generated.h"
 
 using namespace std;
@@ -62,4 +63,7 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Components")
 	USkeletalMesh* HandMeshAsset;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
+	UDataGeneratorComponent* DataGenerator;
 };

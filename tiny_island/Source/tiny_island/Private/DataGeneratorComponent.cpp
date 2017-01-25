@@ -21,7 +21,16 @@ void UDataGeneratorComponent::BeginPlay()
 	Super::BeginPlay();
 
 	// ...
-	
+
+	TArray<AActor*> FoundActors;
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), ADataGathererActor::StaticClass(), FoundActors);
+
+	if (FoundActors.Num() > 0)
+	{
+		DataGathererActor = (ADataGathererActor*)FoundActors[0];
+
+		DataGathererActor->TrackActor(GetOwner());
+	}
 }
 
 
@@ -33,3 +42,8 @@ void UDataGeneratorComponent::TickComponent( float DeltaTime, ELevelTick TickTyp
 	// ...
 }
 
+// Create an event in the data gatherer
+void UDataGeneratorComponent::GenerateEvent(FString EventName, bool Success)
+{
+	DataGathererActor->GatherEvent(GetOwner(), EventName, Success);
+}

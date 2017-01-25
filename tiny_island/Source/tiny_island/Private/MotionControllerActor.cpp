@@ -38,6 +38,11 @@ void AMotionControllerActor::BeginPlay()
 	{
 		HandMesh->SetWorldScale3D(FVector(1.0f, -1.0f, 1.0f));
 	}
+
+	// Initialise the Data Generator
+	DataGenerator = CreateDefaultSubobject<UDataGeneratorComponent>(TEXT("DataGenerator"));
+	DataGenerator->SetOwner(this);
+	DataGenerator->SetupAttachment(RootComponent);
 }
 
 // Called every frame
