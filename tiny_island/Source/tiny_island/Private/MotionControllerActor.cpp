@@ -25,6 +25,9 @@ AMotionControllerActor::AMotionControllerActor() :
 		// Create the grab sphere and attach it to the hand mesh
 		GrabSphere = CreateDefaultSubobject<USphereComponent>(TEXT("GrabSphere"));
 		GrabSphere->AttachToComponent(HandMesh, FAttachmentTransformRules::KeepWorldTransform);
+
+		// Initialise the Data Generator
+		DataGenerator = CreateDefaultSubobject<UDataGeneratorComponent>( TEXT( "DataGenerator" ) );
 	}
 }
 
@@ -38,11 +41,6 @@ void AMotionControllerActor::BeginPlay()
 	{
 		HandMesh->SetWorldScale3D(FVector(1.0f, -1.0f, 1.0f));
 	}
-
-	// Initialise the Data Generator
-	DataGenerator = CreateDefaultSubobject<UDataGeneratorComponent>(TEXT("DataGenerator"));
-	DataGenerator->SetOwner(this);
-	DataGenerator->SetupAttachment(RootComponent);
 }
 
 // Called every frame
@@ -164,7 +162,7 @@ AActor* AMotionControllerActor::GetNearestActor()
 	AActor* NearestOverlappingActor = nullptr;
 
 	// Check each overlapping actor and get the nearest one
-	for (auto& NearbyActor : NearbyActors)
+	for (AActor* NearbyActor : NearbyActors)
 	{
 		float OverlapDistance = GetDistanceTo(NearbyActor);
 

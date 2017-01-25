@@ -21,16 +21,6 @@ ADataGathererActor::ADataGathererActor() :
 		XmlFile = new FXmlFile(SessionName);
 		RootNode = XmlFile->GetRootNode();
 	}
-	else
-	{
-		// Initialise the analytics file
-		SessionName = FPaths::GameContentDir() + FDateTime::Now().ToString() + ".txt";
-
-		const FString FileTemplate = "<?xml version=\"1.0\" encoding=\"UTF - 8\"?>\n<Session>\n</Session>";
-		XmlFile = new FXmlFile(FileTemplate, EConstructMethod::ConstructFromBuffer);
-
-		RootNode = XmlFile->GetRootNode();
-	}
 }
 
 ADataGathererActor::~ADataGathererActor()
@@ -49,6 +39,16 @@ void ADataGathererActor::BeginPlay()
 	if (bVisualiseData)
 	{
 		UGameplayStatics::GetAllActorsOfClass(GetWorld(), AActor::StaticClass(), TrackedActors);
+	}
+	else
+	{
+		// Initialise the analytics file
+		SessionName = FPaths::GameContentDir() + FDateTime::Now().ToString() + ".xml";
+
+		const FString FileTemplate = "<?xml version=\"1.0\" encoding=\"UTF - 8\"?>\n<Session>\n</Session>";
+		XmlFile = new FXmlFile( FileTemplate, EConstructMethod::ConstructFromBuffer );
+
+		RootNode = XmlFile->GetRootNode();
 	}
 }
 
@@ -105,7 +105,6 @@ void ADataGathererActor::GatherActorData()
 	}
 }
 
-
 void ADataGathererActor::VisualiseActorData()
 {
 	if (NodeExists(RootNode, FString::FromInt(CurrentDataTick)))
@@ -121,9 +120,20 @@ void ADataGathererActor::VisualiseActorData()
 
 			if (NodeExists(TickNode, ActorName))
 			{
+				FXmlNode* ActorNode = GetNode( TickNode, ActorName );
 				FTransform TickTransform;
-				TickTransform.InitFromString(GetNode(TickNode, ActorName)->GetContent());
+				TickTransform.InitFromString( ActorNode->GetContent());
+
+				// Set the actors transform from the node
 				TrackedActor->SetActorTransform(TickTransform);
+
+				// Check for any event nodes
+				TArray<FXmlNode*> EventNodes = ActorNode->GetChildrenNodes();
+
+				for( FXmlNode* EventNode : EventNodes )
+				{
+					UE_LOG( LogTemp, Warning, TEXT( "%s occurred at tick %i" ), EventNode->GetContent(), CurrentDataTick );
+				}
 			}
 		}
 	}

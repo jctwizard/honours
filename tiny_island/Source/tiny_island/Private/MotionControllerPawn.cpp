@@ -19,7 +19,11 @@ AMotionControllerPawn::AMotionControllerPawn() :
 
 		Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
 		Camera->AttachToComponent(VROrigin, FAttachmentTransformRules::KeepWorldTransform);
+
+		// Initialise the Data Generator
+		DataGenerator = CreateDefaultSubobject<UDataGeneratorComponent>( TEXT( "DataGenerator" ) );
 	}
+
 }
 
 // Called when the game starts or when spawned
@@ -58,11 +62,6 @@ void AMotionControllerPawn::BeginPlay()
 	RightController->SetHand(EControllerHand::Right);
 	RightController->SetHandMesh(HandMeshAsset);
 	RightController->SetGrabRadius(BaseGrabRadius);
-
-	// Initialise the Data Generator
-	DataGenerator = CreateDefaultSubobject<UDataGeneratorComponent>(TEXT("DataGenerator"));
-	DataGenerator->SetOwner(this);
-	DataGenerator->SetupAttachment(RootComponent);
 }
 
 // Called every frame
