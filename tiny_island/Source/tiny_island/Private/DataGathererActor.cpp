@@ -15,12 +15,6 @@ ADataGathererActor::ADataGathererActor() :
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-
-	if (bVisualiseData)
-	{
-		XmlFile = new FXmlFile(SessionName);
-		RootNode = XmlFile->GetRootNode();
-	}
 }
 
 ADataGathererActor::~ADataGathererActor()
@@ -38,6 +32,10 @@ void ADataGathererActor::BeginPlay()
 
 	if (bVisualiseData)
 	{
+		XmlFile = new FXmlFile();
+		XmlFile->LoadFile(FPaths::GameContentDir() + SessionName);
+		RootNode = XmlFile->GetRootNode();
+
 		UGameplayStatics::GetAllActorsOfClass(GetWorld(), AActor::StaticClass(), TrackedActors);
 	}
 	else
@@ -90,9 +88,9 @@ void ADataGathererActor::GatherActorData()
 		if ((TrackedActor->GetActorLocation() - TrackedActorLocations[TrackedActorIndex]).Size() > DataUpdateThreshold)
 		{
 			GetActorNode(TrackedActor, CurrentDataTick)->SetContent(TrackedActor->GetTransform().ToString());
-		}
 
-		TrackedActorLocations[TrackedActorIndex] = TrackedActor->GetActorLocation();
+			TrackedActorLocations[TrackedActorIndex] = TrackedActor->GetActorLocation();
+		}
 	}
 
 	XmlFile->Save(SessionName);
@@ -109,23 +107,34 @@ void ADataGathererActor::VisualiseActorData()
 		{
 			// Update actor based on data
 			AActor* TrackedActor = TrackedActors[TrackedActorIndex];
-			FString ActorName = TrackedActor->GetName();
 
-			if (NodeExists(TickNode, ActorName))
+			if (TrackedActor != nullptr)
 			{
-				FXmlNode* ActorNode = GetNode( TickNode, ActorName );
-				FTransform TickTransform;
-				TickTransform.InitFromString( ActorNode->GetContent());
+				FString ActorName = TrackedActor->GetName();
 
-				// Set the actors transform from the node
-				TrackedActor->SetActorTransform(TickTransform);
-
-				// Check for any event nodes
-				TArray<FXmlNode*> EventNodes = ActorNode->GetChildrenNodes();
-
-				for( FXmlNode* EventNode : EventNodes )
+				if (NodeExists(TickNode, ActorName))
 				{
-					UE_LOG( LogTemp, Warning, TEXT( "%s occurred at tick %d" ), *EventNode->GetContent(), int(CurrentDataTick) );
+					FXmlNode* ActorNode = GetNode( TickNode, ActorName );
+					FTransform TickTransform;
+					TickTransform.InitFromString( ActorNode->GetContent());
+
+					// Set the actors transform from the node
+					TrackedActor->SetActorTransform(TickTransform);
+
+					// Check for any event nodes
+					TArray<FXmlNode*> EventNodes = ActorNode->GetChildrenNodes();
+
+					for( FXmlNode* EventNode : EventNodes )
+					{
+						FString Success = "successful";
+						
+						if (!FCString::Atoi(*EventNode->GetContent()))
+						{
+							Success = "unsuccessful";
+						}
+
+						UE_LOG( LogTemp, Warning, TEXT( "A %s %s occurred at tick %d" ), *Success, *EventNode->GetTag(), int(CurrentDataTick) );
+					}
 				}
 			}
 		}
