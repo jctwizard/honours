@@ -154,7 +154,12 @@
 <a id="240117-data-gathering" class="anchor" href="#240117-data-gathering" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><em>22/01/17</em> Data Gathering</h3>
 
 <p>After making improvements to the data visualisation yesterday I realised that to get any real idea of what the player is doing i not only have to begin tracking object locations but I will also need to track the player's headset position and direction and do all of these things on a timestep. The actions will be recorded separately as they will be overlaid onto the time stepped objects. To do this i will need both a more accurate timer, right now it only outputs the seconds. I will also need a better way of saving and storing data, currently it is done using custom formatting that is hardcoded and difficult to visualise at the other end. I have never actually used xml markdown but discovered unreal has it's own simple parser for it and a more complex one called FastXml which uses a callback system. I plan to use the simple version to store data as nodes with information about the object the node belongs to as well as its position rotation etc. this will give me a better visualisation and make it more extensible later down the line. </p>
-        
+
+<h3>
+<a id="300117-bugs" class="anchor" href="#300117-bugs" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><em>30/01/17</em> Bugs</h3>
+
+<p>After a break over the weekend I came back to the projet to fix the last bugs with the data gathering/visualisation system. Although I was not in the UK I was able to use my friend in France's Vive to test out my systems. One major issue revolved around the use of Unreal's Begin Destroy method which I had hoped to use to save the xml file upon the exiting of the application. However for an unknown reason this method is called immediately even before Begin Play and so the file attempted to save before even being created. Once this was fixed xml files were being created but no data was stored in them even though the new system should store the transforms of tracked objects each tick. </p>
+             
     </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/jctwood">jctwood</a></p>
