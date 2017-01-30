@@ -52,15 +52,6 @@ void ADataGathererActor::BeginPlay()
 	}
 }
 
-// Called when the game ends
-void ADataGathererActor::BeginDestroy()
-{
-	if (bVisualiseData == false)
-	{
-		XmlFile->Save(SessionName);
-	}
-}
-
 // Called every frame
 void ADataGathererActor::Tick( float DeltaTime )
 {
@@ -103,6 +94,8 @@ void ADataGathererActor::GatherActorData()
 
 		TrackedActorLocations[TrackedActorIndex] = TrackedActor->GetActorLocation();
 	}
+
+	XmlFile->Save(SessionName);
 }
 
 void ADataGathererActor::VisualiseActorData()
@@ -132,7 +125,7 @@ void ADataGathererActor::VisualiseActorData()
 
 				for( FXmlNode* EventNode : EventNodes )
 				{
-					UE_LOG( LogTemp, Warning, TEXT( "%s occurred at tick %i" ), EventNode->GetContent(), CurrentDataTick );
+					UE_LOG( LogTemp, Warning, TEXT( "%s occurred at tick %d" ), *EventNode->GetContent(), int(CurrentDataTick) );
 				}
 			}
 		}

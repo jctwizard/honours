@@ -3,8 +3,7 @@
 #pragma once
 
 #include "GameFramework/Actor.h"
-#include "Runtime/XmlParser/Public/XmlFile.h"
-#include "Runtime/XmlParser/Public/XmlNode.h"
+#include "XmlParser.h"
 #include "DataGathererActor.generated.h"
 
 UCLASS()
@@ -19,8 +18,6 @@ public:
 
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
-
-	virtual void BeginDestroy() override;
 	
 	// Called every frame
 	virtual void Tick( float DeltaSeconds ) override;
