@@ -85,6 +85,9 @@ void AMotionControllerPawn::SetupPlayerInputComponent(class UInputComponent* InI
 
 	InInputComponent->BindAction("ToggleLaserLeft", IE_Pressed, this, &AMotionControllerPawn::ToggleLaserLeft);
 	InInputComponent->BindAction("ToggleLaserRight", IE_Pressed, this, &AMotionControllerPawn::ToggleLaserRight);
+
+	InInputComponent->BindAction("ToggleAdaptiveLeft", IE_Pressed, this, &AMotionControllerPawn::ToggleAdaptiveLeft);
+	InInputComponent->BindAction("ToggleAdaptiveRight", IE_Pressed, this, &AMotionControllerPawn::ToggleAdaptiveRight);
 }
 
 void AMotionControllerPawn::GrabLeft()
@@ -114,7 +117,7 @@ void AMotionControllerPawn::ReleaseRight()
 void AMotionControllerPawn::ToggleLaserLeft()
 {
 	LeftController->ToggleLaser();
-	DataGenerator->GenerateEvent("ToggleLaseLeft");
+	DataGenerator->GenerateEvent("ToggleLaserLeft");
 }
 
 void AMotionControllerPawn::ToggleLaserRight()
@@ -122,3 +125,16 @@ void AMotionControllerPawn::ToggleLaserRight()
 	RightController->ToggleLaser();
 	DataGenerator->GenerateEvent("ToggleLaserRight");
 }
+
+void AMotionControllerPawn::ToggleAdaptiveLeft()
+{
+	LeftController->ToggleAdaptive();
+	DataGenerator->GenerateEvent("ToggleAdaptiveLeft");
+}
+
+void AMotionControllerPawn::ToggleAdaptiveRight()
+{
+	RightController->ToggleAdaptive();
+	DataGenerator->GenerateEvent("ToggleAdaptiveRight");
+}
+

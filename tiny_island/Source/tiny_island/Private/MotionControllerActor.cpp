@@ -6,8 +6,9 @@
 // Sets default values
 AMotionControllerActor::AMotionControllerActor() :
 	bWantsToGrab(false),
+	bAdaptive(false),
 	GrabbedActor(nullptr),
-	GrabMethod(EGrabMethod::GM_Sphere)
+	GrabMethod(EGrabMethod::GM_Laser)
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
@@ -56,6 +57,13 @@ void AMotionControllerActor::Tick( float DeltaTime )
 
 void AMotionControllerActor::DrawLaser()
 {
+	FColor LaserColour = FColor(255, 0, 0);
+
+	if (bAdaptive)
+	{
+		LaserColour = FColor(255, 127, 0);
+	}
+
 	// Draw a line in the direction of the controller
 	DrawDebugLine(
 		GetWorld(),
@@ -81,6 +89,12 @@ bool AMotionControllerActor::Grab()
 		{
 			// Get the closest actor overlapping the sphere
 			NearestActor = GetNearestActor();
+
+			if (NearestActor == nullptr)
+			{
+				NearestActor = GetNearestActorAdaptive();
+			}
+
 			AttachmentRules = FAttachmentTransformRules::KeepWorldTransform;
 			break;
 		}
@@ -153,6 +167,11 @@ void AMotionControllerActor::ToggleLaser()
 	}
 }
 
+void AMotionControllerActor::ToggleAdaptive()
+{
+	bAdaptive = !bAdaptive;
+}
+
 AActor* AMotionControllerActor::GetNearestActor()
 {
 	TArray<AActor*> NearbyActors;
@@ -213,6 +232,66 @@ AActor* AMotionControllerActor::GetNearestLaserActor()
 	}
 
 	return HitActor;
+}
+
+AActor* AMotionControllerActor::GetNearestActorAdaptive()
+{
+	// Trace for an actor in the direction of the controller
+	FCollisionQueryParams SweepParams = FCollisionQueryParams(FName(TEXT("Adaptive Sweep")), true, this);
+	SweepParams.bTraceComplex = true;
+	SweepParams.bTraceAsyncScene = true;
+	SweepParams.bReturnPhysicalMaterial = false;
+
+	float SweepDistance = 1000.0f;
+	float SweepRadius = 100.0f;
+
+	FVector SweepStart = GrabSphere->GetComponentLocation();
+	FVector SweepEnd = GrabSphere->GetComponentLocation() + GetActorForwardVector() * SweepDistance;
+
+	FQuat SweepRotation = FQuat::FindBetween(FVector::UpVector, SweepEnd - SweepStart);
+
+	TArray<FHitResult> HitsOut;
+
+	GetWorld()->SweepMultiByChannel(
+		HitsOut,
+		SweepStart,
+		SweepEnd,
+		SweepRotation,
+		ECC_PhysicsBody,
+		FCollisionShape::MakeSphere(SweepRadius),
+		SweepParams
+	);
+
+	AActor* NearestActor = nullptr;
+	float NearestActorDistance = 1000.0f;
+
+	FVector SweepNormal = SweepEnd - SweepStart;
+	SweepNormal.Normalize();
+
+	for (FHitResult HitOut : HitsOut)
+	{
+		AActor* HitOutActor = HitOut.GetActor();
+
+		if (HitOutActor != nullptr)
+		{
+			if (HitOutActor->GetClass()->ImplementsInterface(UGrabbableInterface::StaticClass()))
+			{
+				// The distance of the hit actor from the ray
+				FVector HitOutLocation = HitOutActor->GetActorLocation();
+				FVector HitOutToLine = SweepStart - HitOutLocation;
+				float HitOutDistance = (HitOutToLine - SweepNormal * (FVector::DotProduct(HitOutToLine, SweepNormal))).Size();
+
+				// Return the closest swept actor to the ray
+				if (HitOutDistance < NearestActorDistance)
+				{
+					NearestActor = HitOutActor;
+					NearestActorDistance = HitOutDistance;
+				}
+			}
+		}
+	}
+
+	return NearestActor;
 }
 
 void AMotionControllerActor::SetHand(EControllerHand Hand)

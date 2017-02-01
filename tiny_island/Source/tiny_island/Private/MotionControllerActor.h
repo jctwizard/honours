@@ -33,6 +33,7 @@ public:
 	bool Grab();
 	bool Release();
 	void ToggleLaser();
+	void ToggleAdaptive();
 
 	void SetHand(EControllerHand Hand);
 	void SetHandMesh(USkeletalMesh* HandMeshAsset);
@@ -41,6 +42,7 @@ public:
 
 	AActor* GetNearestActor();
 	AActor* GetNearestLaserActor();
+	AActor* GetNearestActorAdaptive();
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Motion")
 	UMotionControllerComponent* MotionController;
@@ -59,6 +61,9 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Grabbing")
 	EGrabMethod GrabMethod;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Adaptive")
+	bool bAdaptive;
 
 private:
 	UDataGeneratorComponent* DataGenerator;
