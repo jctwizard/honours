@@ -109,13 +109,68 @@
 <a id="211116-feasability-demo" class="anchor" href="#211116-feasability-demo" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><em>21/11/16</em> Feasability Demo</h3>
 
 <p>I have spent the past weeks working on my other AR module which has also fed into ideas for my honours application. Today I am setting up a new UE4 4.14 project with basic vr interaction and the beginnings of the demo. By the end of the week I hope to have the various manipulations working and the analytics outputting. Then it is on to building the actual gameplay the player will be completing. The more I think about it the more I realise it will need to be something that can be pressurised. A series of tasks that need to be done rapidly. This will allow me to force the player to use the interface quickly and not cautiously as it would be in fast complex games. I am still settling on the exact gameplay.</p>
-      </section>
+
+<h3>
+<a id="011216-vr-in-c-in-ue4" class="anchor" href="#011216-vr-in-c-in-ue4" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><em>01/12/16</em> VR in C++ in UE4</h3>
+
+<p>With my other coursework handed in I have begun implementing the basic VR controller in unreal engine. In order to allow multiple types of interaction model later on I am implementing everything in C++ using the VR template blueprints as a guide for the undocumented VR api. It took a while to find the correct includes to get access to the VR functions but it seems to be in order. I booked the HIVE to test my progress on saturday so today and tomorrow will be spent finishing the implementation in C++.</p>
+
+<p>Another benefit of C++ is that I can use the standard libraries to read and write files for easy analytics. I currently write to a text file stored in the project named with the timestamp the session was started at. Inside the text file I store every time the user makes an action, where they were when they made the action and whether it was successful along with a description. This should allow me to later visualise in 3D the movement and actions of the players and in theory create a heat map of all the testers interactions and movement later down the line.</p>
+
+<h3>
+<a id="031216-evaluation-questions" class="anchor" href="#031216-evaluation-questions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><em>03/12/16</em> Evaluation Questions</h3>
+
+<p>I stumbled across a great guide for usability evaluation called SUS (System Usability Scale). The questions are fairly vague but ask the questions I am looking to ask in ways that will hopefully help draw out the user's feelings on the matter. Each question seems to mirror the last giving the user a positively phrased question like, "was it easy to use?" next to a negatively phrased but similar question, "was it cumbersome to use?". This will hopefully give a good indication of how people are finding it and remove any bias they have toward giving positive answers. Other than directly asking about usability the questions also cover how easy the system is to learn and how much the system made sense, was it too complex? etc. I am still trying to pin down exactly how the questions will be asked in regards to the various adaptive techniques being analysed.</p>
+
+<p>Testing the VR C++ implementation just now, hopefully it works as intended and will provide a good base to start experimenting with the interfaces.</p>
+
+<h3>
+<a id="061216-data-visualisation" class="anchor" href="#061216-data-visualisation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><em>06/12/16</em> Data Visualisation</h3>
+
+<p>I worked on visualising the data being output by the vr pawn. This involved creating a spline component using the data points read from a text file. Each data point contains its position which is used to move a mesh and visualise the path of the player's hands. The next step is to have the description of actions and timestamp implemented into the visualisation before building heatmaps from the data to see where the most errors were made. Doing this in 3D will be interesting and currently the visualisation is a static non inter-actable demo. </p>
+
+<h3>
+<a id="170117-research" class="anchor" href="#170117-research" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><em>17/01/17</em> Research</h3>
+
+<p>I took a break to work on other projects over the holidays and have been researching the developments in VR ui over the past week. CES happened and a few new headsets powered by microsoft holographic were announced. These tend to have hand tracking and inisde out room positional tracking which removes the need for motion controllers or external sensors. Apparently they will be sold for a lower price than oculus/vive with a higher resolution and lower min specs which altogether seems like a good move. I will definitely be sticking with motion controlled input for now but I can see a simple 'click' gesture or the tap that hololens uses would maybe allow my system to be ported over to any of those other platforms. The more I watch and use VR the more I realise interaction at a distance (not the spooky kind) is where may of the issues lie. The next biggest area of error is dense interaction where there are maybe five objects in close proximity and you want to select only one. Although I will start with the error analysis that I planned initially I am thinking maybe some kind of 3D picker tool that allows objects or elements to have a kind of pin that expands out as you approach it making it easier to select. I also want to look into more gaze based interaction although I will not use a gaze tracking headset like teh FOVE I can interpret the direction the user is facing as being their gaze. One game that is using this very well is the management game Tethered. It has some very interesting interfaces. An interesting game very similar to a prototype I made a while back is VRISH DREAMS I think it is called, by Twisted Oak. I will continue my research this week while building systems for laser pointer based interaction and improving error analysis. </p>
+
+<h3>
+<a id="170117-laser-pointer" class="anchor" href="#170117-laser-pointer" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><em>19/01/17</em> Laser Pointer</h3>
+
+<p>After some more research on interfaces, one of the most interesting examples being ModBox which uses a tilt brush style palette and pointer interface, to keep track of these I am using a youtube playlist and refworks. The next step for implementation is to get the laser pointer working for interaction with far away objects.</p>
+      
+<h3>
+<a id="220117-control-mapping" class="anchor" href="#220117-control-mapping" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><em>22/01/17</em> Control Mapping</h3>
+
+<p>I found a useful controller mapping for the vive in ue4 after struggling with the input names for the touchpad. It turns out it is called 'thumbstick', solving that let me test the laser pointer i implemented last week and it works well although I miss very often as i have found in other games. The trace doesn't seem to work when angled below horizontal pointing upward which is strange. I also had a very useful link given to me by a colleague that breaks down the interaction design that Sony London used to design their VR experience, London Heist. It is one of the standout VR experiences I have played in terms of intuitive interaction and it also had me extremely immersed. <a href="http://www.gdcvault.com/play/1023185/Maths-to-Mechanics-Using-Mathematical">link to it here.</a> The issue with the laser pointer turned out to be to do with the grab sphere intersecting and overriding the laser pointer. Now the controller uses a Grab Method enum to track which method of grabbing you are using and switches between them currently Sphere and Laser.
+<img src="http://i.imgur.com/jgdRuzt.png" alt="Mapping"></p>
+     
+<h3>
+<a id="220117-data-visualiation" class="anchor" href="#220117-data-visualiation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><em>22/01/17</em> Data Visualisation</h3>
+
+<p>After getting the laser pointers to function I decided to look at improving the data visualiser, if I continually improve on it while I add features to the base interaction it should allow me to get a better idea of where the majority of errors are made and allow me to quickly perform user testing without worrying too much about taking notes of every user interaction. I realise that without visualising the scene the user is interacting with it will be hard to really understand what is going on so the next step seems to be visualising objects that the user interacts with. By only updating their position when they move I should get a good representation of the scene without having to store a ton of information. I plan to use an id system to store each object in the scene and then track it for position changes in order to visualise them individually. I also plan to begin visualising the actions of the user perhaps using text and a sonar type pulse coloured to show success vs failure. </p>
+
+<h3>
+<a id="240117-data-gathering" class="anchor" href="#240117-data-gathering" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><em>22/01/17</em> Data Gathering</h3>
+
+<p>After making improvements to the data visualisation yesterday I realised that to get any real idea of what the player is doing i not only have to begin tracking object locations but I will also need to track the player's headset position and direction and do all of these things on a timestep. The actions will be recorded separately as they will be overlaid onto the time stepped objects. To do this i will need both a more accurate timer, right now it only outputs the seconds. I will also need a better way of saving and storing data, currently it is done using custom formatting that is hardcoded and difficult to visualise at the other end. I have never actually used xml markdown but discovered unreal has it's own simple parser for it and a more complex one called FastXml which uses a callback system. I plan to use the simple version to store data as nodes with information about the object the node belongs to as well as its position rotation etc. this will give me a better visualisation and make it more extensible later down the line. </p>
+
+<h3>
+<a id="300117-bugs" class="anchor" href="#300117-bugs" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><em>30/01/17</em> Bugs</h3>
+
+<p>After a break over the weekend I came back to the projet to fix the last bugs with the data gathering/visualisation system. Although I was not in the UK I was able to use my friend in France's Vive to test out my systems. One major issue revolved around the use of Unreal's Begin Destroy method which I had hoped to use to save the xml file upon the exiting of the application. However for an unknown reason this method is called immediately even before Begin Play and so the file attempted to save before even being created. Once this was fixed xml files were being created but no data was stored in them even though the new system should store the transforms of tracked objects each tick. The issue was due to a threshold value I was using so as to only store data when something had moved a certain amount. The stored positions to check against were constantly being updated which meant nothing ever moved the threshold value in a single frame. With this fixed only some minor path issues with the loading occurred. Now I have a fully functioning data gatherer and visualiser that only needs a simple component added to tracked objects. I'm considering also making this a tag so as to allow anything to be tracked without a component required. A component would still be required for sending events. Later I will come back to the visualisation and improve it to use a heatmap and graphing but the data will not change before then. The next few days before a presentation to my supervisor will be spent adding the first adaptive elements. I want these to be actor components that affest the transform of any element in the scene say a ui. And extensions to the motion controller code to store errors made and use them along with gaze data to make educated guesses about intended actions. Hopefully it goes smoothly and the next post is filled with new ideas.</p>
+ 
+<h3>
+<a id="010217-adaptive" class="anchor" href="#010217-adaptive" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><em>01/02/17</em> Adaptive</h3>
+
+<p></p>                        
+    </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/jctwood">jctwood</a></p>
         <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
       </footer>
     </div>
     <script src="javascripts/scale.fix.js"></script>
-    
+
   </body>
 </html>
