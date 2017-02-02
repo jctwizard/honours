@@ -69,7 +69,7 @@ void AMotionControllerActor::DrawLaser()
 		GetWorld(),
 		GrabSphere->GetComponentLocation(),
 		GrabSphere->GetComponentLocation() + GetActorForwardVector() * 1000.0f,
-		FColor(255, 0, 0),
+		LaserColour,
 		false, -1, 0,
 		0.5f
 	);
@@ -90,11 +90,6 @@ bool AMotionControllerActor::Grab()
 			// Get the closest actor overlapping the sphere
 			NearestActor = GetNearestActor();
 
-			if (NearestActor == nullptr)
-			{
-				NearestActor = GetNearestActorAdaptive();
-			}
-
 			AttachmentRules = FAttachmentTransformRules::KeepWorldTransform;
 			break;
 		}
@@ -102,6 +97,12 @@ bool AMotionControllerActor::Grab()
 		{
 			// Get the closest actor overlapping the laser
 			NearestActor = GetNearestLaserActor();
+
+			if (bAdaptive && NearestActor == nullptr)
+			{
+				NearestActor = GetNearestActorAdaptive();
+			}
+
 			AttachmentRules = FAttachmentTransformRules::SnapToTargetNotIncludingScale;
 			break;
 		}
@@ -203,7 +204,7 @@ AActor* AMotionControllerActor::GetNearestLaserActor()
 	TraceParams.bTraceAsyncScene = true;
 	TraceParams.bReturnPhysicalMaterial = false;
 
-	float TraceDistance = 1000.0f;
+	float TraceDistance = 300.0f;
 
 	TArray<FHitResult> HitsOut;
 
@@ -242,8 +243,8 @@ AActor* AMotionControllerActor::GetNearestActorAdaptive()
 	SweepParams.bTraceAsyncScene = true;
 	SweepParams.bReturnPhysicalMaterial = false;
 
-	float SweepDistance = 1000.0f;
-	float SweepRadius = 100.0f;
+	float SweepDistance = 300.0f;
+	float SweepRadius = 50.0f;
 
 	FVector SweepStart = GrabSphere->GetComponentLocation();
 	FVector SweepEnd = GrabSphere->GetComponentLocation() + GetActorForwardVector() * SweepDistance;
@@ -263,7 +264,7 @@ AActor* AMotionControllerActor::GetNearestActorAdaptive()
 	);
 
 	AActor* NearestActor = nullptr;
-	float NearestActorDistance = 1000.0f;
+	float NearestActorDistance = 10000.0f;
 
 	FVector SweepNormal = SweepEnd - SweepStart;
 	SweepNormal.Normalize();
