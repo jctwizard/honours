@@ -243,8 +243,8 @@ AActor* AMotionControllerActor::GetNearestActorAdaptive()
 	SweepParams.bTraceAsyncScene = true;
 	SweepParams.bReturnPhysicalMaterial = false;
 
-	float SweepDistance = 300.0f;
-	float SweepRadius = 50.0f;
+	float SweepDistance = 500.0f;
+	float SweepRadius = 100.0f;
 
 	FVector SweepStart = GrabSphere->GetComponentLocation();
 	FVector SweepEnd = GrabSphere->GetComponentLocation() + GetActorForwardVector() * SweepDistance;
