@@ -1,6 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "tiny_island.h"
+#include "InteractableActor.h"
 #include "MotionControllerActor.h"
 
 // Sets default values
@@ -250,9 +251,11 @@ AActor* AMotionControllerActor::GetNearestActorAdaptive()
 	FVector SweepEnd = GrabSphere->GetComponentLocation() + GetActorForwardVector() * SweepDistance;
 
 	FQuat SweepRotation = FQuat::FindBetween(FVector::UpVector, SweepEnd - SweepStart);
+	
+	TArray<AActor*> InteractableActors;
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), AInteractableActor::StaticClass(), InteractableActors);
 
-	TArray<FHitResult> HitsOut;
-
+	/*
 	GetWorld()->SweepMultiByChannel(
 		HitsOut,
 		SweepStart,
@@ -262,6 +265,7 @@ AActor* AMotionControllerActor::GetNearestActorAdaptive()
 		FCollisionShape::MakeSphere(SweepRadius),
 		SweepParams
 	);
+	*/
 
 	AActor* NearestActor = nullptr;
 	float NearestActorDistance = 10000.0f;
@@ -269,24 +273,22 @@ AActor* AMotionControllerActor::GetNearestActorAdaptive()
 	FVector SweepNormal = SweepEnd - SweepStart;
 	SweepNormal.Normalize();
 
-	for (FHitResult HitOut : HitsOut)
+	for (AActor* InteractableActor : InteractableActors)
 	{
-		AActor* HitOutActor = HitOut.GetActor();
-
-		if (HitOutActor != nullptr)
+		if (InteractableActor != nullptr)
 		{
-			if (HitOutActor->GetClass()->ImplementsInterface(UGrabbableInterface::StaticClass()))
+			if (InteractableActor->GetClass()->ImplementsInterface(UGrabbableInterface::StaticClass()))
 			{
 				// The distance of the hit actor from the ray
-				FVector HitOutLocation = HitOutActor->GetActorLocation();
-				FVector HitOutToLine = SweepStart - HitOutLocation;
-				float HitOutDistance = (HitOutToLine - SweepNormal * (FVector::DotProduct(HitOutToLine, SweepNormal))).Size();
+				FVector ActorLocation = InteractableActor->GetActorLocation();
+				FVector ActorToSweepStart = SweepStart - ActorLocation;
+				float ActorDistance = (ActorToSweepStart - SweepNormal * (FVector::DotProduct(ActorToSweepStart, SweepNormal))).Size();
 
 				// Return the closest swept actor to the ray
-				if (HitOutDistance < NearestActorDistance)
+				if (ActorDistance < NearestActorDistance)
 				{
-					NearestActor = HitOutActor;
-					NearestActorDistance = HitOutDistance;
+					NearestActor = InteractableActor;
+					NearestActorDistance = ActorDistance;
 				}
 			}
 		}
