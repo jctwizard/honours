@@ -163,7 +163,12 @@
 <h3>
 <a id="010217-adaptive" class="anchor" href="#010217-adaptive" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><em>01/02/17</em> Adaptive</h3>
 
-<p></p>                        
+<p>I moved onto adding the adaptivity to the systems starting with an error based system for determining which object a user is trying to select when using the laser. I also added button mappings for toggling this on or off indicated by the colour of the laser. Currently if it fails to use the laser the system then sweeps with a sphere selecting the closest swept actor to the laser using a simple dot product calculation to project the point onto the ray and find its tangent.</p>                        
+
+<h3>
+<a id="060217-sweep-vs-iteration" class="anchor" href="#060217-sweep-vs-iteration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><em>06/02/17</em> Sweep vs Iteration</h3>
+
+<p>After adding the adaptive version of the laser grab which detects when the user has made an error i.e. 'missed' whatever they tried to grab, The sphere sweep i used to detect any actors near the laser introduced a minor latency when the user missed. I implemented a simple base class for all interactables and used the getactorsofclass method before then using some basic maths to get the distance to the laser. This should be much faster and I will test it tomorrow in the lab. I leave for 5 days on wednesday but will try to add the basic scaling of interactable elements and the gaze based assistance. During the supervisor demo the idea that the adaptive laser grabbing was more effective and accurate was confirmed and they told me afterwards it was far easier for them to grab things with the laser when in the adaptive mode. Created a simple dissertation template too which I should be able to start slowly adding too.</p>
     </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/jctwood">jctwood</a></p>
