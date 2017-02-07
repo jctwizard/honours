@@ -238,40 +238,19 @@ AActor* AMotionControllerActor::GetNearestLaserActor()
 
 AActor* AMotionControllerActor::GetNearestActorAdaptive()
 {
-	// Trace for an actor in the direction of the controller
-	FCollisionQueryParams SweepParams = FCollisionQueryParams(FName(TEXT("Adaptive Sweep")), true, this);
-	SweepParams.bTraceComplex = true;
-	SweepParams.bTraceAsyncScene = true;
-	SweepParams.bReturnPhysicalMaterial = false;
+	float AdaptiveRadius = 100.0f;
 
-	float SweepDistance = 500.0f;
-	float SweepRadius = 100.0f;
+	FVector LaserStart = GrabSphere->GetComponentLocation();
+	FVector LaserEnd = GrabSphere->GetComponentLocation() + GetActorForwardVector();
 
-	FVector SweepStart = GrabSphere->GetComponentLocation();
-	FVector SweepEnd = GrabSphere->GetComponentLocation() + GetActorForwardVector() * SweepDistance;
-
-	FQuat SweepRotation = FQuat::FindBetween(FVector::UpVector, SweepEnd - SweepStart);
-	
 	TArray<AActor*> InteractableActors;
 	UGameplayStatics::GetAllActorsOfClass(GetWorld(), AInteractableActor::StaticClass(), InteractableActors);
-
-	/*
-	GetWorld()->SweepMultiByChannel(
-		HitsOut,
-		SweepStart,
-		SweepEnd,
-		SweepRotation,
-		ECC_PhysicsBody,
-		FCollisionShape::MakeSphere(SweepRadius),
-		SweepParams
-	);
-	*/
 
 	AActor* NearestActor = nullptr;
 	float NearestActorDistance = 10000.0f;
 
-	FVector SweepNormal = SweepEnd - SweepStart;
-	SweepNormal.Normalize();
+	FVector LaserNormal = LaserEnd - LaserStart;
+	LaserNormal.Normalize();
 
 	for (AActor* InteractableActor : InteractableActors)
 	{
@@ -281,11 +260,11 @@ AActor* AMotionControllerActor::GetNearestActorAdaptive()
 			{
 				// The distance of the hit actor from the ray
 				FVector ActorLocation = InteractableActor->GetActorLocation();
-				FVector ActorToSweepStart = SweepStart - ActorLocation;
-				float ActorDistance = (ActorToSweepStart - SweepNormal * (FVector::DotProduct(ActorToSweepStart, SweepNormal))).Size();
+				FVector ActorToLaserStart = LaserStart - ActorLocation;
+				float ActorDistance = (ActorToLaserStart - LaserNormal * (FVector::DotProduct( ActorToLaserStart, LaserNormal ))).Size();
 
 				// Return the closest swept actor to the ray
-				if (ActorDistance < NearestActorDistance)
+				if (ActorDistance < NearestActorDistance && ActorDistance < AdaptiveRadius)
 				{
 					NearestActor = InteractableActor;
 					NearestActorDistance = ActorDistance;
