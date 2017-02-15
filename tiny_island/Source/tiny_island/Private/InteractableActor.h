@@ -20,6 +20,5 @@ public:
 	// Called every frame
 	virtual void Tick( float DeltaSeconds ) override;
 
-	
-	
+	TArray<AActor*> ControllerActors;
 };
