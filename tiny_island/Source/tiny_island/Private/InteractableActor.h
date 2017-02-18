@@ -20,5 +20,14 @@ public:
 	// Called every frame
 	virtual void Tick( float DeltaSeconds ) override;
 
+	UPROPERTY( EditAnywhere, BlueprintReadWrite, Category = "Adaptive" )
+	bool bAdaptiveScaling;
+
+	UPROPERTY( EditAnywhere, Category = "Meshes", BlueprintReadWrite )
+	UStaticMeshComponent* Mesh;
+
+	UPROPERTY( EditAnywhere, Category = "Meshes", BlueprintReadWrite )
+	UStaticMeshComponent* AdaptiveMesh;
+
 	TArray<AActor*> ControllerActors;
 };

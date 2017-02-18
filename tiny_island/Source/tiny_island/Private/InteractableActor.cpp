@@ -9,6 +9,15 @@ AInteractableActor::AInteractableActor()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
+
+	if( Mesh == nullptr )
+	{
+		Mesh = CreateDefaultSubobject<UStaticMeshComponent>( TEXT( "Mesh" ) );
+		RootComponent = Mesh;
+
+		AdaptiveMesh = CreateDefaultSubobject<UStaticMeshComponent>( TEXT( "AdaptiveMesh" ) );
+		AdaptiveMesh->AttachToComponent( RootComponent, FAttachmentTransformRules::KeepWorldTransform );
+	}
 }
 
 // Called when the game starts or when spawned
@@ -24,36 +33,33 @@ void AInteractableActor::Tick( float DeltaTime )
 {
 	Super::Tick( DeltaTime );
 
-	// Scale actor based on proximity to controller laser
-	float NearestActorDistance = 100000.0f;
-
-	for (AActor* ControllerActor : ControllerActors)
+	if( bAdaptiveScaling )
 	{
-		if (ControllerActor != nullptr)
+		// Scale actor based on proximity to controller laser
+		float NearestActorDistance = 100000.0f;
+
+		for( AActor* ControllerActor : ControllerActors )
 		{
-			FVector ControllerForward = ControllerActor->GetActorForwardVector();
-
-			// The distance of the hit actor from the ray
-			FVector ActorLocation = GetActorLocation();
-			FVector ActorToController = ControllerActor->GetActorLocation() - ActorLocation;
-			float ActorDistance = (ActorToController - ControllerForward * (FVector::DotProduct(ActorToController, ControllerForward))).Size();
-
-			// Return the closest swept actor to the ray
-			if (ActorDistance < NearestActorDistance)
+			if( ControllerActor != nullptr )
 			{
-				NearestActorDistance = ActorDistance;
+				FVector ControllerForward = ControllerActor->GetActorForwardVector();
+
+				// The distance of the hit actor from the ray
+				FVector ActorLocation = GetActorLocation();
+				FVector ActorToController = ControllerActor->GetActorLocation() - ActorLocation;
+				float ActorDistance = (ActorToController - ControllerForward * (FVector::DotProduct( ActorToController, ControllerForward ))).Size();
+
+				// Return the closest swept actor to the ray
+				if( ActorDistance < NearestActorDistance )
+				{
+					NearestActorDistance = ActorDistance;
+				}
 			}
 		}
-	}
 
-	float NormalisedDistance = FMath::Clamp(NearestActorDistance / 20.0f * (3.14159265359f * 0.5f), 0.0f, 1.0f);
-	float ScaleFactor = FMath::Cos(NormalisedDistance);
-	
-	DrawDebugSphere(
-		GetWorld(),
-		RootComponent->GetComponentLocation(),
-		ScaleFactor * 10.0f,
-		32,
-		FColor(255, 0, 0)
-	);
+		float NormalisedDistance = FMath::Clamp( NearestActorDistance / 20.0f * (3.14159265359f * 0.5f), 0.0f, (3.14159265359f * 0.5f) );
+		float ScaleFactor = FMath::Cos( NormalisedDistance );
+
+		AdaptiveMesh->SetRelativeScale3D(FVector(1, 1, 1) * (1.0f + 1.5f * ScaleFactor));
+	}
 }
