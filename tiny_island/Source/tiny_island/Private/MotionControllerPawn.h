@@ -67,6 +67,9 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Components")
 	USkeletalMesh* HandMeshAsset;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Components")
+	UParticleSystem* LaserParticle;
+
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
 	UDataGeneratorComponent* DataGenerator;
 };

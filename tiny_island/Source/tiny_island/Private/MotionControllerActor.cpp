@@ -52,7 +52,7 @@ void AMotionControllerActor::Tick( float DeltaTime )
 
 	if (GrabMethod == EGrabMethod::GM_Laser)
 	{
-		DrawLaser();
+		//DrawLaser();
 	}
 }
 
