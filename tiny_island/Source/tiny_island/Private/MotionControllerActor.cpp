@@ -21,8 +21,9 @@ AMotionControllerActor::AMotionControllerActor() :
 		MotionController->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepWorldTransform);
 
 		// Create the hand mesh and attach it to the root component
-		HandMesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("HandMesh"));
+		HandMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("HandMesh"));
 		HandMesh->AttachToComponent(MotionController, FAttachmentTransformRules::KeepWorldTransform);
+		HandMesh->SetCollisionEnabled( ECollisionEnabled::NoCollision );
 
 		// Create the grab sphere and attach it to the hand mesh
 		GrabSphere = CreateDefaultSubobject<USphereComponent>(TEXT("GrabSphere"));
@@ -52,6 +53,7 @@ void AMotionControllerActor::Tick( float DeltaTime )
 
 	if (GrabMethod == EGrabMethod::GM_Laser)
 	{
+		//LaserParticle->SetWorldTransform(GetTransform());
 		//DrawLaser();
 	}
 }
@@ -281,11 +283,11 @@ void AMotionControllerActor::SetHand(EControllerHand Hand)
 	MotionController->Hand = Hand;
 }
 
-void AMotionControllerActor::SetHandMesh(USkeletalMesh* HandMeshAsset)
+void AMotionControllerActor::SetHandMesh(UStaticMesh* HandMeshAsset)
 {
 	if (HandMeshAsset->IsValidLowLevel())
 	{
-		HandMesh->SetSkeletalMesh(HandMeshAsset);
+		HandMesh->SetStaticMesh(HandMeshAsset);
 	}
 }
 

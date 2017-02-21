@@ -36,7 +36,7 @@ public:
 	void ToggleAdaptive();
 
 	void SetHand(EControllerHand Hand);
-	void SetHandMesh(USkeletalMesh* HandMeshAsset);
+	void SetHandMesh(UStaticMesh* HandMeshAsset);
 	void SetGrabRadius(float GrabRadius);
 	FVector GetControllerLocation();
 
@@ -48,7 +48,7 @@ public:
 	UMotionControllerComponent* MotionController;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Hand")
-	USkeletalMeshComponent* HandMesh;
+	UStaticMeshComponent* HandMesh;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Grabbing")
 	USphereComponent* GrabSphere;
@@ -64,6 +64,8 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Adaptive")
 	bool bAdaptive;
+
+	UParticleSystemComponent* LaserParticle;
 
 private:
 	UDataGeneratorComponent* DataGenerator;

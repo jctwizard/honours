@@ -33,33 +33,45 @@ void AInteractableActor::Tick( float DeltaTime )
 {
 	Super::Tick( DeltaTime );
 
-	if( bAdaptiveScaling )
+	// Scale actor based on proximity to controller laser
+	float NearestActorDistance = 100000.0f;
+
+	for( AActor* ControllerActor : ControllerActors )
 	{
-		// Scale actor based on proximity to controller laser
-		float NearestActorDistance = 100000.0f;
-
-		for( AActor* ControllerActor : ControllerActors )
+		if( ControllerActor != nullptr )
 		{
-			if( ControllerActor != nullptr )
+			FVector ControllerForward = ControllerActor->GetActorForwardVector();
+
+			// The distance of the hit actor from the ray
+			FVector ActorLocation = GetActorLocation();
+			FVector ActorToController = ControllerActor->GetActorLocation() - ActorLocation;
+			float ActorDistance = (ActorToController - ControllerForward * (FVector::DotProduct( ActorToController, ControllerForward ))).Size();
+
+			// Return the closest swept actor to the ray
+			if( ActorDistance < NearestActorDistance )
 			{
-				FVector ControllerForward = ControllerActor->GetActorForwardVector();
-
-				// The distance of the hit actor from the ray
-				FVector ActorLocation = GetActorLocation();
-				FVector ActorToController = ControllerActor->GetActorLocation() - ActorLocation;
-				float ActorDistance = (ActorToController - ControllerForward * (FVector::DotProduct( ActorToController, ControllerForward ))).Size();
-
-				// Return the closest swept actor to the ray
-				if( ActorDistance < NearestActorDistance )
-				{
-					NearestActorDistance = ActorDistance;
-				}
+				NearestActorDistance = ActorDistance;
 			}
 		}
+	}
 
+
+	if( bAdaptiveScaling )
+	{
 		float NormalisedDistance = FMath::Clamp( NearestActorDistance / 20.0f * (3.14159265359f * 0.5f), 0.0f, (3.14159265359f * 0.5f) );
 		float ScaleFactor = FMath::Cos( NormalisedDistance );
 
-		AdaptiveMesh->SetRelativeScale3D(FVector(1, 1, 1) * (1.0f + 1.5f * ScaleFactor));
+		AdaptiveMesh->SetRelativeScale3D( FVector( 1, 1, 1 ) * (1.0f + 1.5f * ScaleFactor) );
+	}
+	else
+	{
+		if( NearestActorDistance < 15.0f )
+		{
+			AdaptiveMesh->SetRelativeScale3D( FVector( 1, 1, 1 ) * 1.1f );
+		}
+		else
+		{
+			AdaptiveMesh->SetRelativeScale3D( FVector( 1, 1, 1 ) * 0.9f );
+		}
 	}
 }

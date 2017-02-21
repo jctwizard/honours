@@ -65,7 +65,7 @@ public:
 	float BaseGrabRadius;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Components")
-	USkeletalMesh* HandMeshAsset;
+	UStaticMesh* HandMeshAsset;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Components")
 	UParticleSystem* LaserParticle;
