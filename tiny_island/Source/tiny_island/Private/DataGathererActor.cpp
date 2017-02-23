@@ -85,7 +85,7 @@ void ADataGathererActor::GatherActorData()
 		AActor* TrackedActor = TrackedActors[TrackedActorIndex];
 
 		// Only update if the actor has moved more than the threshold
-		if ((TrackedActor->GetActorLocation() - TrackedActorLocations[TrackedActorIndex]).Size() > DataUpdateThreshold)
+		if (TrackedActor != nullptr && (TrackedActor->GetActorLocation() - TrackedActorLocations[TrackedActorIndex]).Size() > DataUpdateThreshold)
 		{
 			GetActorNode(TrackedActor, CurrentDataTick)->SetContent(TrackedActor->GetTransform().ToString());
 
@@ -189,4 +189,13 @@ void ADataGathererActor::TrackActor(AActor* Actor)
 		TrackedActors.Add(Actor);
 		TrackedActorLocations.Add(Actor->GetActorLocation());
 	}
+}
+
+void ADataGathererActor::UntrackActor(AActor* Actor)
+{
+	// Remove the reference to the actor and its location
+	int ActorIndex;
+	TrackedActors.Find(Actor, ActorIndex);
+	TrackedActors.Remove(Actor);
+	TrackedActorLocations.RemoveAt(ActorIndex);
 }

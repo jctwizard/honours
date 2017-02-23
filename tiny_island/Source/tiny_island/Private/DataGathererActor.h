@@ -38,7 +38,8 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Session")
 	float DataUpdateThreshold;
 
-	void TrackActor(AActor* Actor); 
+	void TrackActor(AActor* Actor);
+	void UntrackActor(AActor* Actor);
 	void GatherEvent(AActor* Actor, FString Label, bool Success);
 
 private:

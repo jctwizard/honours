@@ -39,7 +39,10 @@ void UDataGeneratorComponent::TickComponent( float DeltaTime, ELevelTick TickTyp
 {
 	Super::TickComponent( DeltaTime, TickType, ThisTickFunction );
 
-	// ...
+	if (GetOwner()->IsPendingKill())
+	{
+		DataGathererActor->UntrackActor(GetOwner());
+	}
 }
 
 // Create an event in the data gatherer
