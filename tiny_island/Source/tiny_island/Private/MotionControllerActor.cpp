@@ -44,6 +44,11 @@ void AMotionControllerActor::BeginPlay()
 	{
 		HandMesh->SetWorldScale3D(FVector(1.0f, -1.0f, 1.0f));
 	}
+
+	if( DataGenerator->DataGathererActor->bVisualiseData )
+	{
+		MotionController->Deactivate();
+	}
 }
 
 // Called every frame

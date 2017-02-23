@@ -17,6 +17,9 @@ AInteractableActor::AInteractableActor()
 
 		AdaptiveMesh = CreateDefaultSubobject<UStaticMeshComponent>( TEXT( "AdaptiveMesh" ) );
 		AdaptiveMesh->AttachToComponent( RootComponent, FAttachmentTransformRules::KeepWorldTransform );
+
+		// Initialise the Data Generator
+		DataGenerator = CreateDefaultSubobject<UDataGeneratorComponent>( TEXT( "DataGenerator" ) );
 	}
 }
 
@@ -54,7 +57,6 @@ void AInteractableActor::Tick( float DeltaTime )
 			}
 		}
 	}
-
 
 	if( bAdaptiveScaling )
 	{

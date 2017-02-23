@@ -3,6 +3,7 @@
 #pragma once
 
 #include "GameFramework/Actor.h"
+#include "DataGeneratorComponent.h"
 #include "InteractableActor.generated.h"
 
 UCLASS()
@@ -30,4 +31,7 @@ public:
 	UStaticMeshComponent* AdaptiveMesh;
 
 	TArray<AActor*> ControllerActors;
+
+private:
+	UDataGeneratorComponent* DataGenerator;
 };

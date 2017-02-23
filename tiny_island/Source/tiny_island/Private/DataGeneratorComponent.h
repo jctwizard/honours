@@ -23,8 +23,8 @@ public:
 	virtual void TickComponent( float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction ) override;
 
 	// Create an event in the data gatherer
+	UFUNCTION( BlueprintCallable, Category = "DataTracking" )
 	void GenerateEvent(FString EventName, bool Success = true);
 
-private:
 	ADataGathererActor* DataGathererActor;
 };

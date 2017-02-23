@@ -55,8 +55,6 @@ void AMotionControllerPawn::BeginPlay()
 	LeftController->SetHand(EControllerHand::Left);
 	LeftController->SetHandMesh(HandMeshAsset);
 	LeftController->SetGrabRadius(BaseGrabRadius);
-	//LeftController->MotionController->bDisableLowLatencyUpdate = true;
-	//LeftController->LaserParticle = UGameplayStatics::SpawnEmitterAtLocation( GetWorld(), LaserParticle, LeftController->GetTransform() );
 
 	RightController = (AMotionControllerActor*) GetWorld()->SpawnActor(AMotionControllerActor::StaticClass());
 	RightController->SetOwner(this);
@@ -64,8 +62,6 @@ void AMotionControllerPawn::BeginPlay()
 	RightController->SetHand(EControllerHand::Right);
 	RightController->SetHandMesh(HandMeshAsset);
 	RightController->SetGrabRadius(BaseGrabRadius);
-	//RightController->MotionController->bDisableLowLatencyUpdate = true;
-	//RightController->LaserParticle = UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), LaserParticle, RightController->GetTransform());
 }
 
 // Called every frame
