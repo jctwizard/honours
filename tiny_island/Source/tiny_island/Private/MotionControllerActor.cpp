@@ -7,7 +7,7 @@
 // Sets default values
 AMotionControllerActor::AMotionControllerActor() :
 	bWantsToGrab(false),
-	bAdaptive(false),
+	bAdaptive(true),
 	GrabbedActor(nullptr),
 	GrabMethod(EGrabMethod::GM_Laser)
 {
@@ -47,7 +47,7 @@ void AMotionControllerActor::BeginPlay()
 
 	if( DataGenerator->DataGathererActor->bVisualiseData )
 	{
-		MotionController->Deactivate();
+		//MotionController->Deactivate();
 	}
 }
 

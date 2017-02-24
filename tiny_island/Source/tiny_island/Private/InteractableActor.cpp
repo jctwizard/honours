@@ -67,7 +67,7 @@ void AInteractableActor::Tick( float DeltaTime )
 	}
 	else
 	{
-		if( NearestActorDistance < 15.0f )
+		if( NearestActorDistance < 10.0f )
 		{
 			AdaptiveMesh->SetRelativeScale3D( FVector( 1, 1, 1 ) * 1.1f );
 		}
