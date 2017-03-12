@@ -42,9 +42,8 @@ public:
 	void ToggleAdaptiveLeft();
 	void ToggleAdaptiveRight();
 
-	void AddDataPoint(FString Description, FVector Location, bool Success = true);
-
-	FString SessionName;
+	UPROPERTY(VisibleAnywhere, Category = "Grabbing")
+	EControllerHand ControllersToUse;
 
 	UPROPERTY(VisibleAnywhere, Category = "Components")
 	UCameraComponent* Camera;

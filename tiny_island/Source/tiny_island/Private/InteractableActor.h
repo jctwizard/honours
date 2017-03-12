@@ -30,6 +30,15 @@ public:
 	UPROPERTY( EditAnywhere, Category = "Meshes", BlueprintReadWrite )
 	UStaticMeshComponent* AdaptiveMesh;
 
+	UPROPERTY(EditAnywhere, Category = "Scaling", BlueprintReadWrite)
+	float HighlightDistance;
+
+	UPROPERTY(EditAnywhere, Category = "Scaling", BlueprintReadWrite)
+	float ScaleDistance;
+
+	UPROPERTY(EditAnywhere, Category = "Scaling", BlueprintReadWrite)
+	float MaxScale;
+
 	TArray<AActor*> ControllerActors;
 
 private:

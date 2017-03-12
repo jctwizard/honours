@@ -1,12 +1,13 @@
 // Fill out your copyright notice in the Description page of Project Settings.
-
+ 
 #include "tiny_island.h"
 #include "MotionControllerPawn.h"
 
 // Sets default values
 AMotionControllerPawn::AMotionControllerPawn() :
 	BasePlayerHeight(180.0f),
-	BaseGrabRadius(15.0f)
+	BaseGrabRadius(15.0f),
+	ControllersToUse(EControllerHand::Right)
 {
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
@@ -23,7 +24,6 @@ AMotionControllerPawn::AMotionControllerPawn() :
 		// Initialise the Data Generator
 		DataGenerator = CreateDefaultSubobject<UDataGeneratorComponent>( TEXT( "DataGenerator" ) );
 	}
-
 }
 
 // Called when the game starts or when spawned
@@ -46,22 +46,28 @@ void AMotionControllerPawn::BeginPlay()
 	}
 
 	// Reset the orientation with the new tracking origin
-	UHeadMountedDisplayFunctionLibrary::ResetOrientationAndPosition();
+	//UHeadMountedDisplayFunctionLibrary::ResetOrientationAndPosition();
 
 	// Initialise the controllers
-	LeftController = (AMotionControllerActor*) GetWorld()->SpawnActor(AMotionControllerActor::StaticClass());
-	LeftController->SetOwner(this);
-	LeftController->AttachToComponent(VROrigin, FAttachmentTransformRules::SnapToTargetNotIncludingScale);
-	LeftController->SetHand(EControllerHand::Left);
-	LeftController->SetHandMesh(HandMeshAsset);
-	LeftController->SetGrabRadius(BaseGrabRadius);
+	if (ControllersToUse != EControllerHand::Right)
+	{
+		LeftController = (AMotionControllerActor*)GetWorld()->SpawnActor(AMotionControllerActor::StaticClass());
+		LeftController->SetOwner(this);
+		LeftController->AttachToComponent(VROrigin, FAttachmentTransformRules::SnapToTargetNotIncludingScale);
+		LeftController->SetHand(EControllerHand::Left);
+		LeftController->SetHandMesh(HandMeshAsset);
+		LeftController->SetGrabRadius(BaseGrabRadius);
+	}
 
-	RightController = (AMotionControllerActor*) GetWorld()->SpawnActor(AMotionControllerActor::StaticClass());
-	RightController->SetOwner(this);
-	RightController->AttachToComponent(VROrigin, FAttachmentTransformRules::SnapToTargetNotIncludingScale);
-	RightController->SetHand(EControllerHand::Right);
-	RightController->SetHandMesh(HandMeshAsset);
-	RightController->SetGrabRadius(BaseGrabRadius);
+	if (ControllersToUse != EControllerHand::Left)
+	{
+		RightController = (AMotionControllerActor*)GetWorld()->SpawnActor(AMotionControllerActor::StaticClass());
+		RightController->SetOwner(this);
+		RightController->AttachToComponent(VROrigin, FAttachmentTransformRules::SnapToTargetNotIncludingScale);
+		RightController->SetHand(EControllerHand::Right);
+		RightController->SetHandMesh(HandMeshAsset);
+		RightController->SetGrabRadius(BaseGrabRadius);
+	}
 }
 
 // Called every frame
@@ -77,17 +83,23 @@ void AMotionControllerPawn::SetupPlayerInputComponent(class UInputComponent* InI
 	Super::SetupPlayerInputComponent(InInputComponent);
 
 	// Bind controller trigger actions
-	InInputComponent->BindAction("GrabLeft", IE_Pressed, this, &AMotionControllerPawn::GrabLeft);
-	InInputComponent->BindAction("GrabRight", IE_Pressed, this, &AMotionControllerPawn::GrabRight);
+	if (ControllersToUse != EControllerHand::Right)
+	{
+		InInputComponent->BindAction("GrabLeft", IE_Pressed, this, &AMotionControllerPawn::GrabLeft);
+		InInputComponent->BindAction("GrabRight", IE_Pressed, this, &AMotionControllerPawn::GrabRight);
 
-	InInputComponent->BindAction("GrabLeft", IE_Released, this, &AMotionControllerPawn::ReleaseLeft);
-	InInputComponent->BindAction("GrabRight", IE_Released, this, &AMotionControllerPawn::ReleaseRight);
+		InInputComponent->BindAction("GrabLeft", IE_Released, this, &AMotionControllerPawn::ReleaseLeft);
+		InInputComponent->BindAction("GrabRight", IE_Released, this, &AMotionControllerPawn::ReleaseRight);
+	}
 
-	InInputComponent->BindAction("ToggleLaserLeft", IE_Pressed, this, &AMotionControllerPawn::ToggleLaserLeft);
-	InInputComponent->BindAction("ToggleLaserRight", IE_Pressed, this, &AMotionControllerPawn::ToggleLaserRight);
+	if (ControllersToUse != EControllerHand::Left)
+	{
+		InInputComponent->BindAction("ToggleLaserLeft", IE_Pressed, this, &AMotionControllerPawn::ToggleLaserLeft);
+		InInputComponent->BindAction("ToggleLaserRight", IE_Pressed, this, &AMotionControllerPawn::ToggleLaserRight);
 
-	InInputComponent->BindAction("ToggleAdaptiveLeft", IE_Pressed, this, &AMotionControllerPawn::ToggleAdaptiveLeft);
-	InInputComponent->BindAction("ToggleAdaptiveRight", IE_Pressed, this, &AMotionControllerPawn::ToggleAdaptiveRight);
+		InInputComponent->BindAction("ToggleAdaptiveLeft", IE_Pressed, this, &AMotionControllerPawn::ToggleAdaptiveLeft);
+		InInputComponent->BindAction("ToggleAdaptiveRight", IE_Pressed, this, &AMotionControllerPawn::ToggleAdaptiveRight);
+	}
 }
 
 void AMotionControllerPawn::GrabLeft()
