@@ -7,7 +7,11 @@
 AMotionControllerPawn::AMotionControllerPawn() :
 	BasePlayerHeight(180.0f),
 	BaseGrabRadius(15.0f),
-	ControllersToUse(EControllerHand::Right)
+	ControllersToUse(EControllerHand::Right),
+	bCanToggleLaser(false),
+	bCanToggleAdaptive(false),
+	bUseAdaptive(true),
+	bUseLaser(true)
 {
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
@@ -57,6 +61,8 @@ void AMotionControllerPawn::BeginPlay()
 		LeftController->SetHand(EControllerHand::Left);
 		LeftController->SetHandMesh(HandMeshAsset);
 		LeftController->SetGrabRadius(BaseGrabRadius);
+		LeftController->bAdaptive = bUseAdaptive;
+		LeftController->GrabMethod = bUseLaser ? EGrabMethod::GM_Laser : EGrabMethod::GM_Sphere;
 	}
 
 	if (ControllersToUse != EControllerHand::Left)
@@ -67,6 +73,8 @@ void AMotionControllerPawn::BeginPlay()
 		RightController->SetHand(EControllerHand::Right);
 		RightController->SetHandMesh(HandMeshAsset);
 		RightController->SetGrabRadius(BaseGrabRadius);
+		RightController->bAdaptive = bUseAdaptive;
+		RightController->GrabMethod = bUseLaser ? EGrabMethod::GM_Laser : EGrabMethod::GM_Sphere;
 	}
 }
 
@@ -86,19 +94,33 @@ void AMotionControllerPawn::SetupPlayerInputComponent(class UInputComponent* InI
 	if (ControllersToUse != EControllerHand::Right)
 	{
 		InInputComponent->BindAction("GrabLeft", IE_Pressed, this, &AMotionControllerPawn::GrabLeft);
-		InInputComponent->BindAction("GrabRight", IE_Pressed, this, &AMotionControllerPawn::GrabRight);
-
 		InInputComponent->BindAction("GrabLeft", IE_Released, this, &AMotionControllerPawn::ReleaseLeft);
-		InInputComponent->BindAction("GrabRight", IE_Released, this, &AMotionControllerPawn::ReleaseRight);
+
+		if( bCanToggleLaser )
+		{
+			InInputComponent->BindAction( "ToggleLaserLeft", IE_Pressed, this, &AMotionControllerPawn::ToggleLaserLeft );
+		}
+
+		if( bCanToggleAdaptive )
+		{
+			InInputComponent->BindAction( "ToggleAdaptiveLeft", IE_Pressed, this, &AMotionControllerPawn::ToggleAdaptiveLeft );
+		}
 	}
 
 	if (ControllersToUse != EControllerHand::Left)
 	{
-		InInputComponent->BindAction("ToggleLaserLeft", IE_Pressed, this, &AMotionControllerPawn::ToggleLaserLeft);
-		InInputComponent->BindAction("ToggleLaserRight", IE_Pressed, this, &AMotionControllerPawn::ToggleLaserRight);
+		InInputComponent->BindAction("GrabRight", IE_Pressed, this, &AMotionControllerPawn::GrabRight);
+		InInputComponent->BindAction("GrabRight", IE_Released, this, &AMotionControllerPawn::ReleaseRight);
+		
+		if( bCanToggleLaser )
+		{
+			InInputComponent->BindAction( "ToggleLaserRight", IE_Pressed, this, &AMotionControllerPawn::ToggleLaserRight );
+		}
 
-		InInputComponent->BindAction("ToggleAdaptiveLeft", IE_Pressed, this, &AMotionControllerPawn::ToggleAdaptiveLeft);
-		InInputComponent->BindAction("ToggleAdaptiveRight", IE_Pressed, this, &AMotionControllerPawn::ToggleAdaptiveRight);
+		if (bCanToggleAdaptive )
+		{
+			InInputComponent->BindAction("ToggleAdaptiveRight", IE_Pressed, this, &AMotionControllerPawn::ToggleAdaptiveRight );
+		}
 	}
 }
 

@@ -85,7 +85,7 @@ void ADataGathererActor::GatherActorData()
 		AActor* TrackedActor = TrackedActors[TrackedActorIndex];
 
 		// Only update if the actor has moved more than the threshold
-		if (TrackedActor != nullptr && (TrackedActor->GetActorLocation() - TrackedActorLocations[TrackedActorIndex]).Size() > DataUpdateThreshold)
+		if (TrackedActor->IsValidLowLevel() && (TrackedActor->GetActorLocation() - TrackedActorLocations[TrackedActorIndex]).Size() > DataUpdateThreshold)
 		{
 			GetActorNode(TrackedActor, CurrentDataTick)->SetContent(TrackedActor->GetTransform().ToString());
 

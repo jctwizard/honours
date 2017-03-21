@@ -26,5 +26,11 @@ public:
 	UFUNCTION( BlueprintCallable, Category = "DataTracking" )
 	void GenerateEvent(FString EventName, bool Success = true);
 
+	UFUNCTION( BlueprintCallable, Category = "DataTracking" )
+	void BeginTracking();
+
+	UFUNCTION( BlueprintCallable, Category = "DataTracking" )
+	void StopTracking();
+
 	ADataGathererActor* DataGathererActor;
 };

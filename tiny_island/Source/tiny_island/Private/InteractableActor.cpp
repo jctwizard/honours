@@ -35,16 +35,16 @@ void AInteractableActor::BeginPlay()
 }
 
 // Called every frame
-void AInteractableActor::Tick(float DeltaTime)
+void AInteractableActor::Tick( float DeltaTime )
 {
-	Super::Tick(DeltaTime);
+	Super::Tick( DeltaTime );
 
 	// Scale actor based on proximity to controller laser
 	float NearestActorDistance = 100000.0f;
 
-	for (AActor* ControllerActor : ControllerActors)
+	for( AActor* ControllerActor : ControllerActors )
 	{
-		if (ControllerActor != nullptr)
+		if( ControllerActor != nullptr )
 		{
 			FVector ControllerForward = ControllerActor->GetActorForwardVector();
 
@@ -61,16 +61,16 @@ void AInteractableActor::Tick(float DeltaTime)
 		}
 	}
 
-	if (bAdaptiveScaling)
+	if( bAdaptiveScaling )
 	{
-		float NormalisedDistance = FMath::Clamp(NearestActorDistance / ScaleDistance * (3.14159265359f * 0.5f), 0.0f, (3.14159265359f * 0.5f));
-		float ScaleFactor = FMath::Cos(NormalisedDistance);
+		float NormalisedDistance = FMath::Clamp( NearestActorDistance / ScaleDistance * (3.14159265359f * 0.5f), 0.0f, (3.14159265359f * 0.5f) );
+		float ScaleFactor = FMath::Cos( NormalisedDistance );
 
-		AdaptiveMesh->SetRelativeScale3D(FVector( 1, 1, 1 ) * (1.0f + (MaxScale - 1.0f) * ScaleFactor));
+		AdaptiveMesh->SetRelativeScale3D( FVector( 1, 1, 1 ) * (1.0f + (MaxScale - 1.0f) * ScaleFactor) );
 	}
 	else
 	{
-		if( NearestActorDistance < HighlightDistance)
+		if( NearestActorDistance < HighlightDistance )
 		{
 			AdaptiveMesh->SetRelativeScale3D( FVector( 1, 1, 1 ) * 1.1f );
 		}

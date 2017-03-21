@@ -29,7 +29,7 @@ void UDataGeneratorComponent::BeginPlay()
 	{
 		DataGathererActor = (ADataGathererActor*)FoundActors[0];
 
-		DataGathererActor->TrackActor(GetOwner());
+		BeginTracking();
 	}
 }
 
@@ -41,7 +41,7 @@ void UDataGeneratorComponent::TickComponent( float DeltaTime, ELevelTick TickTyp
 
 	if (GetOwner()->IsPendingKill())
 	{
-		DataGathererActor->UntrackActor(GetOwner());
+		StopTracking();
 	}
 }
 
@@ -49,4 +49,14 @@ void UDataGeneratorComponent::TickComponent( float DeltaTime, ELevelTick TickTyp
 void UDataGeneratorComponent::GenerateEvent(FString EventName, bool Success)
 {
 	DataGathererActor->GatherEvent(GetOwner(), EventName, Success);
+}
+
+void UDataGeneratorComponent::BeginTracking()
+{
+	DataGathererActor->TrackActor( GetOwner() );
+}
+
+void UDataGeneratorComponent::StopTracking()
+{
+	DataGathererActor->UntrackActor( GetOwner() );
 }

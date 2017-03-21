@@ -39,8 +39,9 @@ public:
 	UPROPERTY(EditAnywhere, Category = "Scaling", BlueprintReadWrite)
 	float MaxScale;
 
-	TArray<AActor*> ControllerActors;
+	UPROPERTY( EditAnywhere, Category = "DataGenerator", BlueprintReadWrite )
+	UDataGeneratorComponent* DataGenerator;
 
 private:
-	UDataGeneratorComponent* DataGenerator;
+	TArray<AActor*> ControllerActors;
 };

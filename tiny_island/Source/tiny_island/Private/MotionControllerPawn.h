@@ -42,8 +42,20 @@ public:
 	void ToggleAdaptiveLeft();
 	void ToggleAdaptiveRight();
 
-	UPROPERTY(VisibleAnywhere, Category = "Grabbing")
+	UPROPERTY( EditAnywhere, Category = "Grabbing")
 	EControllerHand ControllersToUse;
+
+	UPROPERTY( EditAnywhere, Category = "Grabbing" )
+	bool bUseLaser;
+
+	UPROPERTY( EditAnywhere, Category = "Grabbing" )
+	bool bUseAdaptive;
+
+	UPROPERTY( EditAnywhere, Category = "Grabbing" )
+	bool bCanToggleLaser;
+
+	UPROPERTY( EditAnywhere, Category = "Grabbing" )
+	bool bCanToggleAdaptive;
 
 	UPROPERTY(VisibleAnywhere, Category = "Components")
 	UCameraComponent* Camera;
