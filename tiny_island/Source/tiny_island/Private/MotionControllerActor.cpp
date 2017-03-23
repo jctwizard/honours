@@ -47,7 +47,7 @@ void AMotionControllerActor::BeginPlay()
 
 	if( DataGenerator->DataGathererActor->bVisualiseData )
 	{
-		//MotionController->Deactivate();
+		MotionController->Deactivate();
 	}
 }
 
