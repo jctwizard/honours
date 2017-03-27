@@ -1,4 +1,4 @@
-\documentclass[11pt]{article}
+\documentclass[12pt]{article}
 \usepackage{graphicx, hyperref, subcaption, setspace, pgfgantt, enumitem}
 \usepackage[margin=1.in]{geometry}
 \usepackage{mathptmx}
@@ -26,6 +26,8 @@
 \makeatletter
 \g@addto@macro{\UrlBreaks}{\UrlOrds}
 \makeatother
+
+\renewcommand{\baselinestretch}{1.5}
 
 \begin{document}
 
@@ -66,20 +68,64 @@ Dr. Paul \textsc{Robertson}
 
 \pagebreak
 
+\tableofcontents
+\listoffigures
+\listoftables
+\thispagestyle{empty}
+
+\pagebreak
+
 \setcounter{page}{1}
 
-\begin{abstract}
-The resurgence of consumer virtual reality allows intuitive and immersive 3D interaction using head mounted displays and tracked wireless controllers. In virtual reality, users experience applications from within, looking around and reaching out naturally. No longer constrained to a 2D surface, developers in virtual reality are experimenting with different approaches to 3D user interfaces. This paper seeks to explore the possible benefits to usability afforded by making interfaces adaptive and dynamic in virtual reality. The research will focus on using head mounted displays and handheld tracked controllers as input.
+\section{Abstract}
+Virtual reality allows users to interact with three-dimesional environments and interface in an intuitive way, looking around with the head mounted display and reaching out with wireless tracked controllers. Although VR interfaces often take advantage of the new space and depth afforded by the stereoscopic 3D inherent in a head mounted display, they are generally still static like the 2D interfaces prevalent on other devices.
 
-Several iterations of a complex static 3D interface will employ various adaptive techniques for comparison. A system for recording the actions and errors made by the user will generate quantitative data for evaluating each interface's usability. In order to test the application, around 10 users will complete a series of tasks before being surveyed to assess how usable they found each version to be. 	
+This project expands on research made in the area of adaptive user interfaces which focused on 2D interaction, applying techniques in the 3D, motion controlled environment of VR. Adaptive user interfaces aim to improve usability with dynamic elements and input analysis. The two techniques focused on in this project are error analysis and adaptive scaling. To implement an application for evaluating these techniques C++ and Unreal Engine 4 were used.
 
-The evaluation of each technique employed will take into account both the quantitative data gathered by the system and qualitative data from the surveys. An overall comparison between the usability of adaptive and static virtual reality interfaces will compile the evaluations made. Virtual reality is poised to become the new means of digital interaction. This paradigm shift in user experience provides an opportunity to reassess the way systems can adjust to support our interactions. Adaptive user interfaces could enable greater productivity and precision in virtual 3D environments.
-\end{abstract}
+On of the most common and difficult to use interaction models in virtual reality is the laser pointer. Interacting with far away elements can be cumbersome using a pointer and is an area in which adaptive techniques can easily be applied. As such the application used for testing during this project has the user perform simple selection and deselection interactions on a set of objects using a laser pointer.
+
+To evaluate the benefits of the adaptive techniques applied in the application, both quantitative questionnaire data and qualitative data have been gathered and analysed. To measure the usability of the adaptive techniques the process used a static control interface. Combing the two sets of data and comparing gives a clear representation of the effect the adaptive techniques have on usability.
 
 \keywords{Virtual Reality, User-Interfaces, 3D Interfaces, Adaptive Interfaces, Interface Plasticity}
 
 \section{Introduction}
-Virtual reality (VR) head mounted displays are rapidly becoming a part of mainstream entertainment. The launch of Sony's PlayStation VR has been more successful than anticipated (Seeto 2016) and the fears of motion sickness causing a repeat of the 90s VR trend are dissipating (Pino 2016). Alongside Sony's offering are HTC's Vive and Facebook's Oculus. Each headset provides similar experiences: displays for each eye providing stereoscopic depth, full six degrees of freedom head tracking and tracked wireless controllers.
+
+\subsection{The fall and rise of virtual reality}
+Virtual reality (VR) head mounted displays first started appearing in the commercial market in the 1990s with Nintendo's Virtual Boy as the face of what was sold as a new era in entertainment technology. The virtual boy and its ilk failed miserably causing sever motion sickness and utilising displays far worse than those available for the standard consoles at the time. Despite this terrible start, two decades later VR has begun to secure its place in mainstream entertainment especially in the world of video games, although Nintendo is nowhere to be seen. 
+
+Sony's PlayStation VR headset was more successful than predicted (Seeto 2016) and the fears surrounding the motion sickness that doomed the previous wave of VR are dissipating (Pino 2016). Alongside Sony's offering are HTC's Vive and Facebook's Oculus not mentioning the vast number of headsets designed for smartphones. These three headsets all provide similar experiences: high resolution displays for each eye providing stereoscopic depth, six degrees of freedom head tracking and hand tracking using wireless controllers. 
+
+There have been some stand out applications and games from these early years of the new VR platforms. Job Simulator somehow turns the mundane tasks of everyday life into fun, captivating play and would not be the same experience without the head and controller tracking that comes with the HTC Vive. Tilt Brush was the first breakthrough success on the creation front with users creating thousands of sculptures using the signature 'light ribbons'. It showed that the intuitive 3D of VR could be used to great effect in productivity applications.
+
+Even before the first release of the main VR platforms as consumer products the major Game Engine creators, Unity and Unreal Engine, had begun implementing VR support not just for applications but for the editor used to create applications. This allows not just VR developers but all developers to utilise the precision that comes with the spacial awareness to edit 3D environments with ease.
+
+\begin{figure*}
+\centering
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.95\linewidth]{jobsimulator.jpg}
+  \caption{Job Simulator (Owlchemy Labs 2016)}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.95\linewidth]{tiltbrush.jpg}
+  \caption{Tilt Brush (Google 2016)}
+\end{subfigure}
+\caption{Examples of Virtual Reality applications}
+\end{figure*}
+
+\subsection{The future of immersive technologies}
+The features of the forerunning virtual reality headsets combine to create a sense of immersion or 'presence' rarely achieved in traditional 2D applications and games. Even though this new wave of VR has only been around for a few years a new technology is rapidly approaching. On the horizon is the next step in immersive technology, augmented reality (AR). This will allow a wireless experience and build upon the work in mobile virtual reality by Google and Samsung. Microsoft's Hololens provides a glimpse at this future, one of seamless multi-user interaction overlaid onto reality. 
+
+Something often associated with VR is the isolation wearing a headset implies. AR reverses this by allowing the user to still see and interact with the real world while experiencing an immersive experience. The Hololens, even in its primitive first form, demonstrates how this can introduce new forms of interaction not possible in any other way. The ability for two people to interact and collaborate with the same interface while still seeing their surroundings with no constraint on location is revolutionary.
+
+\subsection{Interfaces in 3D}
+
+Although everything studied and evaluated in this project can apply to any 3D interface, the testing and implementation focus on virtual reality as a platform, specifically the HTC Vive. Current virtual reality interfaces focus on interaction using the controller itself which constrains elements to being within arms reach.
+
+A common solution is a 3D laser pointer used to select and manipulate distant elements. As in the real world using a laser pointer at a distance can be imprecise and slow (Malaika 2015) when under pressure. It is however an intuitive and unobtrusive mechanic and easily translates from the traditional desktop input of a mouse cursor.
+
+This project evaluates how the usability of 3D interfaces in VR, specifically those utilising a 3D pointer system, can benefit from being dynamic and adaptive. It references concepts and techniques such as error analysis, adaptive scaling and user modelling explored previously by other researchers in 2D and 3D. Figure 2 shows a comparison between a traditional 2D interface and a 3D virtual reality interface.
 
 \begin{figure*}
 \centering
@@ -96,23 +142,23 @@ Virtual reality (VR) head mounted displays are rapidly becoming a part of mainst
 \caption{Comparison between 2D and 3D interface}
 \end{figure*}
 
-These features combined provide a sense of immersion or 'presence' not available using traditional 2D monitors. On the horizon is the next step in immersive technology, augmented reality (AR). This will allow a wireless experience and build upon the work in mobile virtual reality by Google and Samsung. Microsoft's Hololens provides a glimpse at this future, one of seamless multi-user interaction overlaid onto reality.
 
-Current virtual reality interfaces tend to focus on using handheld virtual objects for natural interaction, a pen to draw on a surface or a handle to open a drawer. Issues arise in these interfaces when the objects or elements are not within reach. A common solution is a 3D pointer used to select distant items but for smaller targets or complex scenarios, pointers can be imprecise and slow to use (Malaika 2015). This project will look at how the usability of interfaces in VR can benefit from being dynamic and adaptive. It will reference concepts and techniques such as gaze-based interaction, error analysis and user modelling explored previously by other researchers in 2D and 3D. Figure 1 shows a comparison between a 2D and 3D interface.
+\subsection{Research Question} 
 
-\textbf{Research Question:} \\
-''How can complex virtual reality interfaces be made more usable by employing adaptive user interface techniques?''
+The project focuses on a single point: \emph{"How can the usability of virtual reality interfaces benefit from adaptive techniques?"}. In order to begin implementing the application and prepare for evaluation this research question was separated into several aims and objectives as follows:
 
 \textbf{Aims:}
 \begin{itemize}[noitemsep,topsep=0pt]
-\item Create iterations of a complex 3D interface for virtual reality, employing several adaptive user interface techniques.
-\item Use quantitative data gathered from error analysis to assess any benefits to usability the adaptive techniques have.
-\item Use qualitative data gathered from surveys to evaluate the overall effect of adaptive user interfaces on usability.
+\item Apply adaptive techniques to a static virtual reality user interface.
+\item Gather quantitative data through user testing and error analysis.
+\item Gather qualitative data using questionnaires.
+\item Evaluate the overall effect of adaptive techniques on the usability of a virtual reality interface using the data gathered.
 \end{itemize}
+
 \textbf{Objectives:}
 \begin{itemize}[noitemsep,topsep=0pt]
 \item Research adaptive user interface techniques for 2D and 3D interfaces.
-\item Implement a complex 3D user interface for use in virtual reality.
+\item Implement a 3D user interface for use in virtual reality.
 \item Employ the researched techniques for assessment.
 \item Create a system for error analysis to gather qualitative evaluation data.
 \item Have users test the iterations of the interface and feedback on their usability.
@@ -122,13 +168,27 @@ Current virtual reality interfaces tend to focus on using handheld virtual objec
 
 \section{Literature Review}
 \subsection{Adaptive User Interfaces}
-Dynamic user interfaces fall under a few categories in the area of research sometimes referred to as 'interface plasticity'. ‘A survey of plasticity in 3D user interfaces' (Jeremy 2014) gives an overview of the different types of dynamic user interface classifying them using two parameters, the adaptation time and the controller. Within these parameters an adaptive user interface is defined as being adapted by the system at run-time. This project will focus on implementing systems that fall under this classification of adaptation.
+Dynamic user interfaces fall under a few categories in the area of research sometimes referred to as 'interface plasticity'. ‘A survey of plasticity in 3D user interfaces' (Jeremy 2014) gives an overview of the different types of dynamic user interface classifying them using two parameters, the adaptation time and the controller. Within these parameters an adaptive user interface is defined as being adapted by the system at run-time. This project focuses on implementing systems that fall under this classification of adaptation.
 
 Many researchers have explored various ways to assist the user in digital environments since the early days of personal computing (Morgan 1998). One strategy known as intelligent user interfaces, seeks to actively learn how a user interacts with an interface and suggest or highlight relevant information accordingly. Although this can be effective, it takes time to model the user in a meaningful way and can seem obstructive as demonstrated by Microsoft's Clippy (Meyer 2015).
 
-Another approach, the one this project focuses on, is to adapt the interface itself in direct response to the user's actions. One of these techniques covered by 'Modeling error-based Adaptive User Interfaces' (Kathik 2011) monitors the user's failures while navigating and interacting with an application to dynamically improve the interface. 'Adaptive Hypermedia and Adaptive Web-Based Systems' (Peter 2000) discusses the benefits of adapting a 3D environment as the user interacts with it to assist their actions.
+Another approach, the one this project focuses on, is to adapt the interface itself in direct response to the user's actions. One of these techniques covered by 'Modeling error-based Adaptive User Interfaces' (Kathik 2011) monitors the user's failures while navigating and interacting with an application to dynamically interpret their desired interaction. 'Adaptive Hypermedia and Adaptive Web-Based Systems' (Peter 2000) discusses the benefits of adapting a 3D environment as the user interacts with it to assist their actions.
 
-Most user interfaces in our digital lives are static with adaptive interfaces reserved for improving accessibility for atypical users or use-cases. VR provides a new platform for innovation and does not have a counterpart to the universal language of 2D interfaces' windows and pointers. This uncharted territory provides an opportunity to experiment with dynamic 3D interfaces in new ways.
+Most user interfaces in our digital lives are static with adaptive interfaces reserved for improving accessibility for atypical users or use-cases. VR provides a new platform for innovation and does not have a direct counterpart to the universal language of 2D interfaces' windows and pointers. This uncharted territory provides an opportunity to experiment with dynamic 3D interfaces in new ways.
+
+\subsection{Virtual reality user interfaces}
+
+When considering the current landscape of virtual reality applications and games there are a large number using motion controllers as opposed to traditional input methods such as console controllers and keyboard/mouse. The HTC Vive's lighthouse tracking system provides accurate motion control walking around a large space up to 15 ft square. The Oculus' and PSVR's use of optical tracking lends itself to a seated experience but still allows full 360 degrees of movement. 
+
+Considering that most content on VR platforms is not exclusive to a single device experiences focus on interaction at arms length to accommodate for seated users. Interactions often consist of selecting 3D objects or interface elements by moving a controller to their position ad pressing a button. Any interaction beyond arms length generally utilises a 3D pointer system as seen in the Steam VR interface (Figure 3) used to enter applications for the HTC Vive.
+
+These pointer interfaces become more cumbersome to use the further away, smaller and more complex the interface becomes. Despite this there are few interfaces using dynamic or adaptive elements to improve their usability. By simply assisting the user in their interaction great improvements could be made to bring VR closer to replacing desktop PCs and traditional 2D displays for everyday tasks like word processing and file management.
+
+\begin{figure*}
+\centering
+  \includegraphics[width=.8\linewidth]{steamvr.jpg}
+  \caption{Pointer based interaction (Steam VR 2016)}
+\end{figure*}
 
 \subsection{Usability in Virtual Reality}
 The companies and developers at the forefront of the new wave of virtual reality hardware and software have faced many challenges in comfort and usability. Issues with nausea and motion sickness plagued early iterations of head mounted displays. The addition of positional tracking and a greater understanding of significant design choices like locomotion have overcome most of these growing pains.
@@ -136,6 +196,10 @@ The companies and developers at the forefront of the new wave of virtual reality
 Now the focus of research is around usability of interfaces in VR. Valve, a driving force in desktop VR, presented some factors of usability at the Game Developer's Conference. When discussing interactions outside the user's area of reach they cited Fitt's law (Malaika 2015). This law has been extended from one dimensional interfaces into 2D interfaces and now into 3D and states that the speed at which a user acquires a target is exponentially proportionate to the size of the target at a given distance (Atsuo 2001). When using a pointer based system, small interface elements at a distance away become very slow to interact with. 
 
 Another notable aspect of ease-of-use regards the placement of interface elements around the user. Due to the 360 degree nature of a 3D interface if the user is constantly required to turn around in order to perform actions it will become fatiguing. Owlchemy labs, developers of Job Simulator and strong proponents of diegetic interfaces build scenarios in such a way that users do not have to turn frequently and generally have direct access to everything they may need at a given time (Schwartz 2015).
+
+\subsection{Possible Disadvantages of Adaptivity}
+
+Although adaptive user interfaces aim to assist a user, they could also be obstructive and counter intuitive when misused. Users are accustomed to interfaces being static and to having full and direct control over the elements presented to them. Adaptive techniques can break some of these expectations by manipulating the elements displayed and interpreting actions made by the user. This extra layer of system adaptation could in some situations work against the user.
 
 \section{Methodology}
 \subsection{Overview}
@@ -158,6 +222,10 @@ Using the qualitative and quantitative data gathered during the testing various 
 There may be other points of interest revealed by the data such as one error leading to a chain of errors or an error leading to a slow down in interaction time. All of these factors will help determine the effectiveness of the adaptive elements. If a user performs fewer errors in the adaptive system than in the static interface the qualitative data should support that the user experience was better in general.
 
 \section{Results}
+\subsection{Qualitative Data}
+
+
+\subsection{Quantitative Data}
 The use of adaptive user interfaces should provide benefits to the usability of the 3D interfaces as well as the speed at which the user can interact with them. This will allow for more complex interfaces capable of performing more meaningful and productive tasks. With a future that could be rooted in virtual reality, it is the opportune time to re-evaluate what an interface can be and how the system reacts to the user. With the promise of wireless headsets and augmented reality on the horizon, traditional 2D displays could quickly become obsolete. If our walls, floor and hands can be our displays then the interfaces will need to become more dynamic and versatile. Adaptive user interfaces have been researched for a long time and could soon become essential to our everyday interactions.
 
 Improving upon the language of 2D interfaces will be a huge challenge as they are so deeply engrained in our digital lives. The transition so far has been fairly slow with the majority of virtual reality interfaces using 2D elements in 3D space or 3D objects that mirror those in reality. The interesting interfaces will hopefully begin to emerge as more abstract interactions emerge. The first of these is beginning to trickle through in the likes of Fantastic Contraption which asks you to put on a space helmet to access the menu environment (Northway 2016). The evolution of virtual reality and augmented reality will depend on developers detaching themselves from our preconceptions about what an interface can be and embracing concepts like adaptivity.

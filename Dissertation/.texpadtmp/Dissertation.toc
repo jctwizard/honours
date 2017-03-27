@@ -1,0 +1,22 @@
+\contentsline {section}{\numberline {1}Abstract}{1}{section.1}
+\contentsline {section}{\numberline {2}Introduction}{2}{section.2}
+\contentsline {subsection}{\numberline {2.1}The fall and rise of virtual reality}{2}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}The future of immersive technologies}{3}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.3}Interfaces in 3D}{4}{subsection.2.3}
+\contentsline {subsection}{\numberline {2.4}Research Question}{5}{subsection.2.4}
+\contentsline {section}{\numberline {3}Literature Review}{6}{section.3}
+\contentsline {subsection}{\numberline {3.1}Adaptive User Interfaces}{6}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Virtual reality user interfaces}{7}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}Usability in Virtual Reality}{8}{subsection.3.3}
+\contentsline {subsection}{\numberline {3.4}Possible Disadvantages of Adaptivity}{8}{subsection.3.4}
+\contentsline {section}{\numberline {4}Methodology}{9}{section.4}
+\contentsline {subsection}{\numberline {4.1}Overview}{9}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Implementation}{9}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Evaluation}{10}{subsection.4.3}
+\contentsline {section}{\numberline {5}Results}{11}{section.5}
+\contentsline {subsection}{\numberline {5.1}Qualitative Data}{11}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Quantitative Data}{11}{subsection.5.2}
+\contentsline {section}{\numberline {6}Discussion}{12}{section.6}
+\contentsline {section}{\numberline {7}Conclusion}{12}{section.7}
+\contentsline {section}{\numberline {8}References}{13}{section.8}
+\contentsline {section}{\numberline {9}Bibliography}{14}{section.9}
