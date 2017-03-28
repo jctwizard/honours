@@ -10,13 +10,19 @@
 \BOOKMARK [2][-]{subsection.3.3}{Usability in Virtual Reality}{section.3}% 10
 \BOOKMARK [2][-]{subsection.3.4}{Possible Disadvantages of Adaptivity}{section.3}% 11
 \BOOKMARK [1][-]{section.4}{Methodology}{}% 12
-\BOOKMARK [2][-]{subsection.4.1}{Overview}{section.4}% 13
-\BOOKMARK [2][-]{subsection.4.2}{Implementation}{section.4}% 14
-\BOOKMARK [2][-]{subsection.4.3}{Evaluation}{section.4}% 15
-\BOOKMARK [1][-]{section.5}{Results}{}% 16
-\BOOKMARK [2][-]{subsection.5.1}{Qualitative Data}{section.5}% 17
-\BOOKMARK [2][-]{subsection.5.2}{Quantitative Data}{section.5}% 18
-\BOOKMARK [1][-]{section.6}{Discussion}{}% 19
-\BOOKMARK [1][-]{section.7}{Conclusion}{}% 20
-\BOOKMARK [1][-]{section.8}{References}{}% 21
-\BOOKMARK [1][-]{section.9}{Bibliography}{}% 22
+\BOOKMARK [2][-]{subsection.4.1}{Application}{section.4}% 13
+\BOOKMARK [3][-]{subsubsection.4.1.1}{Overview and design}{subsection.4.1}% 14
+\BOOKMARK [3][-]{subsubsection.4.1.2}{Implementation and Iteration}{subsection.4.1}% 15
+\BOOKMARK [2][-]{subsection.4.2}{Adaptive Techniques}{section.4}% 16
+\BOOKMARK [3][-]{subsubsection.4.2.1}{Overview}{subsection.4.2}% 17
+\BOOKMARK [3][-]{subsubsection.4.2.2}{Error Analysis}{subsection.4.2}% 18
+\BOOKMARK [3][-]{subsubsection.4.2.3}{Dynamic Scaling}{subsection.4.2}% 19
+\BOOKMARK [3][-]{subsubsection.4.2.4}{Other considerations}{subsection.4.2}% 20
+\BOOKMARK [2][-]{subsection.4.3}{Data Gathering}{section.4}% 21
+\BOOKMARK [1][-]{section.5}{Results}{}% 22
+\BOOKMARK [2][-]{subsection.5.1}{Qualitative Data}{section.5}% 23
+\BOOKMARK [2][-]{subsection.5.2}{Quantitative Data}{section.5}% 24
+\BOOKMARK [1][-]{section.6}{Discussion}{}% 25
+\BOOKMARK [1][-]{section.7}{Conclusion}{}% 26
+\BOOKMARK [1][-]{section.8}{References}{}% 27
+\BOOKMARK [1][-]{section.9}{Bibliography}{}% 28

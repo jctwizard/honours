@@ -10,12 +10,18 @@
 \contentsline {subsection}{\numberline {3.3}Usability in Virtual Reality}{8}{subsection.3.3}
 \contentsline {subsection}{\numberline {3.4}Possible Disadvantages of Adaptivity}{8}{subsection.3.4}
 \contentsline {section}{\numberline {4}Methodology}{9}{section.4}
-\contentsline {subsection}{\numberline {4.1}Overview}{9}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}Implementation}{9}{subsection.4.2}
-\contentsline {subsection}{\numberline {4.3}Evaluation}{10}{subsection.4.3}
-\contentsline {section}{\numberline {5}Results}{11}{section.5}
-\contentsline {subsection}{\numberline {5.1}Qualitative Data}{11}{subsection.5.1}
-\contentsline {subsection}{\numberline {5.2}Quantitative Data}{11}{subsection.5.2}
+\contentsline {subsection}{\numberline {4.1}Application}{9}{subsection.4.1}
+\contentsline {subsubsection}{\numberline {4.1.1}Overview and design}{9}{subsubsection.4.1.1}
+\contentsline {subsubsection}{\numberline {4.1.2}Implementation and Iteration}{10}{subsubsection.4.1.2}
+\contentsline {subsection}{\numberline {4.2}Adaptive Techniques}{12}{subsection.4.2}
+\contentsline {subsubsection}{\numberline {4.2.1}Overview}{12}{subsubsection.4.2.1}
+\contentsline {subsubsection}{\numberline {4.2.2}Error Analysis}{12}{subsubsection.4.2.2}
+\contentsline {subsubsection}{\numberline {4.2.3}Dynamic Scaling}{12}{subsubsection.4.2.3}
+\contentsline {subsubsection}{\numberline {4.2.4}Other considerations}{12}{subsubsection.4.2.4}
+\contentsline {subsection}{\numberline {4.3}Data Gathering}{12}{subsection.4.3}
+\contentsline {section}{\numberline {5}Results}{12}{section.5}
+\contentsline {subsection}{\numberline {5.1}Qualitative Data}{12}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Quantitative Data}{12}{subsection.5.2}
 \contentsline {section}{\numberline {6}Discussion}{12}{section.6}
 \contentsline {section}{\numberline {7}Conclusion}{12}{section.7}
 \contentsline {section}{\numberline {8}References}{13}{section.8}

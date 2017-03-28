@@ -202,33 +202,59 @@ Another notable aspect of ease-of-use regards the placement of interface element
 Although adaptive user interfaces aim to assist a user, they could also be obstructive and counter intuitive when misused. Users are accustomed to interfaces being static and to having full and direct control over the elements presented to them. Adaptive techniques can break some of these expectations by manipulating the elements displayed and interpreting actions made by the user. This extra layer of system adaptation could in some situations work against the user.
 
 \section{Methodology}
-\subsection{Overview}
-A template interface will be created to allow iteration using various adaptive techniques. This interface will be in a draft state with the first technique for the feasibility demo due at the end of first semester. The first weeks of second semester will be spent implementing the various other adaptive techniques researched and ensuring the interface is complex enough to create an environment in which usability becomes a noticeable factor to the user. \emph{Figure 2} shows a more detailed breakdown of the project timeline. The application interface will consist of an introduction during which the user will learn the basic interaction with the motion controllers and the basic navigation tools along with the function of the interface they are using.
+\subsection{Application}
+\subsubsection{Overview and design}
+Before being able to apply the two adaptive techniques, dynamic scaling and error analysis, an interface needed to be implemented. The design of the interface and the application as a whole was designed with user testing and data gathering in mind. In order to better understand what the interface would need to provide, several points were devised to outline the core features and constraints:
 
-\subsection{Implementation}
-The interface will require the user to interact with various objects at different locations and distances away from them with complexity added by grouping and size of the elements. These interactions revolve around the 3 of the '5 universal interactions of 3D interfaces', namely: navigation, selection and manipulation (Bye 2016). The static version will require the user to precisely select and perform each action while the adaptive iterations will assist the user as they interact. Ideally every adaptive technique would be implemented and assessed but to manage the timescale of the development period before testing three adaptive techniques will be used initially.
+\begin{itemize}[noitemsep,topsep=0pt]
+\item The interface must feature a minimal number of clear interactions for easy learning.
+\item The interface must use a laser pointer to interact with elements outwith arms reach.
+\item A pressurised environment should be used to encourage users to interact with the interface.
+\end{itemize}
 
-The first will utilise basic analysis of errors made by the user, this would attempt to recognise missed clicks, reversals and general failure to use the interface. A reversal occurs when the user tries to immediately undo an action. Based on the context of an error the system will interpret the user's intended action and execute, highlight or suggest so as to avoid the user repeating an error. The system for recognising errors will be used in conjunction with other techniques in order to gather data about how usable the interface is.
+Each of these points was taken into consideration and a simple virtual reality application was developed. The interactions considered were those common to many applications but a drag and drop interface was decided upon. This would be intuitive for the users who would only have a few minutes to use the application. Many pieces of existing virtual reality software  show that moving and throwing objects in virtual reality is a gratifying action. Having decided upon the interaction the next step was to select objects to be interacted with.
 
-Another implementation will use some form of pattern recognition. An example would be to build Markov chains representing common sequences of user actions, which the system can then reference to give the user suggestions. One risk associated with adaptive techniques is that new users learning an interface may have trouble when the system is trying constantly to assist them. The final technique researched is gaze-based interaction. This involves the system tracking objects the user may be focusing on and assisting interactions with that object if it is out of reach.
+To maintain the simplicity of the application and to try and avoid users becoming wrapped up in the details of the objects they were interacting with a simple ball was chosen. Initially a more complex object was implemented but as the focus needed to be on interacting and not the objects being interacted with the coloured ball leant itself to the testing. A ball also has associations with grabbing and throwing which reinforced the core interaction.
 
-The implementation of the application and interfaces will use C++ within Unreal Engine 4. This handles rendering and projection for virtual reality as well as tracking of the headset/controllers, allowing the project to focus on the implementation of adaptive techniques. Simple graphics and 3D primitives will be used for visualisation in order to ensure the interface is the primary concern of the user as opposed to the assets and scene. The application should be device agnostic as Unreal Engine 4 supports each of the headsets and controllers, however if there are problems only one will be catered for and tested with. 
+The choice to use a laser pointer was made early on as there is inherent difficulty in the task of selecting something in 3D space using a pointer. The use of a pressurised environment was executed in the form a timed and scored interface. At first a kind of tutorial in which the user would be prompted to perform different actions was considered. The simple timer system was chosen instead because it did had no reliance on the speed at which the user reads or the interpretation of instructions. By having a single task repeated as many times as possible the user is forced to be less cautious with their interactions, providing more varied data.
 
-\subsection{Evaluation}
-After the application has been implemented the evaluation of the interfaces will take place. Users will be gathered and surveyed through both the error analysis and feedback forms. There are also some existing analytics systems for VR that have been researched (Merki 2016), but a simpler focused custom system will be used in the project. This data will then be used to evaluate the effectiveness of each individual technique and the overall impact of adaptive interfaces for virtual reality. The usability survey given to each tester will break down into several short sections borrowing from 'Applying Usability Heuristics to VR' (Jen 2016). The speed at which they felt they were able to interact, the number of errors they made during interactions and the general intuitiveness of the application or any adaptive techniques used.
+The final design of the application took into account the outlined points and consisted of a simple space with a table to focus the user's gaze. On this table balls of two colours appear and roll toward the participant. A timer is visible on the table and is counting down to zero, some text instructs the user to place the balls into a basket of corresponding colour next to the table. Each time the user successfully selects and places a ball a score readout above the basket increases.
 
-Using the qualitative and quantitative data gathered during the testing various representations of the user experience will be generated. Simple graphing of interactions and errors against time will hopefully demonstrate certain correlations. It is expected that all users will gradually become faster at performing interactions as they learn the interface and this will need to be accounted for when determining the experience of the adaptive interface versus the static interface. By comparing these graphs against the user's evaluation of their experience it will give an idea of how many errors a user makes before becoming frustrated, again this will be affected by the learning experience and the personality of the user. 
+\subsubsection{Implementation and Iteration}
+The initial design was implemented (as seen in Figure 4) in Unreal Engine 4 using C++ to create the core interaction system and Blueprints (visual scripting) to create the gameplay. By separating the code of the gameplay from that of the interaction it allowed easy iteration and tweaking of the surface features while having a strong, performant foundation in C++. 
 
-There may be other points of interest revealed by the data such as one error leading to a chain of errors or an error leading to a slow down in interaction time. All of these factors will help determine the effectiveness of the adaptive elements. If a user performs fewer errors in the adaptive system than in the static interface the qualitative data should support that the user experience was better in general.
+Once the implementation was finished an early user test was performed which revealed several issues with the design. Initially two controllers, on in each hand, were used to interact. Both had laser pointers but only one would be used in the dominant hand the other would occasionally obstruct the user's actions. The first implementation also asked the user to place blue balls into one basket and red into another, this meant as the balls appeared the user was constantly interacting and had no time to break.
+
+Although the pressure on the user was intended it quickly became tiring for them to interact and the decision was made to have only one basket so that users would interact with only one colour and need to avoid the other. This would also give more data points for when the user did select a non basket coloured ball the system could tell it was a failed action.
+
+\begin{figure*}
+\centering
+  \includegraphics[width=.8\linewidth]{earlydemo.png}
+  \caption{Early Iteration}
+\end{figure*}
+
+\subsection{Adaptive Techniques}
+\subsubsection{Overview}
+
+
+\subsubsection{Error Analysis}
+
+
+\subsubsection{Dynamic Scaling}
+
+
+\subsubsection{Other considerations}
+
+
+\subsection{Data Gathering}
+
 
 \section{Results}
 \subsection{Qualitative Data}
 
 
 \subsection{Quantitative Data}
-The use of adaptive user interfaces should provide benefits to the usability of the 3D interfaces as well as the speed at which the user can interact with them. This will allow for more complex interfaces capable of performing more meaningful and productive tasks. With a future that could be rooted in virtual reality, it is the opportune time to re-evaluate what an interface can be and how the system reacts to the user. With the promise of wireless headsets and augmented reality on the horizon, traditional 2D displays could quickly become obsolete. If our walls, floor and hands can be our displays then the interfaces will need to become more dynamic and versatile. Adaptive user interfaces have been researched for a long time and could soon become essential to our everyday interactions.
 
-Improving upon the language of 2D interfaces will be a huge challenge as they are so deeply engrained in our digital lives. The transition so far has been fairly slow with the majority of virtual reality interfaces using 2D elements in 3D space or 3D objects that mirror those in reality. The interesting interfaces will hopefully begin to emerge as more abstract interactions emerge. The first of these is beginning to trickle through in the likes of Fantastic Contraption which asks you to put on a space helmet to access the menu environment (Northway 2016). The evolution of virtual reality and augmented reality will depend on developers detaching themselves from our preconceptions about what an interface can be and embracing concepts like adaptivity.
 
 \section{Discussion}
 
