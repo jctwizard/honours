@@ -227,27 +227,87 @@ Once the implementation was finished an early user test was performed which reve
 
 Although the pressure on the user was intended it quickly became tiring for them to interact and the decision was made to have only one basket so that users would interact with only one colour and need to avoid the other. This would also give more data points for when the user did select a non basket coloured ball the system could tell it was a failed action.
 
+One change made before the final round of user testing expanded upon the interface itself. The applications in a real piece of software for selecting moving objects like the balls rolling toward the user are difficult to imagine. To improve the evaluation and provide a more realistic scenario the interface switches half way through the application's timer from the rolling balls to a grid of static balls suspended away from the user. This also tests the ability to select tightly packed objects something the moving interface of the rolling balls did not do effectively.
+
 \begin{figure*}
 \centering
   \includegraphics[width=.8\linewidth]{earlydemo.png}
   \caption{Early Iteration}
 \end{figure*}
 
+
 \subsection{Adaptive Techniques}
 \subsubsection{Overview}
+The research done into adaptive user interfaces and the techniques behind them focused mainly on implementations in 2D scenarios. To apply all of these techniques to 3D would be outside the scope of this project and have made it very difficult to complete the user testing. As such two techniques were chosen and altered for virtual reality. The first is error analysis, with the application requiring only one button for interaction the room for error is small and so easily tracked. The concept of error analysis is to detect when a user has incorrectly pressed a button and somehow react to it.
 
+The second technique chosen was dynamic scaling although in a different form to that found in most of the previous research done on adaptive techniques. Generally the scaling of user interface elements would be done in response to an error, improving a user's ability to select it. By relating the scaling of every element to the predicted selection of the user it can constantly accommodate and assist the interactions with the interface, scaling up areas of focus.
 
 \subsubsection{Error Analysis}
+To understand how to know when a user has made an error the underlying interaction system in C++ has to be explained. When designing the interaction system the input is bound to a set of functions. This means that when the user presses the trigger in an attempt to select an element it will run through a series of steps to complete the action:
 
+\begin{itemize}[noitemsep,topsep=0pt]
+\item The user presses the trigger.
+\item The system runs the grab function.
+\item A raycast is sent along the laser pointer.
+\item If the raycast intersects any number of elements the first is selected.
+\item If the raycast intersects no elements, nothing happens.
+\end{itemize}
+
+It can be assumed to a certain probability that if the final step is true and no elements were found, the user made an error. The user could simply have pressed the trigger with no intention to select something but this is something that cannot easily be predicted. But in the case that the user was trying to make a selection and failed error analysis can allow the system to make an educated guess at what the desired element was and take action on it. 
+
+Although this assisted selection would be easily accomplished in 2D by simply choosing the closest element to the cursor, in 3D with a continuous 'beam' cursor going into infinite it is more complex to solve. The implementation uses the shortest distance formula to find which element along the line of the laser pointer is the closest taking the magnitude of the vector forming a right angle to the direction.
+
+\begin{figure*}
+\centering
+  \includegraphics[width=.8\linewidth]{nearestpoint.png}
+  \caption{Visualisation of the shortest distance between a vector and a point}
+\end{figure*}
+
+By using a threshold distance beyond which elements are ignored the instant the user makes an error the system can search for any that are not overlapping but close enough to select and find the nearest. The basic form of this formula is as follows: 
+
+$d = |(\mathbf{a}-\mathbf{p}) - ((\mathbf{a}-\mathbf{p}) \cdot  \mathbf{n})\mathbf{n}|$
+
+In which $d$ is the shortest distance between point $p$ and the vector with position $a$ and direction $n$. A visualisation of the formula can be seen in Figure 5 below. This implementation immediately proved to make selecting moving elements and densely packed elements faster and less cumbersome during basic testing. It could break down when a user is selecting objects very far away through a grouping of close objects in which case the formula could be modified to take into account distance of the perpendicular point along the laser.
 
 \subsubsection{Dynamic Scaling}
+The second technique adapts the interface visually in an attempt to improve the usability of smaller or tightly packed elements such as the grid of balls presented in the latter half of the application. By using the shortest distance formula again to determine how far away an element is from the user's laser it can be scaled by some amount to create the effect of it becoming larger as the user goes to select it. The effectiveness of this technique relies on the theory laid out in Fitt's Law stating that the time to select a user interface element is proportionate to its size and the distance from it. By scaling the elements as the distance to it decreases the speed of the selection should increase.
 
+Initially a more complex algorithm was used to scale the elements exponentially and with a slight downsizing at the start. This was intended to make a kind of focus bubble inside which elements would be larger and on the edge of which elements would be smaller. This concept made selection confusing especially when approaching a group of elements from far away as they would all shrink on approach before getting larger at varying rates.
 
-\subsubsection{Other considerations}
+Something that became apparent during the implementation of the adaptive scaling was the importance of consistency. Early testing made it seem that if the user expects something to happen to the interface dynamically that becomes something they will compensate for in the interaction with the interface. As soon as something breaks the consensus it is no longer reliable and could hinder usability.
 
+The scaling of the object was applied to the mesh itself but not the collider, this would cause issues where the mesh would begin clipping into nearby static, unelectable meshes and would sometimes seem like a property of the element and not the interface in general. By simply adding a kind of highlight replica of the mesh with transparency and scaling this instead, each element could be seen at its native scale at all times yet the dynamic scaling could still be applied. This highlight mesh was also used for the static interface to show when an object was in range to be selected by becoming visible.
 
-\subsection{Data Gathering}
+\subsubsection{Further considerations}
+When implementing these adaptive techniques there were several other approaches considered. Stabilisation of the laser pointer could be used to snap to nearby elements like a pre-emptive error analysis so that if the user would have slightly missed an element the system snaps the laser to it before they even select it. This was not used as the constant change of direction and lack of fine control over the laser could be disorientating and nauseating.
 
+Another way to adapt the interface would be by modelling the user and adjusting the environment to them, this could be done in a number of ways. For example taking the user's height and scaling the entire interface to be proportionate to them. As the focus of the research and implementation was on an experience that could be accessed and used in only a few minutes the calibration required for this technique went against the project design.
+
+Other than the input of the laser pointer and the button for selection the direction the user is facing could perhaps be used to improve the error analysis. This approach would take not only the closest element to the laser into account but also the closest element to the gaze of the user. As the user testing would already require the control test alongside the two techniques adding a third test for this iteration on error analysis did not seem beneficial.
+
+\subsection{Evaluation}
+\subsubsection{Overview}
+To evaluate the effectiveness of the two adaptive interface techniques a single virtual reality interface was constructed as described in 4.1.2, the basic version of this was used as the static control. Alongside this interface, which users would interact with for a minute under a timer, the same interface but with the adaptive techniques applied individually. This would give the data to compare and evaluate their impact on usability.
+
+\subsubsection{Data Gathering}
+By gathering data from the application in the background the performance of the user could be analysed and compared for the static control and each technique. Alongside the questionnaire data this would give a solid understanding of how the user perceived the usability and how their interaction with the interface was actually affected.
+
+The data gathering system was a simple messaging model that wrote out an xml formatted file which could then be read back into the Unreal Engine Editor and played back in 3D akin to a video capture. This proved to be useful when looking for errors in the development as well as for analysing a user's performance.
+
+A single object, the data gatherer, writes to a file at a specified tick while the application is running. Every tick it stores the name, position and rotation of every object it is currently tracking. In order for an object to be tracked it must have a specific data generator component used to communicate with the data gatherer. When initialising this component the data gatherer adds the object's name to its list to keep track of it. The name can then be used to request the required information.
+
+Although this data alone is enough to reconstruct a user's interactions with the interface visually it does not keep track of the results of their interactions. To do this a second event layer was added the communication between data generator components and the data gatherer. When the component creates an event the data gatherer stores it at the tick during which it occurred along with the name of the object that generated it and some description. This allows every error, success and other non-visual interactions to be store and replayed easily.
+
+At first the data gathering system would output large amounts of data every frame causing performance loss and discomfort when using the application. To account for this a simple distance threshold was added so that each tracked object's information is only updated when it has moved a certain amount. When replaying data in the editor a simple interpolation can smooth out this loss of data.
+
+\subsubsection{Questionnaire}
+To allow the users to feedback on the application and provide a counterpoint to the data gathered by the application which may not fully represent the user experience, a series of questions was devised and given to the user between the testing of each technique and the control (See Appendix A). The questions aimed to provide a variety of both negative and positive feedback while being vague enough to allow users to focus on the experience and not be caught up in their interpretation of each question.
+
+The final form of the questions is an iteration on the System Usability Scale which is widely used as a tool for measuring usability of a system. The decision to use the term system instead of interface would allow the user to consider not just the physical interface but the interaction with the interface as well. The scale uses a five option system ranging from 'strongly agree' to 'strongly disagree'. This range gives enough room for comparison without overwhelming the tester with choices. 
+
+As in the standard Scale 10 questions were asked although slightly adapted from the ones given. The main addition was the final question regarding comfort. A vital component of usability in virtual reality specifically is user comfort. As there is a tendency for user's to associate their comfort with the experience itself by using this question to weigh the answers of the testers any especially bad experiences and the answers associated could be offset.
+
+When user testing the order of the tests for the static control interface and two adaptive techniques was randomised. The user would enter the room, be briefed and then asked to complete the consent form. Once they were ready they were placed in the headset and left to interact with the minute long timed interface. When the timer expired the headset was removed and they completed the questionnaire. This was repeated until each iteration of the interface had been tested in a random order. To ensure that each user tested each interface in each order a balanced number of times a simple list of the interface iteration to be tested was devised and followed rather than letting the system randomise the techniques applied.
 
 \section{Results}
 \subsection{Qualitative Data}
@@ -256,9 +316,32 @@ Although the pressure on the user was intended it quickly became tiring for them
 \subsection{Quantitative Data}
 
 
+\subsection{Comparison}
+
+
 \section{Discussion}
 
 \section{Conclusion}
+
+\pagebreak
+
+\section{Appendices}
+
+\subsection{Appendix A}
+
+\begin{enumerate}
+\item I think that I would like to use this system frequently.
+\item I found the system unnecessarily complex. 
+\item I thought the system was easy to use. 
+\item I found the various functions in this system were well integrated. 
+\item I thought there was too much inconsistency in this system. 
+\item I would imagine that most people would learn to use this system very quickly. 
+\item I found the system very cumbersome to use. 
+\item I felt very confident using the system.
+\item I needed to learn a lot of things before I could get going with this system. 
+\item I felt comfortable while using this system.
+\end{enumerate}
+
 
 \pagebreak
 
