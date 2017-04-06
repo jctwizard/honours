@@ -1,5 +1,5 @@
 \documentclass[12pt]{article}
-\usepackage{graphicx, hyperref, subcaption, setspace, pgfgantt, enumitem}
+\usepackage{multirow, graphicx, tabularx, hyperref, subcaption, setspace, pgfgantt, enumitem, pgfplots}
 \usepackage[margin=1.in]{geometry}
 \usepackage{mathptmx}
 \providecommand{\keywords}[1]
@@ -82,20 +82,22 @@ Virtual reality allows users to interact with three-dimesional environments and 
 
 This project expands on research made in the area of adaptive user interfaces which focused on 2D interaction, applying techniques in the 3D, motion controlled environment of VR. Adaptive user interfaces aim to improve usability with dynamic elements and input analysis. The two techniques focused on in this project are error analysis and adaptive scaling. To implement an application for evaluating these techniques C++ and Unreal Engine 4 were used.
 
-On of the most common and difficult to use interaction models in virtual reality is the laser pointer. Interacting with far away elements can be cumbersome using a pointer and is an area in which adaptive techniques can easily be applied. As such the application used for testing during this project has the user perform simple selection and deselection interactions on a set of objects using a laser pointer.
+One of the most common and difficult to use interaction models in virtual reality is the laser pointer. Interacting with far away elements can be cumbersome using a pointer and is an area in which adaptive techniques can easily be applied. As such the application used for testing during this project has the user perform simple selection and deselection interactions on a series of balls using a laser pointer to sort them in to baskets. The user testing is also timed to encourage rapid interaction and increase the number of data points.
 
 To evaluate the benefits of the adaptive techniques applied in the application, both quantitative questionnaire data and qualitative data have been gathered and analysed. To measure the usability of the adaptive techniques the process used a static control interface. Combing the two sets of data and comparing gives a clear representation of the effect the adaptive techniques have on usability.
+
+The results gathered show that adaptive user interface techniques... UPDATE WITH RESULTS
 
 \keywords{Virtual Reality, User-Interfaces, 3D Interfaces, Adaptive Interfaces, Interface Plasticity}
 
 \section{Introduction}
 
 \subsection{The fall and rise of virtual reality}
-Virtual reality (VR) head mounted displays first started appearing in the commercial market in the 1990s with Nintendo's Virtual Boy as the face of what was sold as a new era in entertainment technology. The virtual boy and its ilk failed miserably causing sever motion sickness and utilising displays far worse than those available for the standard consoles at the time. Despite this terrible start, two decades later VR has begun to secure its place in mainstream entertainment especially in the world of video games, although Nintendo is nowhere to be seen. 
+Virtual reality (VR) head mounted displays first started appearing in the commercial market in the 1990s with Nintendo's Virtual Boy as the face of what was sold as a new era in entertainment technology. The virtual boy and its ilk failed miserably due to severe motion sickness and its utilisation of displays far worse than those available for the standard consoles at the time. Despite this rough start, two decades later VR has begun to secure its place in mainstream entertainment especially in the world of video games, although Nintendo is nowhere to be seen. 
 
 Sony's PlayStation VR headset was more successful than predicted (Seeto 2016) and the fears surrounding the motion sickness that doomed the previous wave of VR are dissipating (Pino 2016). Alongside Sony's offering are HTC's Vive and Facebook's Oculus not mentioning the vast number of headsets designed for smartphones. These three headsets all provide similar experiences: high resolution displays for each eye providing stereoscopic depth, six degrees of freedom head tracking and hand tracking using wireless controllers. 
 
-There have been some stand out applications and games from these early years of the new VR platforms. Job Simulator somehow turns the mundane tasks of everyday life into fun, captivating play and would not be the same experience without the head and controller tracking that comes with the HTC Vive. Tilt Brush was the first breakthrough success on the creation front with users creating thousands of sculptures using the signature 'light ribbons'. It showed that the intuitive 3D of VR could be used to great effect in productivity applications.
+There have been some stand out applications and games from these early years of the new VR platforms. Job Simulator (see figure 1a) somehow turns the mundane tasks of everyday life into fun, captivating play and would not be the same experience without the head and controller tracking that comes with the HTC Vive. Tilt Brush (see figure 1b) was the first breakthrough success on the creation front with users creating thousands of sculptures using the signature 'light ribbons'. It showed that the intuitive 3D of VR could be used to great effect in productivity applications.
 
 Even before the first release of the main VR platforms as consumer products the major Game Engine creators, Unity and Unreal Engine, had begun implementing VR support not just for applications but for the editor used to create applications. This allows not just VR developers but all developers to utilise the precision that comes with the spacial awareness to edit 3D environments with ease.
 
@@ -176,18 +178,40 @@ Another approach, the one this project focuses on, is to adapt the interface its
 
 Most user interfaces in our digital lives are static with adaptive interfaces reserved for improving accessibility for atypical users or use-cases. VR provides a new platform for innovation and does not have a direct counterpart to the universal language of 2D interfaces' windows and pointers. This uncharted territory provides an opportunity to experiment with dynamic 3D interfaces in new ways.
 
-\subsection{Virtual reality user interfaces}
-
-When considering the current landscape of virtual reality applications and games there are a large number using motion controllers as opposed to traditional input methods such as console controllers and keyboard/mouse. The HTC Vive's lighthouse tracking system provides accurate motion control walking around a large space up to 15 ft square. The Oculus' and PSVR's use of optical tracking lends itself to a seated experience but still allows full 360 degrees of movement. 
-
-Considering that most content on VR platforms is not exclusive to a single device experiences focus on interaction at arms length to accommodate for seated users. Interactions often consist of selecting 3D objects or interface elements by moving a controller to their position ad pressing a button. Any interaction beyond arms length generally utilises a 3D pointer system as seen in the Steam VR interface (Figure 3) used to enter applications for the HTC Vive.
-
-These pointer interfaces become more cumbersome to use the further away, smaller and more complex the interface becomes. Despite this there are few interfaces using dynamic or adaptive elements to improve their usability. By simply assisting the user in their interaction great improvements could be made to bring VR closer to replacing desktop PCs and traditional 2D displays for everyday tasks like word processing and file management.
-
 \begin{figure*}
 \centering
   \includegraphics[width=.8\linewidth]{steamvr.jpg}
   \caption{Pointer based interaction (Steam VR 2016)}
+\end{figure*}
+
+\subsection{Virtual reality user interfaces}
+
+When considering the current landscape of virtual reality applications and games there are a large number using motion controllers as opposed to traditional input methods such as console controllers and keyboard/mouse. The HTC Vive's lighthouse tracking system provides accurate motion control walking around a large space up to 15 ft square. The Oculus' and PSVR's use of optical tracking lends itself to a seated experience but still allows full 360 degrees of movement. 
+
+Considering that most content on VR platforms is not exclusive to a single device experiences focus on interaction at arms length to accommodate for seated users. Interactions often consist of selecting 3D objects or interface elements by moving a controller to their position and pressing a button. Any interaction beyond arms length generally utilises a 3D pointer system as seen in the Steam VR interface (Figure 4) used to enter applications for the HTC Vive.
+
+3D object hand-based interfaces can feel natural to use like selecting a tiny version of a level in Fantastic Contraption (see figure 3a). Having the user interact with something that is a visual representation of its function is intuitive although similar approaches in other games can be confusing. In First Contact (see figure 3b) the floppy disks used to activate various mini-games do not jump out as a vital component of the interface. Pointer interfaces are less prone to these issues as the nature of a traditional user interface is to be interacted with. As soon as the user is given a pointer and there is an element displayed it becomes a point of focus. Pointer interfaces can be brought into the context of an application to help sustain immersion as in the Brookhaven Experiment (see figure 3c) in which the user fires their gun at the menus, a similar approach is taken in Until Dawn: Rush of Blood. 
+
+Pointer interfaces can also be far faster to use and more complex than hand-based object interfaces much in the way that a desktop cursor is often more efficient than its touch equivalent. Unfortunately these pointer interfaces become more cumbersome to use the further away, smaller and more complex they become. Despite this there are few interfaces using dynamic or adaptive elements to improve their usability. By simply assisting the user in their interaction great improvements could be made to bring VR closer to replacing desktop PCs and traditional 2D displays for everyday tasks like word processing and file management.
+
+\begin{figure*}
+\centering
+\begin{subfigure}{.33\textwidth}
+  \centering
+  \includegraphics[width=.95\linewidth]{fantasticcontraption.jpg}
+  \caption{Fantastic Contraption (2016)}
+\end{subfigure}%
+\begin{subfigure}{.33\textwidth}
+  \centering
+  \includegraphics[width=.95\linewidth]{firstcontact.png}
+  \caption{First Contact (2016)}
+\end{subfigure}%
+\begin{subfigure}{.33\textwidth}
+  \centering
+  \includegraphics[width=.95\linewidth]{brookhaven.jpg}
+  \caption{Brookhaven Experiment (2016)}
+\end{subfigure}
+\caption{Examples of Virtual Reality Interfaces}
 \end{figure*}
 
 \subsection{Usability in Virtual Reality}
@@ -197,9 +221,10 @@ Now the focus of research is around usability of interfaces in VR. Valve, a driv
 
 Another notable aspect of ease-of-use regards the placement of interface elements around the user. Due to the 360 degree nature of a 3D interface if the user is constantly required to turn around in order to perform actions it will become fatiguing. Owlchemy labs, developers of Job Simulator and strong proponents of diegetic interfaces build scenarios in such a way that users do not have to turn frequently and generally have direct access to everything they may need at a given time (Schwartz 2015).
 
-\subsection{Possible Disadvantages of Adaptivity}
+\subsection{Testing virtual reality applications}
+Testing virtual reality interfaces is something that has little research published about it. There are many articles that cover the preparation and caution required around motion sickness but they glance over the practicalities of collecting data during testing. One transcript of a presentation (Bromley 2016) mentions the issues surrounding communication with a user during tests as they are wearing a headset while participating. One solution the researcher poses is to ask questions between short play sessions. Another is to have a direct line to the player so they can hear you while wearing a headset however this can be distracting and require extra set up for each user. 
 
-Although adaptive user interfaces aim to assist a user, they could also be obstructive and counter intuitive when misused. Users are accustomed to interfaces being static and to having full and direct control over the elements presented to them. Adaptive techniques can break some of these expectations by manipulating the elements displayed and interpreting actions made by the user. This extra layer of system adaptation could in some situations work against the user.
+The emphasis on avoiding any nauseating situations usually focuses on movement of the user's view outwith their control. As users may be standing during testing it is also advised that the moderator watch them carefully. (Wales 2016)
 
 \section{Methodology}
 \subsection{Application}
@@ -221,7 +246,7 @@ The choice to use a laser pointer was made early on as there is inherent difficu
 The final design of the application took into account the outlined points and consisted of a simple space with a table to focus the user's gaze. On this table balls of two colours appear and roll toward the participant. A timer is visible on the table and is counting down to zero, some text instructs the user to place the balls into a basket of corresponding colour next to the table. Each time the user successfully selects and places a ball a score readout above the basket increases.
 
 \subsubsection{Implementation and Iteration}
-The initial design was implemented (as seen in Figure 4) in Unreal Engine 4 using C++ to create the core interaction system and Blueprints (visual scripting) to create the gameplay. By separating the code of the gameplay from that of the interaction it allowed easy iteration and tweaking of the surface features while having a strong, performant foundation in C++. 
+The initial design was implemented (as seen in Figure 5) in Unreal Engine 4 using C++ to create the core interaction system and Blueprints (visual scripting) to create the gameplay. By separating the code of the gameplay from that of the interaction it allowed easy iteration and tweaking of the surface features while having a strong, performant foundation in C++. 
 
 Once the implementation was finished an early user test was performed which revealed several issues with the design. Initially two controllers, on in each hand, were used to interact. Both had laser pointers but only one would be used in the dominant hand the other would occasionally obstruct the user's actions. The first implementation also asked the user to place blue balls into one basket and red into another, this meant as the balls appeared the user was constantly interacting and had no time to break.
 
@@ -267,7 +292,7 @@ By using a threshold distance beyond which elements are ignored the instant the 
 
 $d = |(\mathbf{a}-\mathbf{p}) - ((\mathbf{a}-\mathbf{p}) \cdot  \mathbf{n})\mathbf{n}|$
 
-In which $d$ is the shortest distance between point $p$ and the vector with position $a$ and direction $n$. A visualisation of the formula can be seen in Figure 5 below. This implementation immediately proved to make selecting moving elements and densely packed elements faster and less cumbersome during basic testing. It could break down when a user is selecting objects very far away through a grouping of close objects in which case the formula could be modified to take into account distance of the perpendicular point along the laser.
+In which $d$ is the shortest distance between point $p$ and the vector with position $a$ and direction $n$. A visualisation of the formula can be seen in figure 6 below. This implementation immediately proved to make selecting moving elements and densely packed elements faster and less cumbersome during basic testing. It could break down when a user is selecting objects very far away through a grouping of close objects in which case the formula could be modified to take into account distance of the perpendicular point along the laser.
 
 \subsubsection{Dynamic Scaling}
 The second technique adapts the interface visually in an attempt to improve the usability of smaller or tightly packed elements such as the grid of balls presented in the latter half of the application. By using the shortest distance formula again to determine how far away an element is from the user's laser it can be scaled by some amount to create the effect of it becoming larger as the user goes to select it. The effectiveness of this technique relies on the theory laid out in Fitt's Law stating that the time to select a user interface element is proportionate to its size and the distance from it. By scaling the elements as the distance to it decreases the speed of the selection should increase.
@@ -311,13 +336,150 @@ When user testing the order of the tests for the static control interface and tw
 
 \section{Results}
 \subsection{Qualitative Data}
+\subsubsection{Overview of Results}
+The data from the ten questionnaire responses gathered throughout the testing process were collected in a spreadsheet and analysed by assigning a value of 1 - strongly disagree to 5 - strongly agree to each answer. Certain answers were weighted negatively based on the phrasing of the question i.e. "7. I found the system very cumbersome to use.", others were weighted positively i.e. "3. I thought the system was easy to use.". Each questionnaire is split into three sections A, B and C, corresponding to the iterations of the interface tested by each user. 
 
+Each section consisted of the same ten questions (see Appendix A). Section A corresponds to the 'static' interface which does not implement any adaptive techniques. Section B corresponds to the 'error analysis' interface which adapts based on user error. Section C corresponds to the 'dynamic scaling' interface which adapts the size of each element as the user approaches them. These questions focus on the user's experience interacting with the system, by averaging the responses received over the ten tests and comparing each section's results it gives an idea of which interface iteration users collectively preferred.
+
+Although the users were not asked to directly compare the experience of the different iterations it can be assumed, to some degree, that their responses are scaled based on their impression of the previous interface. Also note that users were given the three interface iterations in a shuffled order without knowing which was the control. This means a user who experienced the 'static' control interface first may have responded to the adaptive iterations differently to a user experiencing the adaptive iterations before the control.
+
+\subsubsection{Breakdown of responses}
+Table 1 shows the average of each response taken for the ten responses across all three sections of the questionnaire. As explained in 5.1.1 certain questions are weighted negatively based on the phrasing given. These are questions 2, 5, 7 and 9 all proceeded by a minus sign in Table 1. In order to visualise the data in a more understandable and comparable way the negatively weighted answers were translated onto a reverse scale with 1 being strongly agree and 5 being strongly disagree. This means an answer to a negative question of agree - 4 on the normal scale becomes disagree - 2 on the reverse scale essentially taking the positive version of it. These translated negative answers alongside the other positive answers were then compiled into graphs as shown in Figure 7. Both the line graph and bar chart use the same data and provide some insight into the user experience for each iteration of the interface.
+
+Looking at the line graph it is clear that the responses to Section B, the error-based adaptive technique, are the most positive in almost every question. Section A, the static control interface, is the most negative in almost every question. Finally Section C, the dynamic scaling technique, is the midground in almost every question. The primary exceptions to these outcomes are question 5 and  question 9. Question 5: "I thought there was too much inconsistency in this system.", received slightly more positive answers in Section C than Section B. This could be that although the adaptive error-analysis was perceived as easier to use when it failed to act as the user expected it caused more issues than the dynamic scaling. Question 9 on the other hand: "I needed to learn a lot of things before I could get going with this system." received more positive answers in Section A, the static control interface by a small margin. This could be attributed to the need to grasp what how the interface is adapting when the dynamic scaling and error-analysis adaptive techniques are applied. Even though they may make the interface easier to use, they create slightly more of a learning curve than a static interface.
+
+\begin{table}
+\centering
+\begin{tabular}{ |c|c|c|c|c|c|c|c|c|c|c|c| } 
+ \hline
+ \textbf{Question} & \textbf{1} & \textbf{2} & \textbf{3} & \textbf{4} & \textbf{5} & \textbf{6} & \textbf{7} & \textbf{8} & \textbf{9} & \textbf{10} & \textbf{Total} \\ 
+ \hline
+ \textbf{Section A} & 3.2 & -1.7 & 3.7 & 3.7 & -2.7 & 4.0 & -2.7 & 3.5 & -1.4 & 3.8 & 13.4\\ 
+ 
+ \textbf{Section B} & 3.9 & -1.3 & 4.1 & 4.4 & -1.7 & 4.5 & -2.4 & 3.9 & -1.6 & 4.3 & 18.1\\ 
+ 
+ \textbf{Section C} & 3.8 & -1.8 & 3.9 & 4.0 & -1.5 & 4.3 & -2.3 & 3.9 & -1.7 & 4.1 & 16.7\\ 
+ \hline
+\end{tabular}
+\caption{Averaged responses over ten users}
+\end{table}
+
+\begin{figure}
+\begin{subfigure}{.5\textwidth}
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    xlabel={Question},
+    ylabel={Response},
+    x label style={at={(axis description cs:0.5,-0.025)},anchor=north},
+    y label style={at={(axis description cs:0.1,.5)},anchor=south},
+    xmin=0, xmax=11,
+    ymin=0, ymax=6,
+    xtick={1,2,3,4,5,6,7,8,9,10},
+    ytick={1,2,3,4,5},
+    legend pos=south east,
+    ymajorgrids=true,
+    grid style=dashed,
+ 	width=1\textwidth,
+]
+ 
+\addplot[
+    color=red,
+    mark=circle,
+    ]
+    coordinates {
+    (1,3.2)(2,3.3)(3,3.7)(4,3.7)(5,2.3)(6,4.0)(7,2.3)(8,3.5)(9,3.6)(10,3.8)
+    };
+ 
+\addplot[
+    color=blue,
+    mark=circle,
+    ]
+    coordinates {
+    (1,3.9)(2,3.7)(3,4.1)(4,4.4)(5,3.3)(6,4.5)(7,2.6)(8,3.9)(9,3.4)(10,4.3)
+    };
+    
+\addplot[
+    color=green,
+    mark=circle,
+    ]
+    coordinates {
+    (1,3.8)(2,3.2)(3,3.9)(4,4.0)(5,3.5)(6,4.3)(7,2.7)(8,3.9)(9,3.3)(10,4.1)
+    };
+    \legend{Section A, Section B, Section C}
+    
+\end{axis}
+\end{tikzpicture}
+\caption{Graph of averaged responses}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+ 	ylabel=Response,
+ 	xlabel=Question,
+    x label style={at={(axis description cs:0.5,-0.025)},anchor=north},
+    y label style={at={(axis description cs:0.1,.5)},anchor=south},
+    xmin=0, xmax=11,
+    ymin=0, ymax=6,
+    xtick={1,2,3,4,5,6,7,8,9,10},
+    ytick={1,2,3,4,5},
+ 	legend style={at={(0.5,0.99)},
+ 	anchor=north,legend columns=-1},
+ 	ybar,
+ 	bar width = 2,
+    ymajorgrids=true,
+    grid style=dashed,
+    xtick align=inside,
+ 	width=1\textwidth,
+ 	]
+ 
+\addplot[
+    color=red,
+    ]
+    coordinates {
+    (1,3.2)(2,3.3)(3,3.7)(4,3.7)(5,2.3)(6,4.0)(7,2.3)(8,3.5)(9,3.6)(10,3.8)
+    };
+ 
+\addplot[
+    color=blue,
+    ]
+    coordinates {
+    (1,3.9)(2,3.7)(3,4.1)(4,4.4)(5,3.3)(6,4.5)(7,2.6)(8,3.9)(9,3.4)(10,4.3)
+    };
+    
+\addplot[
+    color=green,
+    ]
+    coordinates {
+    (1,3.8)(2,3.2)(3,3.9)(4,4.0)(5,3.5)(6,4.3)(7,2.7)(8,3.9)(9,3.3)(10,4.1)
+    };
+    \legend{Section A, Section B, Section C}
+    
+\end{axis}
+\end{tikzpicture}
+\caption{Chart of averaged responses}
+\end{subfigure}
+
+\caption{Visualisation of response data}
+\end{figure}
+
+\subsubsection{Final analysis}
+Taking the data and its representations into account it is clear that users found the adaptive techniques to be beneficial to the user experience and usability of the interfaces. The static interface is consistently deemed harder to use, more cumbersome and users felt less confident when using it. In comparison the two adaptive techniques were very closely regarded by users and only by a tiny fraction was the error-analysis interface (Section B) more positively received. This is considering that the results shown are averages of all ten responses. In some individual cases the adaptive techniques equally usable but very rarely less usable than the static control. The full results are in Appendix B.
+
+Something to note about the two exceptions mentioned in 5.1.2, Question 5 and Question 9, is that they were two of the four negatively weighted questions along with 2 and 7. This could also have affected the responses given as there was a tendency to give answers that always provided positive feedback. On average no user gave an answer of 'disagree' or 'strongly disagree' to the positively weighted answers or 'agree'/'strongly agree' to the negatively weighted answers. This shows that the interfaces in general were found to be usable despite the static interface being less well received than the adaptive interfaces.
 
 \subsection{Quantitative Data}
+\subsubsection{Overview of Results}
 
+\subsubsection{Breakdown of data points}
+
+\subsubsection{Final analysis}
 
 \subsection{Comparison}
+\subsubsection{Overview of Results}
 
+\subsubsection{Qualitative vs quantitative}
 
 \section{Discussion}
 
@@ -342,6 +504,38 @@ When user testing the order of the tests for the static control interface and tw
 \item I felt comfortable while using this system.
 \end{enumerate}
 
+\vspace*{-1.25cm}\subsection{Appendix B}
+
+\begin{table}[!ht]
+\centering
+\hspace*{-2.5cm}\begin{tabular}{ |l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l| }
+ 	\hline
+	\multirow{2}{*}{\textbf{User}} & \multicolumn{10}{|c|}{\textbf{Section A (Questions)}} & \multicolumn{10}{|c|}{\textbf{Section B (Questions)}} & \multicolumn{10}{|c|}{\textbf{Section C (Questions)}} \\
+	 & \textbf{1} & \textbf{2} & \textbf{3} & \textbf{4} & \textbf{5} & \textbf{6} & \textbf{7} & \textbf{8} & \textbf{9} & \textbf{10} & \textbf{1} & \textbf{2} & \textbf{3} & \textbf{4} & \textbf{5} & \textbf{6} & \textbf{7} & \textbf{8} & \textbf{9} & \textbf{10} & \textbf{1} & \textbf{2} & \textbf{3} & \textbf{4} & \textbf{5} & \textbf{6} & \textbf{7} & \textbf{8} & \textbf{9} & \textbf{10} \\
+	\hline
+	\textbf{1} & 4 & 1 & 5 & 5 & 2 & 5 & 1 & 5 & 1 & 5 & 5 & 1 & 5 & 5 & 1 & 5 & 1 & 5 & 1 & 5 & 5 & 1 & 5 & 5 & 1 & 5 & 1 & 5 & 1 & 5 \\
+	\hline
+	\textbf{2} & 2 & 2 & 2 & 1 & 5 & 4 & 2 & 1 & 1 & 3 & 3 & 1 & 4 & 4 & 2 & 5 & 1 & 3 & 1 & 4 & 3 & 1 & 3 & 3 & 4 & 5 & 2 & 3 & 1 & 4 \\
+	\hline
+	\textbf{3} & 5 & 1 & 5 & 5 & 2 & 5 & 2 & 5 & 1 & 5 & 3 & 1 & 3 & 4 & 1 & 3 & 4 & 2 & 2 & 3 & 4 & 1 & 4 & 5 & 1 & 4 & 3 & 3 & 2 & 4 \\
+	\hline
+	\textbf{4} & 3 & 1 & 2 & 3 & 4 & 3 & 4 & 3 & 1 & 3 & 4 & 1 & 4 & 5 & 1 & 5 & 2 & 5 & 1 & 5 & 4 & 2 & 3 & 4 & 1 & 5 & 3 & 5 & 1 & 4 \\
+	\hline
+	\textbf{5} & 3 & 2 & 5 & 5 & 1 & 4 & 3 & 4 & 1 & 4 & 5 & 1 & 5 & 5 & 4 & 5 & 4 & 4 & 1 & 5 & 5 & 1 & 5 & 4 & 1 & 5 & 1 & 5 & 1 & 5 \\
+	\hline
+	\textbf{6} & 4 & 1 & 4 & 4 & 2 & 5 & 2 & 4 & 1 & 5 & 5 & 1 & 5 & 5 & 1 & 5 & 1 & 5 & 1 & 5 & 5 & 1 & 5 & 5 & 1 & 5 & 1 & 5 & 1 & 5 \\
+	\hline
+	\textbf{7} & 3 & 2 & 4 & 3 & 3 & 4 & 4 & 3 & 1 & 4 & 4 & 2 & 4 & 4 & 1 & 5 & 2 & 4 & 3 & 4 & 4 & 1 & 4 & 4 & 1 & 5 & 2 & 4 & 2 & 4 \\
+	\hline
+	\textbf{8} & 2 & 3 & 3 & 2 & 5 & 1 & 4 & 2 & 4 & 2 & 4 & 2 & 3 & 3 & 3 & 3 & 4 & 2 & 3 & 3 & 2 & 4 & 2 & 2 & 3 & 2 & 4 & 2 & 3 & 2 \\
+	\hline
+	\textbf{9} & 4 & 1 & 4 & 5 & 1 & 5 & 2 & 5 & 1 & 4 & 3 & 1 & 4 & 5 & 1 & 5 & 3 & 5 & 1 & 5 & 3 & 2 & 5 & 4 & 1 & 5 & 4 & 4 & 1 & 5 \\
+	\hline
+	\textbf{10} & 2 & 3 & 3 & 4 & 2 & 4 & 3 & 3 & 2 & 3 & 3 & 2 & 4 & 4 & 2 & 4 & 2 & 4 & 2 & 4 & 3 & 4 & 3 & 4 & 1 & 2 & 2 & 3 & 4 & 3 \\
+	\hline
+\end{tabular}
+\caption{Full results from questionnaire}
+\end{table}
 
 \pagebreak
 
@@ -349,6 +543,8 @@ When user testing the order of the tests for the static control interface and tw
 Anastasios, K. 2012. \emph{When You Shouldn't Use Fitts's Law To Measure User Experience} Smashing. 
 
 Atsuo, M. 2001. \emph{Extending Fitts' law to a three-dimensional pointing task} Japan. Elsevier. 
+
+Bromley, S. 2016. \emph{Running User Tests for Virtual Reality} User Research. Available at: \url{http://www.stevebromley.com/blog/2016/06/03/running-user-tests-for-virtual-reality/} [Accessed March 2017]
 
 Brusilovsky, P. 2000. \emph{Adaptive Hypermedia and Adaptive Web-Based Systems} Italy. Springer.
 
@@ -370,17 +566,19 @@ Morgan, K. 1998. \emph{Intelligent User Interfaces: An Introduction} San Fransis
 
 Northway, C. 2016. \emph{Menus Suck} VRDC. Available at: \url{http://www.gdcvault.com/play/1023668/Menus} [Accessed November 2016]
 
-Pino, N. 2016 \emph{HTC Vive review} Available from: \url{http://www.techradar.com/reviews/wearables/htc-vive-1286775/review/3} [Accessed October 2016]
+Pino, N. 2016 \emph{HTC Vive review} Available at: \url{http://www.techradar.com/reviews/wearables/htc-vive-1286775/review/3} [Accessed October 2016]
 
 Robert, Z. \emph{Look-That-There: Exploiting Gaze in Virtual Reality Interactions} Providence. Brown University. 
 
 Schwartz, A. 2015. \emph{Being There: Designing Standing VR Experiences with Tracked Controllers} Available from: \url{https://www.youtube.com/watch?v=hjc7AJwZ4DI} [Accessed October 2016]
-	
+
 Seeto, D. 2016 \emph{Gamestop: PSVR Exceeding Expectations As More Units Are Received For Holiday Season} Online. \url{http://attackofthefanboy.com/news/gamestop-playstation-vr-exceeding-expectations-units-received-holiday-season/} [Accessed October 2016]
 
 \emph{Tilt Brush.} 2016. [software]. HTC Vive. Google. 
 
 \emph{Unreal Engine 4.} 2012. [software]. Windows. Epic Games. 
+
+Wales, J. 2016 \emph{The reality of virtual reality testing} Bunnyfoot. Available at: \url{http://www.bunnyfoot.com/blog/2016/07/the-reality-of-virtual-reality-user-testing-our-top-tips/} [Accessed March 2017]
 
 
 \section{Bibliography}
