@@ -1,0 +1,44 @@
+\contentsline {section}{\numberline {1}Abstract}{1}{section.1}
+\contentsline {section}{\numberline {2}Introduction}{2}{section.2}
+\contentsline {subsection}{\numberline {2.1}The fall and rise of virtual reality}{2}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}The future of immersive technologies}{3}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.3}Interfaces in 3D}{4}{subsection.2.3}
+\contentsline {subsection}{\numberline {2.4}Research Question}{5}{subsection.2.4}
+\contentsline {section}{\numberline {3}Literature Review}{6}{section.3}
+\contentsline {subsection}{\numberline {3.1}Adaptive User Interfaces}{6}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Virtual reality user interfaces}{8}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}Usability in Virtual Reality}{9}{subsection.3.3}
+\contentsline {subsection}{\numberline {3.4}Testing virtual reality applications}{10}{subsection.3.4}
+\contentsline {section}{\numberline {4}Methodology}{10}{section.4}
+\contentsline {subsection}{\numberline {4.1}Application}{10}{subsection.4.1}
+\contentsline {subsubsection}{\numberline {4.1.1}Overview and design}{10}{subsubsection.4.1.1}
+\contentsline {subsubsection}{\numberline {4.1.2}Implementation and Iteration}{12}{subsubsection.4.1.2}
+\contentsline {subsection}{\numberline {4.2}Adaptive Techniques}{14}{subsection.4.2}
+\contentsline {subsubsection}{\numberline {4.2.1}Overview}{14}{subsubsection.4.2.1}
+\contentsline {subsubsection}{\numberline {4.2.2}Error Analysis}{14}{subsubsection.4.2.2}
+\contentsline {subsubsection}{\numberline {4.2.3}Dynamic Scaling}{16}{subsubsection.4.2.3}
+\contentsline {subsubsection}{\numberline {4.2.4}Further considerations}{17}{subsubsection.4.2.4}
+\contentsline {subsection}{\numberline {4.3}Evaluation}{18}{subsection.4.3}
+\contentsline {subsubsection}{\numberline {4.3.1}Overview}{18}{subsubsection.4.3.1}
+\contentsline {subsubsection}{\numberline {4.3.2}Data Gathering}{18}{subsubsection.4.3.2}
+\contentsline {subsubsection}{\numberline {4.3.3}Questionnaire}{19}{subsubsection.4.3.3}
+\contentsline {section}{\numberline {5}Results}{20}{section.5}
+\contentsline {subsection}{\numberline {5.1}Qualitative Data}{20}{subsection.5.1}
+\contentsline {subsubsection}{\numberline {5.1.1}Overview of Results}{20}{subsubsection.5.1.1}
+\contentsline {subsubsection}{\numberline {5.1.2}Breakdown of responses}{21}{subsubsection.5.1.2}
+\contentsline {subsubsection}{\numberline {5.1.3}Final analysis}{22}{subsubsection.5.1.3}
+\contentsline {subsection}{\numberline {5.2}Quantitative Data}{24}{subsection.5.2}
+\contentsline {subsubsection}{\numberline {5.2.1}Overview of Results}{24}{subsubsection.5.2.1}
+\contentsline {subsubsection}{\numberline {5.2.2}Breakdown of data points}{24}{subsubsection.5.2.2}
+\contentsline {subsubsection}{\numberline {5.2.3}Final analysis}{24}{subsubsection.5.2.3}
+\contentsline {subsection}{\numberline {5.3}Comparison}{24}{subsection.5.3}
+\contentsline {subsubsection}{\numberline {5.3.1}Overview of Results}{24}{subsubsection.5.3.1}
+\contentsline {subsubsection}{\numberline {5.3.2}Qualitative vs quantitative}{24}{subsubsection.5.3.2}
+\contentsline {section}{\numberline {6}Discussion}{24}{section.6}
+\contentsline {section}{\numberline {7}Conclusion}{24}{section.7}
+\contentsline {section}{\numberline {8}Appendices}{25}{section.8}
+\contentsline {subsection}{\numberline {8.1}Appendix A}{25}{subsection.8.1}
+\contentsline {subsection}{\numberline {8.2}Appendix B}{25}{subsection.8.2}
+\contentsline {subsection}{\numberline {8.3}Appendix C}{26}{subsection.8.3}
+\contentsline {section}{\numberline {9}References}{27}{section.9}
+\contentsline {section}{\numberline {10}Bibliography}{28}{section.10}

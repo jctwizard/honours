@@ -472,6 +472,65 @@ Something to note about the two exceptions mentioned in 5.1.2, Question 5 and Qu
 \subsection{Quantitative Data}
 \subsubsection{Overview of Results}
 
+\begin{table}
+\centering
+\vspace{1cm}\begin{tabular}{ |c|c|c|c| }
+ 	\hline
+	\textbf{Section} & \textbf{A} & \textbf{B} & \textbf{C} \\
+	\hline
+	\textbf{Successful Grabs} & 29.9 & 45.5 & 34.1 \\
+	\hline
+	\textbf{Failed Grabs} & 22 & 1.9 & 16.3 \\
+	\hline
+	\textbf{Incorrect Grabs} & 24.5 & 37 & 28.5 \\
+	\hline
+\end{tabular}
+\caption{Average grab counts}
+\end{table}
+
+\begin{figure}
+\centering
+\hspace{-1cm}\begin{tikzpicture}
+\begin{axis}[
+ 	ylabel=Count,
+ 	xlabel=Grab Type,
+    x label style={at={(axis description cs:0.5,-0.05)},anchor=north},
+ 	ymin = 0,
+ 	symbolic x coords={Successful,Failed,Incorrect},
+    xtick=data,
+ 	ybar,
+ 	enlarge x limits=0.2,
+ 	bar width = 20,
+ 	width=0.7\textwidth,
+]
+ 
+\addplot[
+    color=red,
+    ]
+    coordinates {
+    (Successful,29.9)(Failed,22)(Incorrect,24.5)
+    };
+ 
+\addplot[
+    color=blue,
+    ]
+    coordinates {
+    (Successful,45.5)(Failed,1.9)(Incorrect,37)
+    };
+    
+\addplot[
+    color=green,
+    ]
+    coordinates {
+    (Successful,34.1)(Failed,16.3)(Incorrect,28.5)
+    };
+    
+    \legend{Section A, Section B, Section C}    
+\end{axis}
+\end{tikzpicture}
+\caption{Chart of average grab counts}
+\end{figure}
+
 \subsubsection{Breakdown of data points}
 
 \subsubsection{Final analysis}
@@ -536,6 +595,43 @@ Something to note about the two exceptions mentioned in 5.1.2, Question 5 and Qu
 \end{tabular}
 \caption{Full results from questionnaire}
 \end{table}
+
+\subsection{Appendix C}
+
+\begin{table}[!ht]
+\centering
+\begin{tabular}{ |c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c| }
+ 	\hline
+	\textbf{Participant} & \multicolumn{3}{|c|}{\textbf{1}} &  \multicolumn{3}{|c|}{\textbf{2}} & \multicolumn{3}{|c|}{\textbf{3}} & \multicolumn{3}{|c|}{\textbf{4}} & \multicolumn{3}{|c|}{\textbf{5}} \\
+	\hline
+	\textbf{Section} & \textbf{A} & \textbf{B} & \textbf{C} & \textbf{A} & \textbf{B} & \textbf{C} & \textbf{A} & \textbf{B} & \textbf{C} & \textbf{A} & \textbf{B} & \textbf{C} & \textbf{A} & \textbf{B} & \textbf{C} \\
+	\hline
+	\textbf{Successful Grabs} & 27 & 47 & 35 & 34 & 40 & 45 & 32 & 45 & 32 & 20 & 39 & 17 & 38 & 61 & 36 \\
+	\hline
+	\textbf{Failed Grabs} & 13 & 0 & 8 & 18 & 2 & 21 & 17 & 0 & 18 & 20 & 1 & 13 & 45 & 6 & 32 \\
+	\hline
+	\textbf{Incorrect Grabs} & 24 & 38 & 28 & 28 & 33 & 40 & 25 & 32 & 24 & 19 & 31 & 14 & 29 & 49 & 30 \\
+	\hline
+\end{tabular}
+
+\centering
+\vspace{1cm}\begin{tabular}{ |c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c| }
+ 	\hline
+	\textbf{Participant} & \multicolumn{3}{|c|}{\textbf{6}} & \multicolumn{3}{|c|}{\textbf{7}} & \multicolumn{3}{|c|}{\textbf{8}} & \multicolumn{3}{|c|}{\textbf{9}} & \multicolumn{3}{|c|}{\textbf{10}} \\
+	\hline
+	\textbf{Section} & \textbf{A} & \textbf{B} & \textbf{C} & \textbf{A} & \textbf{B} & \textbf{C} & \textbf{A} & \textbf{B} & \textbf{C} & \textbf{A} & \textbf{B} & \textbf{C} & \textbf{A} & \textbf{B} & \textbf{C} \\
+	\hline
+	\textbf{Successful Grabs} & 17 & 39 & 35 & 27 & 51 & 34 & 38 & 46 & 39 & 32 & 39 & 34 & 34 & 48 & 34 \\
+	\hline
+	\textbf{Failed Grabs} & 18 & 3 & 10 & 36 & 1 & 18 & 27 & 4 & 16 & 16 & 2 & 18 & 10 & 0 & 9 \\
+	\hline
+	\textbf{Incorrect Grabs} & 13 & 29 & 30 & 21 & 46 & 30 & 32 & 39 & 32 & 25 & 30 & 28 & 29 & 43 & 29 \\
+	\hline
+\end{tabular}
+
+\caption{Full results from data gathered}
+\end{table}
+
 
 \pagebreak
 

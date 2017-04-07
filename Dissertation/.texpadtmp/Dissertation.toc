@@ -27,17 +27,18 @@
 \contentsline {subsubsection}{\numberline {5.1.1}Overview of Results}{19}{subsubsection.5.1.1}
 \contentsline {subsubsection}{\numberline {5.1.2}Breakdown of responses}{20}{subsubsection.5.1.2}
 \contentsline {subsubsection}{\numberline {5.1.3}Final analysis}{21}{subsubsection.5.1.3}
-\contentsline {subsection}{\numberline {5.2}Quantitative Data}{22}{subsection.5.2}
-\contentsline {subsubsection}{\numberline {5.2.1}Overview of Results}{22}{subsubsection.5.2.1}
-\contentsline {subsubsection}{\numberline {5.2.2}Breakdown of data points}{22}{subsubsection.5.2.2}
-\contentsline {subsubsection}{\numberline {5.2.3}Final analysis}{22}{subsubsection.5.2.3}
-\contentsline {subsection}{\numberline {5.3}Comparison}{22}{subsection.5.3}
-\contentsline {subsubsection}{\numberline {5.3.1}Overview of Results}{22}{subsubsection.5.3.1}
-\contentsline {subsubsection}{\numberline {5.3.2}Qualitative vs quantitative}{22}{subsubsection.5.3.2}
-\contentsline {section}{\numberline {6}Discussion}{22}{section.6}
-\contentsline {section}{\numberline {7}Conclusion}{22}{section.7}
-\contentsline {section}{\numberline {8}Appendices}{23}{section.8}
-\contentsline {subsection}{\numberline {8.1}Appendix A}{23}{subsection.8.1}
-\contentsline {subsection}{\numberline {8.2}Appendix B}{23}{subsection.8.2}
-\contentsline {section}{\numberline {9}References}{24}{section.9}
-\contentsline {section}{\numberline {10}Bibliography}{25}{section.10}
+\contentsline {subsection}{\numberline {5.2}Quantitative Data}{23}{subsection.5.2}
+\contentsline {subsubsection}{\numberline {5.2.1}Overview of Results}{23}{subsubsection.5.2.1}
+\contentsline {subsubsection}{\numberline {5.2.2}Breakdown of data points}{23}{subsubsection.5.2.2}
+\contentsline {subsubsection}{\numberline {5.2.3}Final analysis}{23}{subsubsection.5.2.3}
+\contentsline {subsection}{\numberline {5.3}Comparison}{23}{subsection.5.3}
+\contentsline {subsubsection}{\numberline {5.3.1}Overview of Results}{23}{subsubsection.5.3.1}
+\contentsline {subsubsection}{\numberline {5.3.2}Qualitative vs quantitative}{23}{subsubsection.5.3.2}
+\contentsline {section}{\numberline {6}Discussion}{23}{section.6}
+\contentsline {section}{\numberline {7}Conclusion}{23}{section.7}
+\contentsline {section}{\numberline {8}Appendices}{24}{section.8}
+\contentsline {subsection}{\numberline {8.1}Appendix A}{24}{subsection.8.1}
+\contentsline {subsection}{\numberline {8.2}Appendix B}{24}{subsection.8.2}
+\contentsline {subsection}{\numberline {8.3}Appendix C}{25}{subsection.8.3}
+\contentsline {section}{\numberline {9}References}{26}{section.9}
+\contentsline {section}{\numberline {10}Bibliography}{27}{section.10}
