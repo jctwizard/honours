@@ -334,7 +334,7 @@ As in the standard Scale 10 questions were asked although slightly adapted from 
 
 When user testing the order of the tests for the static control interface and two adaptive techniques was randomised. The user would enter the room, be briefed and then asked to complete the consent form. Once they were ready they were placed in the headset and left to interact with the minute long timed interface. When the timer expired the headset was removed and they completed the questionnaire. This was repeated until each iteration of the interface had been tested in a random order. To ensure that each user tested each interface in each order a balanced number of times a simple list of the interface iteration to be tested was devised and followed rather than letting the system randomise the techniques applied.
 
-\section{Results}
+\section{Results and Discussion}
 \subsection{Qualitative Data}
 \subsubsection{Overview of Results}
 The data from the ten questionnaire responses gathered throughout the testing process were collected in a spreadsheet and analysed by assigning a value of 1 - strongly disagree to 5 - strongly agree to each answer. Certain answers were weighted negatively based on the phrasing of the question i.e. "7. I found the system very cumbersome to use.", others were weighted positively i.e. "3. I thought the system was easy to use.". Each questionnaire is split into three sections A, B and C, corresponding to the iterations of the interface tested by each user. 
@@ -464,32 +464,38 @@ Looking at the line graph it is clear that the responses to Section B, the error
 \caption{Visualisation of response data}
 \end{figure}
 
-\subsubsection{Final analysis}
+\subsubsection{Analysis}
 Taking the data and its representations into account it is clear that users found the adaptive techniques to be beneficial to the user experience and usability of the interfaces. The static interface is consistently deemed harder to use, more cumbersome and users felt less confident when using it. In comparison the two adaptive techniques were very closely regarded by users and only by a tiny fraction was the error-analysis interface (Section B) more positively received. This is considering that the results shown are averages of all ten responses. In some individual cases the adaptive techniques equally usable but very rarely less usable than the static control. The full results are in Appendix B.
 
 Something to note about the two exceptions mentioned in 5.1.2, Question 5 and Question 9, is that they were two of the four negatively weighted questions along with 2 and 7. This could also have affected the responses given as there was a tendency to give answers that always provided positive feedback. On average no user gave an answer of 'disagree' or 'strongly disagree' to the positively weighted answers or 'agree'/'strongly agree' to the negatively weighted answers. This shows that the interfaces in general were found to be usable despite the static interface being less well received than the adaptive interfaces.
 
 \subsection{Quantitative Data}
 \subsubsection{Overview of Results}
+During user testing all sessions were recorded using the data gathering system described in 4.3.2. The output data for each user session was categorised by the section being tested i.e. A, B or C. By using a simple python script to analyse these output .xml files some useful data points were extracted. The application focuses on the single user interaction of grabbing and so to measure the effectiveness and usability of an interface the ability of the user to grab the elements should correspond to their ability to use the interface as a whole. Every time a user attempts to grab an object an event is sent to the data gatherer and output along with whether the grab was successful and if the object grabbed is correct. To analyse the data, the number of occurrences of each of these three 'grab types' was counted and gathered into a table (see Appendix C). 
+
+The count of how many times a user has performed a 'successful', 'failed' or 'incorrect' grab varies greatly between users as they each interact at different rates and with different outcomes. However by averaging the counts across all participants an idea of the overall ratio between the grab types was attained as seen in Table 2 and Figure 8. Each iteration of the interface tested by the users was split into two 'phases' as explained in 4.1.2. Phase 1 has the user grab rolling balls and place them in the basket whereas Phase 2 has users grab the balls from a large static grid in front of them. In Figure 8 the line on each bar represents the point during testing when the interface switched from Phase 1 to Phase 2. For example in Section A the average number of total successful grabs was around 30 but only 10 of those occurred during Phase 1.
 
 \begin{table}
 \centering
-\vspace{1cm}\begin{tabular}{ |c|c|c|c| }
+\vspace{1cm}\begin{tabular}{ |c|c|c|c|c|c|c|c|c|c| }
  	\hline
-	\textbf{Section} & \textbf{A} & \textbf{B} & \textbf{C} \\
+ 	\textbf{Phase} & \multicolumn{3}{|c|}{\textbf{Phase 1 and 2}} &  \multicolumn{3}{|c|}{\textbf{Phase 1}} & \multicolumn{3}{|c|}{\textbf{Phase 2}} \\
+ 	\hline
+	\textbf{Section} & \textbf{A} & \textbf{B} & \textbf{C} & \textbf{A} & \textbf{B} & \textbf{C} & \textbf{A} & \textbf{B} & \textbf{C} \\
 	\hline
-	\textbf{Successful Grabs} & 29.9 & 45.5 & 34.1 \\
+	\textbf{Successful Grabs} & 29.9 & 45.5 & 34.1 & 18.8 & 26.5 & 23.5 & 11.1 & 19 & 10.6 \\
 	\hline
-	\textbf{Failed Grabs} & 22 & 1.9 & 16.3 \\
+	\textbf{Failed Grabs} & 22 & 1.9 & 16.3 & 9.2 & 0.1 & 7.2 & 12.8 & 1.8 & 9.1 \\
 	\hline
-	\textbf{Incorrect Grabs} & 24.5 & 37 & 28.5 \\
+	\textbf{Incorrect Grabs} & 24.5 & 37 & 28.5 & 18.8 & 26.4 & 23.2 & 5.7 & 10.6 & 5.3 \\
 	\hline
 \end{tabular}
-\caption{Average grab counts}
+\caption{Average grab counts for Phase 1 and 2}
 \end{table}
 
+
 \begin{figure}
-\centering
+\centering 
 \hspace{-1cm}\begin{tikzpicture}
 \begin{axis}[
  	ylabel=Count,
@@ -500,7 +506,7 @@ Something to note about the two exceptions mentioned in 5.1.2, Question 5 and Qu
     xtick=data,
  	ybar,
  	enlarge x limits=0.2,
- 	bar width = 20,
+ 	bar width = 20pt,
  	width=0.7\textwidth,
 ]
  
@@ -524,6 +530,18 @@ Something to note about the two exceptions mentioned in 5.1.2, Question 5 and Qu
     coordinates {
     (Successful,34.1)(Failed,16.3)(Incorrect,28.5)
     };
+   
+\draw[red, very thick] (-31,111) -- (-12,111);
+\draw[blue, very thick] (-10,190) -- (10,190);
+\draw[green, very thick] (12,106) -- (31,106);
+
+\draw[red, very thick] (69,128) -- (88,128);
+\draw[blue, very thick] (90,18) -- (110,18);
+\draw[green, very thick] (112,91) -- (132,91);
+
+\draw[red, very thick] (168,57) -- (188,57);
+\draw[blue, very thick] (190,106) -- (210,106);
+\draw[green, very thick] (212,53) -- (232,53);
     
     \legend{Section A, Section B, Section C}    
 \end{axis}
@@ -531,7 +549,9 @@ Something to note about the two exceptions mentioned in 5.1.2, Question 5 and Qu
 \caption{Chart of average grab counts}
 \end{figure}
 
+
 \subsubsection{Breakdown of data points}
+
 
 \subsubsection{Final analysis}
 
@@ -539,8 +559,6 @@ Something to note about the two exceptions mentioned in 5.1.2, Question 5 and Qu
 \subsubsection{Overview of Results}
 
 \subsubsection{Qualitative vs quantitative}
-
-\section{Discussion}
 
 \section{Conclusion}
 
@@ -632,6 +650,74 @@ Something to note about the two exceptions mentioned in 5.1.2, Question 5 and Qu
 \caption{Full results from data gathered}
 \end{table}
 
+
+\begin{table}[!ht]
+\centering
+\begin{tabular}{ |c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c| }
+ 	\hline
+	\textbf{Participant} & \multicolumn{3}{|c|}{\textbf{1}} &  \multicolumn{3}{|c|}{\textbf{2}} & \multicolumn{3}{|c|}{\textbf{3}} & \multicolumn{3}{|c|}{\textbf{4}} & \multicolumn{3}{|c|}{\textbf{5}} \\
+	\hline
+	\textbf{Section} & \textbf{A} & \textbf{B} & \textbf{C} & \textbf{A} & \textbf{B} & \textbf{C} & \textbf{A} & \textbf{B} & \textbf{C} & \textbf{A} & \textbf{B} & \textbf{C} & \textbf{A} & \textbf{B} & \textbf{C} \\
+	\hline
+	\textbf{Successful Grabs} & 10 & 18 & 12 & 13 & 14 & 13 & 13 & 24 & 14 & 2 & 17 & 4 & 17 & 29 & 14 \\
+	\hline
+	\textbf{Failed Grabs} & 6 & 0 & 3 & 7 & 2 & 13 & 14 & 0 & 14 & 11 & 1 & 8 & 30 & 6 & 21 \\
+	\hline
+	\textbf{Incorrect Grabs} & 7 & 10 & 5 & 7 & 7 & 9 & 6 & 11 & 6 & 1 & 9 & 1 & 8 & 17 & 9 \\
+	\hline
+\end{tabular}
+
+\centering
+\vspace{1cm}\begin{tabular}{ |c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c| }
+ 	\hline
+	\textbf{Participant} & \multicolumn{3}{|c|}{\textbf{6}} & \multicolumn{3}{|c|}{\textbf{7}} & \multicolumn{3}{|c|}{\textbf{8}} & \multicolumn{3}{|c|}{\textbf{9}} & \multicolumn{3}{|c|}{\textbf{10}} \\
+	\hline
+	\textbf{Section} & \textbf{A} & \textbf{B} & \textbf{C} & \textbf{A} & \textbf{B} & \textbf{C} & \textbf{A} & \textbf{B} & \textbf{C} & \textbf{A} & \textbf{B} & \textbf{C} & \textbf{A} & \textbf{B} & \textbf{C} \\
+	\hline
+	\textbf{Successful Grabs} & 8 & 14 & 9 & 8 & 16 & 9 & 13 & 22 & 12 & 13 & 19 & 10 & 14 & 17 & 9 \\
+	\hline
+	\textbf{Failed Grabs} & 9 & 2 & 3 & 22 & 1 & 10 & 15 & 4 & 8 & 9 & 2 & 8 & 5 & 0 & 3 \\
+	\hline
+	\textbf{Incorrect Grabs} & 4 & 4 & 4 & 2 & 11 & 5 & 7 & 15 & 6 & 6 & 10 & 4 & 9 & 12 & 4 \\
+	\hline
+\end{tabular}
+
+\caption{Phase 1 results from data gathered}
+\end{table}
+
+\begin{table}[!ht]
+\centering
+\begin{tabular}{ |c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c| }
+ 	\hline
+	\textbf{Participant} & \multicolumn{3}{|c|}{\textbf{1}} &  \multicolumn{3}{|c|}{\textbf{2}} & \multicolumn{3}{|c|}{\textbf{3}} & \multicolumn{3}{|c|}{\textbf{4}} & \multicolumn{3}{|c|}{\textbf{5}} \\
+	\hline
+	\textbf{Section} & \textbf{A} & \textbf{B} & \textbf{C} & \textbf{A} & \textbf{B} & \textbf{C} & \textbf{A} & \textbf{B} & \textbf{C} & \textbf{A} & \textbf{B} & \textbf{C} & \textbf{A} & \textbf{B} & \textbf{C} \\
+	\hline
+	\textbf{Successful Grabs} & 17 & 29 & 23 & 21 & 26 & 32 & 19 & 21 & 18 & 18 & 22 & 13 & 21 & 32 & 22 \\
+	\hline
+	\textbf{Failed Grabs} & 7 & 0 & 5 & 11 & 0 & 8 & 3 & 0 & 4 & 9 & 0 & 5 & 15 & 0 & 11 \\
+	\hline
+	\textbf{Incorrect Grabs} & 17 & 28 & 23 & 21 & 26 & 31 & 19 & 21 & 18 & 18 & 22 & 13 & 21 & 32 & 21 \\
+	\hline
+\end{tabular}
+
+\centering
+\vspace{1cm}\begin{tabular}{ |c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c| }
+ 	\hline
+	\textbf{Participant} & \multicolumn{3}{|c|}{\textbf{6}} & \multicolumn{3}{|c|}{\textbf{7}} & \multicolumn{3}{|c|}{\textbf{8}} & \multicolumn{3}{|c|}{\textbf{9}} & \multicolumn{3}{|c|}{\textbf{10}} \\
+	\hline
+	\textbf{Section} & \textbf{A} & \textbf{B} & \textbf{C} & \textbf{A} & \textbf{B} & \textbf{C} & \textbf{A} & \textbf{B} & \textbf{C} & \textbf{A} & \textbf{B} & \textbf{C} & \textbf{A} & \textbf{B} & \textbf{C} \\
+	\hline
+	\textbf{Successful Grabs} & 9 & 25 & 26 & 19 & 35 & 25 & 25 & 24 & 27 & 19 & 20 & 24 & 20 & 31 & 25 \\
+	\hline
+	\textbf{Failed Grabs} & 9 & 1 & 7 & 14 & 0 & 8 & 12 & 0 & 8 & 7 & 0 & 10 & 5 & 0 & 6 \\
+	\hline
+	\textbf{Incorrect Grabs} & 9 & 25 & 26 & 19 & 35 & 25 & 25 & 24 & 26 & 19 & 20 & 24 & 20 & 31 & 25 \\
+	\hline
+\end{tabular}
+
+\caption{Phase 2 results from data gathered}
+\end{table}
 
 \pagebreak
 

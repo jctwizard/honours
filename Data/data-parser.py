@@ -5,8 +5,19 @@ import sys
 
 #results = open('results.txt', 'r+')
 
+successful_grab_list_a = []
+successful_grab_list_b = []
+successful_grab_list_c = []
+failed_grab_list_a = []
+failed_grab_list_b = []
+failed_grab_list_c = []
+bad_grab_list_a = []
+bad_grab_list_b = []
+bad_grab_list_c = []
+
 for dirpath, dirnames, filenames in os.walk(os.getcwd()):
     for filepath in filenames:
+        grid = False
         if filepath.endswith('.xml'):
             filename = os.path.join(dirpath, filepath)
 
@@ -40,6 +51,15 @@ for dirpath, dirnames, filenames in os.walk(os.getcwd()):
                 grab = element.find("GrabRight")
                 bad = element.find("Grabbed_Bad_Bird")
 
+                if len(element.getchildren()) == 49:
+                    grid = True
+
+                if grid is False:
+                    if len(element.getchildren()) == 49:
+                        grid = True
+
+                    continue
+
                 if bad is not None:
                     bad_grabs += 1
 
@@ -54,16 +74,43 @@ for dirpath, dirnames, filenames in os.walk(os.getcwd()):
 
             #results.write("Participant " + os.path.basename(os.path.normpath(dirpath)) + "\t")
 
-            #if filepath.count("a") > 0:
+            if filepath.count("a") > 0:
+                successful_grab_list_a.append(successes)
+                failed_grab_list_a.append(failures)
+                bad_grab_list_a.append(bad_grabs)
                 #results.write("Section A\n")
-            #if filepath.count("b") > 0:
+            if filepath.count("b") > 0:
+                successful_grab_list_b.append(successes)
+                failed_grab_list_b.append(failures)
+                bad_grab_list_b.append(bad_grabs)
                 #results.write("Section B\n")
-            #if filepath.count("c") > 0:
+            if filepath.count("c") > 0:
+                successful_grab_list_c.append(successes)
+                failed_grab_list_c.append(failures)
+                bad_grab_list_c.append(bad_grabs)
                 #results.write("Section C\n")
-
-            sys.stdout.write(str(bad_grabs) + " & ")
 
             #results.write("Successes: " + str(successes) + "\t")
             #results.write("Failures: " + str(failures) + "\n\n")
+
+for grab in range(0, len(successful_grab_list_a)):
+    sys.stdout.write(str(successful_grab_list_a[grab]) + " & ")
+    sys.stdout.write(str(successful_grab_list_b[grab]) + " & ")
+    sys.stdout.write(str(successful_grab_list_c[grab]) + " & ")
+
+sys.stdout.write("\n\n")
+
+for grab in range(0, len(failed_grab_list_a)):
+    sys.stdout.write(str(failed_grab_list_a[grab]) + " & ")
+    sys.stdout.write(str(failed_grab_list_b[grab]) + " & ")
+    sys.stdout.write(str(failed_grab_list_c[grab]) + " & ")
+
+sys.stdout.write("\n\n")
+
+for grab in range(0, len(bad_grab_list_a)):
+    sys.stdout.write(str(bad_grab_list_a[grab]) + " & ")
+    sys.stdout.write(str(bad_grab_list_b[grab]) + " & ")
+    sys.stdout.write(str(bad_grab_list_c[grab]) + " & ")
+
 
 #results.close()
