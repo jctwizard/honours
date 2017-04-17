@@ -86,7 +86,7 @@ One of the most common and difficult to use interaction models in virtual realit
 
 To evaluate the benefits of the adaptive techniques applied in the application, both quantitative questionnaire data and qualitative data have been gathered and analysed. To measure the usability of the adaptive techniques the process used a static control interface. Combing the two sets of data and comparing gives a clear representation of the effect the adaptive techniques have on usability.
 
-The results gathered show that adaptive user interface techniques... UPDATE WITH RESULTS
+The results gathered show that adaptive user interface techniques can improve the usability of a 3D interface in virtual reality especially when using the errors of the user to identify their intentions.
 
 \keywords{Virtual Reality, User-Interfaces, 3D Interfaces, Adaptive Interfaces, Interface Plasticity}
 
@@ -241,7 +241,7 @@ Each of these points was taken into consideration and a simple virtual reality a
 
 To maintain the simplicity of the application and to try and avoid users becoming wrapped up in the details of the objects they were interacting with a simple ball was chosen. Initially a more complex object was implemented but as the focus needed to be on interacting and not the objects being interacted with the coloured ball leant itself to the testing. A ball also has associations with grabbing and throwing which reinforced the core interaction.
 
-The choice to use a laser pointer was made early on as there is inherent difficulty in the task of selecting something in 3D space using a pointer. The use of a pressurised environment was executed in the form a timed and scored interface. At first a kind of tutorial in which the user would be prompted to perform different actions was considered. The simple timer system was chosen instead because it did had no reliance on the speed at which the user reads or the interpretation of instructions. By having a single task repeated as many times as possible the user is forced to be less cautious with their interactions, providing more varied data.
+The choice to use a laser pointer was made early on as there is inherent difficulty in the task of selecting something in 3D space using a pointer and it is a common method for VR interaction. The use of a pressurised environment was executed in the form a timed and scored interface. At first a kind of tutorial in which the user would be prompted to perform different actions was considered. The simple timer system was chosen instead because it does not rely on the speed at which the user reads or the interpretation of instructions. By having a single task repeated as many times as possible the user interacts more often providing more varied data and a larger data set.
 
 The final design of the application took into account the outlined points and consisted of a simple space with a table to focus the user's gaze. On this table balls of two colours appear and roll toward the participant. A timer is visible on the table and is counting down to zero, some text instructs the user to place the balls into a basket of corresponding colour next to the table. Each time the user successfully selects and places a ball a score readout above the basket increases.
 
@@ -292,7 +292,7 @@ By using a threshold distance beyond which elements are ignored the instant the 
 
 $d = |(\mathbf{a}-\mathbf{p}) - ((\mathbf{a}-\mathbf{p}) \cdot  \mathbf{n})\mathbf{n}|$
 
-In which $d$ is the shortest distance between point $p$ and the vector with position $a$ and direction $n$. A visualisation of the formula can be seen in figure 6 below. This implementation immediately proved to make selecting moving elements and densely packed elements faster and less cumbersome during basic testing. It could break down when a user is selecting objects very far away through a grouping of close objects in which case the formula could be modified to take into account distance of the perpendicular point along the laser.
+In which $d$ is the shortest distance between point $p$ and the vector with position $a$ and direction $n$. A visualisation of the formula can be seen in Figure 6. This implementation immediately proved to make selecting moving elements and densely packed elements faster and less cumbersome during basic testing. It could break down when a user is selecting objects very far away through a grouping of close objects in which case the formula could be modified to take into account distance of the perpendicular point along the laser.
 
 \subsubsection{Dynamic Scaling}
 The second technique adapts the interface visually in an attempt to improve the usability of smaller or tightly packed elements such as the grid of balls presented in the latter half of the application. By using the shortest distance formula again to determine how far away an element is from the user's laser it can be scaled by some amount to create the effect of it becoming larger as the user goes to select it. The effectiveness of this technique relies on the theory laid out in Fitt's Law stating that the time to select a user interface element is proportionate to its size and the distance from it. By scaling the elements as the distance to it decreases the speed of the selection should increase.
@@ -344,7 +344,7 @@ Each section consisted of the same ten questions (see Appendix A). Section A cor
 Although the users were not asked to directly compare the experience of the different iterations it can be assumed, to some degree, that their responses are scaled based on their impression of the previous interface. Also note that users were given the three interface iterations in a shuffled order without knowing which was the control. This means a user who experienced the 'static' control interface first may have responded to the adaptive iterations differently to a user experiencing the adaptive iterations before the control.
 
 \subsubsection{Breakdown of responses}
-Table 1 shows the average of each response taken for the ten responses across all three sections of the questionnaire. As explained in 5.1.1 certain questions are weighted negatively based on the phrasing given. These are questions 2, 5, 7 and 9 all proceeded by a minus sign in Table 1. In order to visualise the data in a more understandable and comparable way the negatively weighted answers were translated onto a reverse scale with 1 being strongly agree and 5 being strongly disagree. This means an answer to a negative question of agree - 4 on the normal scale becomes disagree - 2 on the reverse scale essentially taking the positive version of it. These translated negative answers alongside the other positive answers were then compiled into graphs as shown in Figure 7. Both the line graph and bar chart use the same data and provide some insight into the user experience for each iteration of the interface.
+Table 1 shows the average of each response taken for the ten responses across all three sections of the questionnaire. As explained in 5.1.1 certain questions are weighted negatively based on the phrasing given. These are questions 2, 5, 7 and 9 all have been inverted on the 1-5 scale in Table 1 to maintain a total out of 50. In order to visualise the data in a more understandable and comparable way the negatively weighted answers were translated onto a reverse scale with 1 being strongly agree and 5 being strongly disagree. This means an answer to a negative question of agree - 4 on the normal scale becomes disagree - 2 on the reverse scale essentially taking the positive version of it. These translated negative answers alongside the other positive answers were then compiled into graphs as shown in Figure 7. Both the line graph and bar chart use the same data and provide some insight into the user experience for each iteration of the interface.
 
 Looking at the line graph it is clear that the responses to Section B, the error-based adaptive technique, are the most positive in almost every question. Section A, the static control interface, is the most negative in almost every question. Finally Section C, the dynamic scaling technique, is the midground in almost every question. The primary exceptions to these outcomes are question 5 and  question 9. Question 5: "I thought there was too much inconsistency in this system.", received slightly more positive answers in Section C than Section B. This could be that although the adaptive error-analysis was perceived as easier to use when it failed to act as the user expected it caused more issues than the dynamic scaling. Question 9 on the other hand: "I needed to learn a lot of things before I could get going with this system." received more positive answers in Section A, the static control interface by a small margin. This could be attributed to the need to grasp what how the interface is adapting when the dynamic scaling and error-analysis adaptive techniques are applied. Even though they may make the interface easier to use, they create slightly more of a learning curve than a static interface.
 
@@ -354,11 +354,11 @@ Looking at the line graph it is clear that the responses to Section B, the error
  \hline
  \textbf{Question} & \textbf{1} & \textbf{2} & \textbf{3} & \textbf{4} & \textbf{5} & \textbf{6} & \textbf{7} & \textbf{8} & \textbf{9} & \textbf{10} & \textbf{Total} \\ 
  \hline
- \textbf{Section A} & 3.2 & -1.7 & 3.7 & 3.7 & -2.7 & 4.0 & -2.7 & 3.5 & -1.4 & 3.8 & 13.4\\ 
+ \textbf{Section A} & 3.2 & 3.3 & 3.7 & 3.7 & 2.3 & 4.0 & 2.3 & 3.5 & 3.6 & 3.8 & 29.7\\ 
  
- \textbf{Section B} & 3.9 & -1.3 & 4.1 & 4.4 & -1.7 & 4.5 & -2.4 & 3.9 & -1.6 & 4.3 & 18.1\\ 
+ \textbf{Section B} & 3.9 & 3.7 & 4.1 & 4.4 & 3.3 & 4.5 & 2.6 & 3.9 & 3.4 & 4.3 & 38.1\\ 
  
- \textbf{Section C} & 3.8 & -1.8 & 3.9 & 4.0 & -1.5 & 4.3 & -2.3 & 3.9 & -1.7 & 4.1 & 16.7\\ 
+ \textbf{Section C} & 3.8 & 3.2 & 3.9 & 4.0 & 3.5 & 4.3 & 2.7 & 3.9 & 3.3 & 4.1 & 36.7\\ 
  \hline
 \end{tabular}
 \caption{Averaged responses over ten users}
@@ -436,6 +436,7 @@ Looking at the line graph it is clear that the responses to Section B, the error
  
 \addplot[
     color=red,
+    fill=red,
     ]
     coordinates {
     (1,3.2)(2,3.3)(3,3.7)(4,3.7)(5,2.3)(6,4.0)(7,2.3)(8,3.5)(9,3.6)(10,3.8)
@@ -443,6 +444,7 @@ Looking at the line graph it is clear that the responses to Section B, the error
  
 \addplot[
     color=blue,
+    fill=blue
     ]
     coordinates {
     (1,3.9)(2,3.7)(3,4.1)(4,4.4)(5,3.3)(6,4.5)(7,2.6)(8,3.9)(9,3.4)(10,4.3)
@@ -450,6 +452,7 @@ Looking at the line graph it is clear that the responses to Section B, the error
     
 \addplot[
     color=green,
+    fill=green,
     ]
     coordinates {
     (1,3.8)(2,3.2)(3,3.9)(4,4.0)(5,3.5)(6,4.3)(7,2.7)(8,3.9)(9,3.3)(10,4.1)
@@ -550,17 +553,52 @@ The count of how many times a user has performed a 'successful', 'failed' or 'in
 \end{figure}
 
 
-\subsubsection{Breakdown of data points}
+\subsubsection{Breakdown of data gathered}
+To understand the data fully each grab type needs to be explained in greater detail. A success occurs when a user presses the button to grab and is able to grab an object with the pointer. A failure occurs when the user grabs but there is no object within range or within the parameters of the error-based technique used in Section B. An incorrect grab corresponds to a successful grab on a ball that is not the correct colour to be scored in the basket. One note is that an incorrect grab might be made deliberately in the case of users grabbing an incorrect ball in order to remove it from the focus area and makes it easier to grab the correctly coloured ones. Another point is that a failure could also occur deliberately if the user is randomly pressing the button to grab without the intention of grabbing a ball.
 
+The usability of the interface over the averages of each test can be interpreted by comparing each individual grab type between the three sections. Section A being the static interface, B the error-based adaptive technique and C the dynamic scaling. Although the count itself for each section does not give much information, the ratio between them within each type gives a clear idea of which section users struggled most in and which section users excelled in. 
 
-\subsubsection{Final analysis}
+\subsubsection{Successful grabs}
+Successful grabs during the testing of Section B occurred more one and a half times as often as during Section A. Section C shows an improvement over A but does not come close to B. Looking at the individual phases for Section B, successful grabs occurred about evenly across the dynamic rolling balls and the static grid of balls. Section A and C showed similar comparison between Phase 1 and 2 but the number of successful grabs on average was slightly less during Phase 1 of Section C in comparison to Phase 1 of Section A.  
 
-\subsection{Comparison}
-\subsubsection{Overview of Results}
+\subsubsection{Failed grabs}
+Taking into account the fact that a high number of failed grabs represents the user struggling to select an element of the interface, Section B once again seems to be the most usable of the three iterations. On average nearly all of the failed grabs occur in Phase 1, the dynamic rolling interface, for Section B. Section A has the highest number of failed grabs with Section C tending toward A but during Phase 1 and 2 but undercutting it by a fair margin. Overall significantly less failed grabs happened during Phase 2, the static interface, which is to be assumed as selecting the rolling balls requires more dexterity and precision.
 
-\subsubsection{Qualitative vs quantitative}
+\subsubsection{Incorrect grabs}
+In comparison to the Successful and Failed grab data, the number of Incorrect grabs across the sections is almost the inverse. More Incorrect grabs occurred in Section B than Section A and Section C was somewhere between. This means users were more likely to grab a ball that could not be scored in both of the adaptive interfaces compared to the static control. It is also worth noting that during Phase 2 across the board far more incorrect grabs occurred in every Section. With the number of Incorrect grabs during Section A and C in Phase 1 being about even.
+
+\subsubsection{Analysis}
+Taking into account the three sets of data for each grab type and how they compare laid out above, Section B appears to be the most usable of the three iterations. Section C is a slight improvement over A in terms of the static interface during Phase 2 but only seems to have reduced the number of failed grabs during Phase 1. It could be interpreted that during Phase 1 of Section A the user found the interface so cumbersome that they continually tried to grab, often unsuccessfully whereas in Section C, with the dynamic scaling, they were more cautious. Although they generally still successfully grabbed the same number of balls in Phase 1 of Sections A and C they failed more times in Section A.
+
+The most interesting data point is the Incorrect grab type. It proves to be found far less often in Section A, the static control, that the users grabbed the wrong type of ball especially in Phase 2. But when this data is combined with the data for the number of failed grabs it could be assumed that users deliberately grabbed incorrect balls during all three sections but were more successful in Sections B and to some extent section C. As the users are experimenting and beginning to learn the interface they may be likely to grab the incorrect balls even though they know they are not beneficial and cannot be scored. 
+
+\subsection{Comparison of results}
+Using the analysis of feedback gathered using the questionnaires outlined in 5.1.3 and data gathered during testing discussed in 5.2.6, it is very clear that Section B, the error-based adaptive interface was far more usable from both a quantitative and qualitative view point. Section C, the dynamic scaling adaptive interface, was slightly less usable but still more so than Section A, the static control interface. It is worth noting that individuals may have found Section A or C was the most usable but on average this was not the case.
 
 \section{Conclusion}
+\subsection{Adaptive techniques in 3d}
+Having analysed the data gathered during the testing of the two adaptive techniques it is clear that having some level of error-based adaptivity in 3D can greatly improve the confidence with which users interact as well as the general usability of the interface. The dynamic scaling technique also benefitted the interface and could perhaps be altered to better effect. In general the simple implementations outlined in the Methodology could be applied to almost any user interface in 3D and according to these results, would help to improve the user experience.
+
+Returning to the research question outlined in 2.4: \emph{"How can the usability of virtual reality interfaces benefit from adaptive techniques"} now that the results have been gathered and analysed an answer can be formed. The research carried out shows that, especially when using the laser pointer interaction, these adaptive techniques and others like them can allow 3D interfaces, especially for VR, to become more complex and improve the speed of interaction. Users were found to prefer interacting with the interfaces using adaptive techniques which is a direct benefit and shows an improvement to the user experience. The data gathered and analysed makes it apparent that the error-based adaptivity was particularly beneficial to user accuracy as well as interaction speed. The dynamic scaling technique also showed improvements although not as great as the error-based approach when compared against the static control interface.
+
+Comparing the implementation and results executed during this project with the research on previous adaptive interface techniques it is clear that concepts conceived by others for 2D interfaces also translate into 3D interfaces. Although the data does not show the exact time it takes for a user to select an object in the interface by looking at the number of successful selections the adaptive techniques improved the ability to quickly acquire targets. When it comes to the dynamic scaling technique implemented this ability to rapidly select a larger target supports the research around Fitt's Law in 3D as discussed in section 3.3.
+
+The various research discussed in the Literature Review generally concluded by saying that 3D interfaces need to be tested more thoroughly before an evaluation of adaptive techniques can be made, "[it] is not really well explored for 3D applications" (Lacoche 2014). However with Virtual Reality development at an all-time high it may not be long before new research is available in line with the conclusions made here. Although these adaptive techniques improved the user experience in a pointer based interface they may be harder to apply to the common VR interaction of grabbing objects with a virtual hand. However the limitations of an interaction that relies on proximity to the user in 3D space will perhaps shift the standard approach toward pointers for more complex interfaces like those used in traditional 2D environments. Whether 3D interfaces will replace the tools we use on a day to day basis is yet to be seen.
+
+\subsection{Further Development}
+
+This project has underlined the value of challenging ideas and assumptions in user interface design and implementation. With the rise of 3D interface both in VR and AR, it will be vital to look beyond the traditional interactions and the static nature of 2D interfaces. Taking the user's input and applying it to make every aspect of the interface adaptive and dynamic could lead to a new level of efficiency and productivity.
+
+This project has demonstrated the benefits of two adaptive techniques in a simple interaction situation with a complex interface. These techniques could be expanded by developing their awareness of the user. Currently the techniques do not take into account past data only present data. By extending their implementation to take into account previous errors and habits formed by the user they could differentiate more easily between situations where the user has made an error which needs corrected and those when the user has performed an action interpreted as an error. 
+
+During the development of this application many other techniques were conceived that could not be implemented due to the scope of the testing. These included the use of Markov chain analysis for user modelling, stabilisation and pointer snapping. Markov chains could be used to store situations in which the user tends to make errors and gauge how they recover from those errors. This could then allow the system to recover for the user. Stabilisation would take into account small repeated and random movements made by the user and compensate to smooth out the pointer movements, especially beneficial to users with a tremor. Pointer snapping may prevent error by always having a target selected and interpreting which target the user intends to select based on both their gaze direction and pointer direction.
+
+\subsection{The future of interaction}
+It is important to begin developing and iterating on 3D interfaces before the standard is set. If the counterpart to the window and mouse system of desktop computers is settled upon too quickly for VR and AR experiments and improvements will be much harder to integrate into every day use. By pushing the boundaries of what is accepted new levels of productivity and new interaction possibilities will be discovered. 
+
+Although Virtual Reality is becoming more visible in the world of mainstream technology it is likely that the arrival of lightweight and affordable Augmented Reality will truly usher in the next generation of 3D interaction. The ability to stay within the world while using a device is clearly something we desire as seen with the ubiquity of smartphone devices. Augmented Reality provides the ability to stay in your surrounding while interacting naturally in 3D, multi-user interaction becomes incredibly intuitive and was something only briefly touched on in traditional 2D environments by applications like Google Documents.
+
+If Augmented Reality does become the new smartphone then 3D interfaces will need to be ready to evolve and hopefully the adaptive techniques touched on in this project will be a part of that evolution, because it is clear that a small number of improvements can provide vast returns for usability and efficiency.
 
 \pagebreak
 
@@ -717,7 +755,7 @@ The count of how many times a user has performed a 'successful', 'failed' or 'in
 \end{tabular}
 
 \caption{Phase 2 results from data gathered}
-\end{table}
+\end{table} 
 
 \pagebreak
 
@@ -734,7 +772,7 @@ Bye, K. 2016. \emph{Five Universal Tasks of 3D User Interfaces with Doug Bowman}
 
 Jen, H. 2016. \emph{Designing for VR: Applying Usability Heuristics to Virtual Reality} Omobono. 
 
-Jeremy, L. 2014. \emph{A survey of plasticity in 3D user interfaces} Minneapolis. IEEE. 
+Lacoche, J. 2014. \emph{A survey of plasticity in 3D user interfaces} Minneapolis. IEEE. 
 
 Karthik, R. 2011. \emph{Modeling error-based Adaptive User Interfaces} Iowa State University. 
 

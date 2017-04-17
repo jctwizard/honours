@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2015.4.13)  8 APR 2017 19:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2015.4.13)  17 APR 2017 12:13
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -643,7 +643,7 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 52.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 52.
- <logo.png, id=179, 145.54375pt x 168.63pt>
+ <logo.png, id=195, 145.54375pt x 168.63pt>
 File: logo.png Graphic file (type png)
  <use logo.png>
 Package pdftex.def Info: logo.png used on input line 63.
@@ -661,11 +661,11 @@ l.19 ...}Dynamic Scaling}{14}{subsubsection.4.2.3}
 \tf@toc=\write5
 \openout5 = `Dissertation.toc'.
 
- (/Users/jamie/Desktop/Coursework/HonoursProject/HonoursRepo/Dissertation/.texpadtmp/Dissertation.lof)
+ (/Users/jamie/Desktop/Coursework/HonoursProject/HonoursRepo/Dissertation/.texpadtmp/Dissertation.lof [3])
 \tf@lof=\write6
 \openout6 = `Dissertation.lof'.
 
- (/Users/jamie/Desktop/Coursework/HonoursProject/HonoursRepo/Dissertation/.texpadtmp/Dissertation.lot [3])
+ (/Users/jamie/Desktop/Coursework/HonoursProject/HonoursRepo/Dissertation/.texpadtmp/Dissertation.lot)
 \tf@lot=\write7
 \openout7 = `Dissertation.lot'.
 
@@ -678,12 +678,12 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has b
 <to be read again> 
                    \relax 
 l.97 
-      [1] <jobsimulator.jpg, id=284, 602.25pt x 602.25pt>
+      [1] <jobsimulator.jpg, id=304, 602.25pt x 602.25pt>
 File: jobsimulator.jpg Graphic file (type jpg)
  <use jobsimulator.jpg>
 Package pdftex.def Info: jobsimulator.jpg used on input line 108.
 (pdftex.def)             Requested size: 223.1329pt x 223.13226pt.
- <tiltbrush.jpg, id=285, 602.25pt x 602.25pt>
+ <tiltbrush.jpg, id=305, 602.25pt x 602.25pt>
 File: tiltbrush.jpg Graphic file (type jpg)
  <use tiltbrush.jpg>
 Package pdftex.def Info: tiltbrush.jpg used on input line 113.
@@ -696,12 +696,12 @@ l.121
 <to be read again> 
                    \relax 
 l.127 
-       [3 <./jobsimulator.jpg> <./tiltbrush.jpg>] <2dui.jpg, id=293, 331.99031pt x 403.5075pt>
+       [3 <./jobsimulator.jpg> <./tiltbrush.jpg>] <2dui.jpg, id=313, 331.99031pt x 403.5075pt>
 File: 2dui.jpg Graphic file (type jpg)
  <use 2dui.jpg>
 Package pdftex.def Info: 2dui.jpg used on input line 136.
 (pdftex.def)             Requested size: 192.60126pt x 234.08992pt.
- <3dui.png, id=294, 371.13657pt x 366.61969pt>
+ <3dui.png, id=314, 371.13657pt x 366.61969pt>
 File: 3dui.png Graphic file (type png)
  <use 3dui.png>
 Package pdftex.def Info: 3dui.png used on input line 141.
@@ -720,22 +720,22 @@ LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <12> not available
 Missing character: There is no â in font ptmr7t!
 Missing character: There is no € in font ptmr7t!
 Missing character: There is no ˜ in font ptmr7t!
- [5] <steamvr.jpg, id=304, 752.8125pt x 401.5pt>
+ [5] <steamvr.jpg, id=324, 752.8125pt x 401.5pt>
 File: steamvr.jpg Graphic file (type jpg)
  <use steamvr.jpg>
 Package pdftex.def Info: steamvr.jpg used on input line 183.
 (pdftex.def)             Requested size: 375.80544pt x 200.43706pt.
- [6] [7 <./steamvr.jpg>] <fantasticcontraption.jpg, id=313, 602.25pt x 602.25pt>
+ [6] [7 <./steamvr.jpg>] <fantasticcontraption.jpg, id=334, 602.25pt x 602.25pt>
 File: fantasticcontraption.jpg Graphic file (type jpg)
  <use fantasticcontraption.jpg>
 Package pdftex.def Info: fantasticcontraption.jpg used on input line 201.
 (pdftex.def)             Requested size: 147.26852pt x 147.26306pt.
- <firstcontact.png, id=314, 602.25pt x 603.25375pt>
+ <firstcontact.png, id=335, 602.25pt x 603.25375pt>
 File: firstcontact.png Graphic file (type png)
  <use firstcontact.png>
 Package pdftex.def Info: firstcontact.png used on input line 206.
 (pdftex.def)             Requested size: 147.26852pt x 147.5085pt.
- <brookhaven.jpg, id=315, 665.48625pt x 665.48625pt>
+ <brookhaven.jpg, id=336, 665.48625pt x 665.48625pt>
 File: brookhaven.jpg Graphic file (type jpg)
  <use brookhaven.jpg>
 Package pdftex.def Info: brookhaven.jpg used on input line 211.
@@ -743,74 +743,74 @@ Package pdftex.def Info: brookhaven.jpg used on input line 211.
  [8 <./fantasticcontraption.jpg> <./firstcontact.png> <./brookhaven.jpg>]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/sc' in size <12> not available
 (Font)              Font shape `OT1/ptm/b/sc' tried instead on input line 231.
- [9] [10] [11] <earlydemo.png, id=335, 819.06pt x 568.1225pt>
+ [9] [10] [11] <earlydemo.png, id=355, 819.06pt x 568.1225pt>
 File: earlydemo.png Graphic file (type png)
  <use earlydemo.png>
 Package pdftex.def Info: earlydemo.png used on input line 259.
 (pdftex.def)             Requested size: 375.80544pt x 260.67201pt.
- [12 <./earlydemo.png>] [13] <nearestpoint.png, id=345, 417.56pt x 219.82124pt>
+ [12 <./earlydemo.png>] [13] <nearestpoint.png, id=365, 417.56pt x 219.82124pt>
 File: nearestpoint.png Graphic file (type png)
  <use nearestpoint.png>
 Package pdftex.def Info: nearestpoint.png used on input line 287.
 (pdftex.def)             Requested size: 375.80544pt x 197.8507pt.
- [14 <./nearestpoint.png>] [15] [16] [17] [18] [19] [20] [21] [22] [23]
-Overfull \hbox (65.90106pt too wide) in paragraph at lines 588--614
+ [14 <./nearestpoint.png>] [15] [16] [17] [18] [19] [20] [21] [22] [23] [24] [25] [26] [27] [28]
+Overfull \hbox (65.90106pt too wide) in paragraph at lines 626--652
  []| [] 
  []
 
-[24] [25]
-Overfull \hbox (14.39522pt too wide) in paragraph at lines 729--730
+[29] [30]
+Overfull \hbox (14.39522pt too wide) in paragraph at lines 767--768
 \OT1/cmtt/m/n/12 / / www . stevebromley . com / blog / 2016 / 06 / 03 / running -[] user -[] tests -[] for -[] virtual -[] reality/$[]
  []
 
-[26]
-Overfull \hbox (32.50447pt too wide) in paragraph at lines 745--746
+[31]
+Overfull \hbox (32.50447pt too wide) in paragraph at lines 783--784
 []\OT1/ptm/m/n/12 Meyer, R. 2015 \OT1/ptm/m/it/12 Even Early Fo-cus Groups Hated Clippy \OT1/ptm/m/n/12 Avail-able from: []$\OT1/cmtt/m/n/12 http : / / www . theatlantic .
  []
 
 
-Overfull \hbox (3.04521pt too wide) in paragraph at lines 745--746
+Overfull \hbox (3.04521pt too wide) in paragraph at lines 783--784
 \OT1/cmtt/m/n/12 com / technology / archive / 2015 / 06 / clippy -[] the -[] microsoft -[] office -[] assistant -[] is -[] the -[]
  []
 
 
-Overfull \hbox (25.96036pt too wide) in paragraph at lines 751--752
+Overfull \hbox (25.96036pt too wide) in paragraph at lines 789--790
 []\OT1/ptm/m/n/12 Pino, N. 2016 \OT1/ptm/m/it/12 HTC Vive re-view \OT1/ptm/m/n/12 Avail-able at: []$\OT1/cmtt/m/n/12 http : / / www . techradar . com / reviews / wearables /
  []
 
 
-Overfull \hbox (2.7376pt too wide) in paragraph at lines 753--754
+Overfull \hbox (2.7376pt too wide) in paragraph at lines 791--792
 []\OT1/ptm/m/n/12 Robert, Z. \OT1/ptm/m/it/12 Look-That-There: Ex-ploit-ing Gaze in Vir-tual Re-al-ity In-ter-ac-tions \OT1/ptm/m/n/12 Prov-i-dence. Brown
  []
 
 
-Overfull \hbox (22.57022pt too wide) in paragraph at lines 763--764
+Overfull \hbox (22.57022pt too wide) in paragraph at lines 801--802
 \OT1/cmtt/m/n/12 bunnyfoot . com / blog / 2016 / 07 / the -[] reality -[] of -[] virtual -[] reality -[] user -[] testing -[] our -[] top -[]
  []
 
-[27] [28]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 787.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 787.
+[32] [33]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 825.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 825.
  (/Users/jamie/Desktop/Coursework/HonoursProject/HonoursRepo/Dissertation/.texpadtmp/Dissertation.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 787.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 787.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 825.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 825.
 Package rerunfilecheck Info: File `Dissertation.out' has not changed.
 (rerunfilecheck)             Checksum: <no file>.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 787.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 825.
  ) 
 Here is how much of TeX's memory you used:
- 28030 strings out of 493117
- 673437 string characters out of 6135433
+ 28043 strings out of 493117
+ 673602 string characters out of 6135433
  868459 words of memory out of 5000000
- 30909 multiletter control sequences out of 15000+600000
+ 30913 multiletter control sequences out of 15000+600000
  42454 words of font info for 73 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  62i,21n,76p,1234b,2329s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2014/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on /Users/jamie/Desktop/Coursework/HonoursProject/HonoursRepo/Dissertation/.texpadtmp/Dissertation.pdf (33 pages, 2602566 bytes).
+Output written on /Users/jamie/Desktop/Coursework/HonoursProject/HonoursRepo/Dissertation/.texpadtmp/Dissertation.pdf (38 pages, 2613289 bytes).
 PDF statistics:
- 500 PDF objects out of 1000 (max. 8388607)
- 437 compressed objects within 5 object streams
- 99 named destinations out of 1000 (max. 500000)
- 412 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 544 PDF objects out of 1000 (max. 8388607)
+ 476 compressed objects within 5 object streams
+ 108 named destinations out of 1000 (max. 500000)
+ 444 words of extra memory for PDF output out of 10000 (max. 10000000)
 

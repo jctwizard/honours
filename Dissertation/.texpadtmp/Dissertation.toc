@@ -29,15 +29,19 @@
 \contentsline {subsubsection}{\numberline {5.1.3}Analysis}{21}{subsubsection.5.1.3}
 \contentsline {subsection}{\numberline {5.2}Quantitative Data}{22}{subsection.5.2}
 \contentsline {subsubsection}{\numberline {5.2.1}Overview of Results}{22}{subsubsection.5.2.1}
-\contentsline {subsubsection}{\numberline {5.2.2}Breakdown of data points}{23}{subsubsection.5.2.2}
-\contentsline {subsubsection}{\numberline {5.2.3}Final analysis}{23}{subsubsection.5.2.3}
-\contentsline {subsection}{\numberline {5.3}Comparison}{23}{subsection.5.3}
-\contentsline {subsubsection}{\numberline {5.3.1}Overview of Results}{23}{subsubsection.5.3.1}
-\contentsline {subsubsection}{\numberline {5.3.2}Qualitative vs quantitative}{23}{subsubsection.5.3.2}
-\contentsline {section}{\numberline {6}Conclusion}{23}{section.6}
-\contentsline {section}{\numberline {7}Appendices}{24}{section.7}
-\contentsline {subsection}{\numberline {7.1}Appendix A}{24}{subsection.7.1}
-\contentsline {subsection}{\numberline {7.2}Appendix B}{24}{subsection.7.2}
-\contentsline {subsection}{\numberline {7.3}Appendix C}{25}{subsection.7.3}
-\contentsline {section}{\numberline {8}References}{26}{section.8}
-\contentsline {section}{\numberline {9}Bibliography}{28}{section.9}
+\contentsline {subsubsection}{\numberline {5.2.2}Breakdown of data gathered}{23}{subsubsection.5.2.2}
+\contentsline {subsubsection}{\numberline {5.2.3}Successful grabs}{24}{subsubsection.5.2.3}
+\contentsline {subsubsection}{\numberline {5.2.4}Failed grabs}{24}{subsubsection.5.2.4}
+\contentsline {subsubsection}{\numberline {5.2.5}Incorrect grabs}{24}{subsubsection.5.2.5}
+\contentsline {subsubsection}{\numberline {5.2.6}Analysis}{25}{subsubsection.5.2.6}
+\contentsline {subsection}{\numberline {5.3}Comparison of results}{25}{subsection.5.3}
+\contentsline {section}{\numberline {6}Conclusion}{26}{section.6}
+\contentsline {subsection}{\numberline {6.1}Adaptive techniques in 3d}{26}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}Further Development}{27}{subsection.6.2}
+\contentsline {subsection}{\numberline {6.3}The future of interaction}{28}{subsection.6.3}
+\contentsline {section}{\numberline {7}Appendices}{29}{section.7}
+\contentsline {subsection}{\numberline {7.1}Appendix A}{29}{subsection.7.1}
+\contentsline {subsection}{\numberline {7.2}Appendix B}{29}{subsection.7.2}
+\contentsline {subsection}{\numberline {7.3}Appendix C}{30}{subsection.7.3}
+\contentsline {section}{\numberline {8}References}{31}{section.8}
+\contentsline {section}{\numberline {9}Bibliography}{33}{section.9}
