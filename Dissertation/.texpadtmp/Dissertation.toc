@@ -3,7 +3,7 @@
 \contentsline {subsection}{\numberline {2.1}The fall and rise of virtual reality}{2}{subsection.2.1}
 \contentsline {subsection}{\numberline {2.2}The future of immersive technologies}{3}{subsection.2.2}
 \contentsline {subsection}{\numberline {2.3}Interfaces in 3D}{4}{subsection.2.3}
-\contentsline {subsection}{\numberline {2.4}Research Question}{5}{subsection.2.4}
+\contentsline {subsection}{\numberline {2.4}Research Question}{4}{subsection.2.4}
 \contentsline {section}{\numberline {3}Literature Review}{6}{section.3}
 \contentsline {subsection}{\numberline {3.1}Adaptive User Interfaces}{6}{subsection.3.1}
 \contentsline {subsection}{\numberline {3.2}Virtual reality user interfaces}{7}{subsection.3.2}
@@ -21,7 +21,7 @@
 \contentsline {subsection}{\numberline {4.3}Evaluation}{16}{subsection.4.3}
 \contentsline {subsubsection}{\numberline {4.3.1}Overview}{16}{subsubsection.4.3.1}
 \contentsline {subsubsection}{\numberline {4.3.2}Data Gathering}{16}{subsubsection.4.3.2}
-\contentsline {subsubsection}{\numberline {4.3.3}Questionnaire}{18}{subsubsection.4.3.3}
+\contentsline {subsubsection}{\numberline {4.3.3}Questionnaire}{17}{subsubsection.4.3.3}
 \contentsline {section}{\numberline {5}Results and Discussion}{19}{section.5}
 \contentsline {subsection}{\numberline {5.1}Qualitative Data}{19}{subsection.5.1}
 \contentsline {subsubsection}{\numberline {5.1.1}Overview of Results}{19}{subsubsection.5.1.1}
