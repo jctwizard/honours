@@ -77,6 +77,14 @@ Dr. Paul \textsc{Robertson}
 
 \setcounter{page}{1}
 
+\thispagestyle{empty}
+
+\emph{Acknowledgements}: Thank you to my family who inspire me every day and taught me to love learning. Thank you Celia for always giving me feedback on the shortest notice. And thank you to Paul, my supervisor, for understanding when I disappeared around the world for a month.
+
+\pagebreak
+
+\setcounter{page}{1}
+
 \section{Abstract}
 Virtual reality allows users to interact with three-dimesional environments and interface in an intuitive way, looking around with the head-mounted display and reaching out with wireless tracked controllers. Although VR interfaces often take advantage of the new space and depth afforded by the stereoscopic 3D inherent in a head-mounted display, they are generally still static like the 2D interfaces prevalent on other devices.
 
@@ -88,18 +96,18 @@ To evaluate the benefits of the adaptive techniques used in the application, bot
 
 The results gathered show that adaptive user interface techniques can improve the usability of a 3D interface in virtual reality especially when using the errors of the user to identify their intentions.
 
-\keywords{Virtual Reality, User-Interfaces, 3D Interfaces, Adaptive Interfaces, Interface Plasticity}
+\keywords{Virtual Reality, 3D User-Interfaces, Adaptive Interfaces, Interface Plasticity}
 
 \section{Introduction}
 
 \subsection{The fall and rise of virtual reality}
-Virtual reality (VR) head-mounted displays first started appearing in the commercial market in the 1990s with Nintendo's Virtual Boy as the face of what was sold as a new era in entertainment technology. The virtual boy and its ilk failed miserably due to severe motion sickness and its utilisation of displays far worse than those available for the standard consoles at the time. Despite this rough start, two decades later VR has begun to secure its place in mainstream entertainment especially in the world of video games, although Nintendo is nowhere to be seen. 
+Virtual reality (VR) head-mounted displays first started appearing in the commercial market in the 1990s with Nintendo's Virtual Boy as the face of what was sold as a new era in entertainment technology. The virtual boy and its ilk failed miserably due to severe motion sickness and its utilisation of displays far worse than those available for the standard consoles at the time (Vincent 2016). Despite this rough start, two decades later VR has begun to secure its place in mainstream entertainment especially in the world of video games, although Nintendo is nowhere to be seen (Gordon 2015). 
 
 Sony's PlayStation VR headset was more successful than predicted (Seeto 2016) and the fears surrounding the motion sickness that doomed the previous wave of VR are dissipating (Pino 2016). Alongside Sony's offering are HTC's Vive and Facebook's Oculus not mentioning the vast number of headsets designed for smartphones. These three headsets all provide similar experiences: high resolution displays for each eye providing stereoscopic depth, six degrees of freedom head tracking and hand tracking using wireless controllers. 
 
 There have been some stand out applications and games from these early years of the new VR platforms. Job Simulator (see figure 1a) somehow turns the mundane tasks of everyday life into fun, captivating play and would not be the same experience without the head and controller tracking that comes with the HTC Vive. Tilt Brush (see figure 1b) was the first breakthrough success on the creation front with users creating thousands of sculptures using the signature 'light ribbons'. It showed that the intuitive 3D of VR could be used to great effect in productivity applications.
 
-Even before the first release of the main VR platforms as consumer products the major Game Engine creators, Unity and Unreal Engine, had begun implementing VR support not just for applications but for the editor used to create applications. This allows not just VR developers but all developers to utilise the precision that comes with the spacial awareness to edit 3D environments with ease.
+Even before the first release of the main VR platforms as consumer products the major Game Engine creators, Unity and Unreal Engine, had begun implementing VR support not just for applications but for the editor used to create applications. This allows not just VR developers but all developers to utilise the precision that comes with the spacial awareness to edit 3D environments with ease (Jarvis 2016).
 
 \begin{figure*}
 \centering
@@ -117,7 +125,7 @@ Even before the first release of the main VR platforms as consumer products the 
 \end{figure*}
 
 \subsection{The future of immersive technologies}
-The features of the forerunning virtual reality headsets combine to create a sense of immersion or 'presence' rarely achieved in traditional 2D applications and games. Even though this new wave of VR has only been around for a few years a new technology is rapidly approaching. On the horizon is the next step in immersive technology, augmented reality (AR). This will allow a wireless experience and build upon the work in mobile virtual reality by Google and Samsung. Microsoft's Hololens provides a glimpse at this future, one of seamless multi-user interaction overlaid onto reality. 
+The features of the forerunning virtual reality headsets combine to create a sense of immersion or 'presence' rarely achieved in traditional 2D applications and games. Even though this new wave of VR has only been around for a few years a new technology is rapidly approaching. On the horizon is the next step in immersive technology, augmented reality (AR). This will allow a wireless experience and build upon the work in mobile virtual reality by Google and Samsung. Microsoft's Hololens provides a glimpse at this future, one of seamless multi-user interaction overlaid onto reality (Bromley 2016). 
 
 Something often associated with VR is the isolation wearing a headset implies. AR reverses this by allowing the user to still see and interact with the real world while experiencing an immersive experience. The Hololens, even in its primitive first form, demonstrates how this can introduce new forms of interaction not possible in any other way. The ability for two people to interact and collaborate with the same interface while still seeing their surroundings with no constraint on location is revolutionary.
 
@@ -174,9 +182,11 @@ Dynamic user interfaces fall under a few categories in the area of research some
 
 Many researchers have explored various ways to assist the user in digital environments since the early days of personal computing (Morgan 1998). One strategy known as intelligent user interfaces, seeks to actively learn how a user interacts with an interface and suggest or highlight relevant information accordingly. Although this can be effective, it takes time to model the user in a meaningful way and can seem obstructive as demonstrated by Microsoft's Clippy (Meyer 2015).
 
-Another approach, the one this project focuses on, is to adapt the interface itself in direct response to the user's actions. One of these techniques covered by 'Modeling error-based Adaptive User Interfaces' (Kathik 2011) monitors the user's failures while navigating and interacting with an application to dynamically interpret their desired interaction. 'Adaptive Hypermedia and Adaptive Web-Based Systems' (Peter 2000) discusses the benefits of adapting a 3D environment as the user interacts with it to assist their actions.
+"User Control in Adaptive User Interfaces for Accessibility" (Peissner 2013), discusses the balance between cost and benefit when creating adaptive user interfaces. They focus on personalised interfaces which use various algorithms to model the user and adapt the interface in response. The cost they describe is of the user losing control over the interface if the adaptive techniques cause unpredictable behaviour. The benefits they describe are for users with disabilities to have access to interfaces which would otherwise be difficult to use. They conclude by stating that their study strongly supports "Automatic adaptation with implicit confirmation".
 
-Most user interfaces in our digital lives are static with adaptive interfaces reserved for improving accessibility for atypical users or use-cases. VR provides a new platform for innovation and does not have a direct counterpart to the universal language of 2D interfaces' windows and pointers. This uncharted territory provides an opportunity to experiment with dynamic 3D interfaces in new ways.
+A similar approach, the one this project focuses on, is to adapt the interface itself in direct response to the user's actions. One of these techniques covered by 'Modeling error-based Adaptive User Interfaces' (Kathik 2011) monitors the user's failures while navigating and interacting with an application to dynamically interpret their desired interaction. 'Adaptive Hypermedia and Adaptive Web-Based Systems' (Peter 2000) discusses the benefits of adapting a 3D environment as the user interacts with it to assist their actions.
+
+Most user interfaces in our digital lives are static with adaptive interfaces reserved for improving accessibility for atypical users or use-cases (Stephandis 1998). VR provides a new platform for innovation and does not have a direct counterpart to the universal language of 2D interfaces' windows and pointers. This uncharted territory provides an opportunity to experiment with dynamic 3D interfaces in new ways.
 
 \begin{figure*}
 \centering
@@ -186,13 +196,13 @@ Most user interfaces in our digital lives are static with adaptive interfaces re
 
 \subsection{Virtual reality user interfaces}
 
-When considering the current landscape of virtual reality applications and games there are a large number using motion controllers as opposed to traditional input methods such as console controllers and keyboard/mouse. The HTC Vive's lighthouse tracking system provides accurate motion control walking around a large space up to 15 ft square. The Oculus' and PSVR's use of optical tracking lends itself to a seated experience but still allows full 360 degrees of movement. 
+When considering the current landscape of virtual reality applications and games there are a large number using motion controllers as opposed to traditional input methods such as console controllers and keyboard/mouse. The HTC Vive's lighthouse tracking system provides accurate motion control walking around a large space up to 15 ft square. The Oculus' and PSVR's use of optical tracking lends itself to a seated experience but still allows full 360 degrees of movement (IGN 2016). 
 
-Considering that most content on VR platforms is not exclusive to a single device experiences focus on interaction at arms length to accommodate for seated users. Interactions often consist of selecting 3D objects or interface elements by moving a controller to their position and pressing a button. Any interaction beyond arms length generally utilises a 3D pointer system as seen in the Steam VR interface (Figure 4) used to enter applications for the HTC Vive.
+Considering that most content on VR platforms is not exclusive to a single device experiences focus on interaction at arms length to accommodate for seated users. Interactions often consist of selecting 3D objects or interface elements by moving a controller to their position and pressing a button. Any interaction beyond arms length generally utilises a 3D pointer system as seen in the Steam VR interface (Figure 3) used to enter applications for the HTC Vive.
 
-3D object hand-based interfaces can feel natural to use like selecting a tiny version of a level in Fantastic Contraption (see figure 3a). Having the user interact with something that is a visual representation of its function is intuitive although similar approaches in other games can be confusing. In First Contact (see figure 3b) the floppy disks used to activate various mini-games are not obviously a vital component of the interface. Pointer interfaces are less prone to these issues as the nature of a traditional user interface is to be interacted with. As soon as the user is given a pointer and there is an element displayed it becomes a point of focus. Pointer interfaces can be brought into the context of an application to help sustain immersion as in the Brookhaven Experiment (see figure 3c) in which the user fires their gun at the menus; a similar approach is taken in Until Dawn: Rush of Blood. 
+3D object hand-based interfaces can feel natural to use like selecting a tiny version of a level in Fantastic Contraption (see figure 4a). Having the user interact with something that is a visual representation of its function is intuitive although similar approaches in other games can be confusing. In First Contact (see figure 4b) the floppy disks used to activate various mini-games are not obviously a vital component of the interface. Pointer interfaces are less prone to these issues as the nature of a traditional user interface is to be interacted with. As soon as the user is given a pointer and there is an element displayed it becomes a point of focus. Pointer interfaces can be brought into the context of an application to help sustain immersion as in the Brookhaven Experiment (see figure 3c) in which the user fires their gun at the menus; a similar approach is taken in Until Dawn: Rush of Blood (Super Massive Games 2016). 
 
-Pointer interfaces can also be far faster to use and more complex than hand-based object interfaces much in the way that a desktop cursor is often more efficient than its touch equivalent. Unfortunately these pointer interfaces become more cumbersome to use the further away, smaller and more complex they become. Despite this there are few interfaces using dynamic or adaptive elements to improve their usability. By simply assisting the user in their interaction great improvements could be made to bring VR closer to replacing desktop PCs and traditional 2D displays for everyday tasks like word processing and file management.
+Pointer interfaces can also be far faster to use and more complex than hand-based object interfaces much in the way that a desktop cursor is often more efficient than its touch equivalent. Unfortunately these pointer interfaces become more cumbersome to use the further away, smaller and more complex they become (Johnson 2015). Despite this there are few interfaces using dynamic or adaptive elements to improve their usability. By simply assisting the user in their interaction great improvements could be made to bring VR closer to replacing desktop PCs and traditional 2D displays for everyday tasks like word processing and file management.
 
 \begin{figure*}
 \centering
@@ -246,20 +256,28 @@ The choice to use a laser pointer was made early on as there is inherent difficu
 The final design of the application took into account the outlined points and consisted of a simple space with a table to focus the user's gaze. On this table balls of two colours appear and roll toward the participant. A timer is visible on the table and is counting down to zero, some text instructs the user to place the balls into a basket of corresponding colour next to the table. Each time the user successfully selects and places a ball a score readout above the basket increases.
 
 \subsubsection{Implementation and Iteration}
-The initial design was implemented (as seen in Figure 5) in Unreal Engine 4 using C++ to create the core interaction system and Blueprints (visual scripting) to create the gameplay. By separating the code of the gameplay from that of the interaction it allowed easy iteration and tweaking of the surface features while having a strong, performant foundation in C++. 
+The initial design was implemented (as seen in Figure 5a) in Unreal Engine 4 using C++ to create the core interaction system and Blueprints (visual scripting) to create the gameplay. By separating the code of the gameplay from that of the interaction it allowed easy iteration and tweaking of the surface features while having a strong, performant foundation in C++. 
 
 Once the implementation was finished an early user test was performed which revealed several issues with the design. Initially two controllers, one in each hand, were used to interact. Both had laser pointers but only one would be used in the dominant hand while the other would occasionally obstruct the user's actions. The first implementation also asked the user to place blue balls into one basket and red into another, this meant as the balls appeared the user was constantly interacting and had no time to break.
 
 Although the pressure on the user was intended it quickly became tiring for them to interact and the decision was made to have only one basket so that users would interact with only one colour and need to avoid the other. This would also give more data points for when the user did select a non-basket coloured ball the system could tell it was a failed action.
 
-One change made before the final round of user testing expanded upon the interface itself. The applications in a real piece of software for selecting moving objects like the balls rolling toward the user are difficult to imagine. To improve the evaluation and provide a more realistic scenario the interface switches half way through the application's timer from the rolling balls to a grid of static balls suspended away from the user. This also tests the ability to select tightly-packed objects something the moving interface of the rolling balls did not do effectively.
+One change made before the final round of user testing expanded upon the interface itself. The applications in a real piece of software for selecting moving objects like the balls rolling toward the user are difficult to imagine. To improve the evaluation and provide a more realistic scenario the interface switches half way through the application's timer from the rolling balls to a grid of static balls suspended away from the user (seen in Figure 5b). This also tests the ability to select tightly-packed objects something the moving interface of the rolling balls did not do effectively.
 
 \begin{figure*}
 \centering
-  \includegraphics[width=.8\linewidth]{earlydemo.png}
+\begin{subfigure}{.6\textwidth}
+  \centering
+  \includegraphics[width=.95\linewidth]{earlydemo.png}
   \caption{Early Iteration}
+\end{subfigure}%
+\begin{subfigure}{.4\textwidth}
+  \centering
+  \includegraphics[width=1\linewidth]{finalinterface.png}
+  \caption{Final Iteration}
+\end{subfigure}
+\caption{Implemented Application}
 \end{figure*}
-
 
 \subsection{Adaptive Techniques}
 \subsubsection{Overview}
@@ -764,15 +782,31 @@ Anastasios, K. 2012. \emph{When You Shouldn't Use Fitts's Law To Measure User Ex
 
 Atsuo, M. 2001. \emph{Extending Fitts' law to a three-dimensional pointing task} Japan. Elsevier. 
 
+Bright, P. 2016. \emph{Hands-on with HoloLens: On the cusp of a revolution} Ars Technica. Available at: \url{https://arstechnica.com/gadgets/2016/04/hands-on-hololens-on-the-cusp-of-a-revolution/} [Accessed April 2016]
+
 Bromley, S. 2016. \emph{Running User Tests for Virtual Reality} User Research. Available at: \url{http://www.stevebromley.com/blog/2016/06/03/running-user-tests-for-virtual-reality/} [Accessed March 2017]
 
-Brooke, J. 1986 \emph{SUS - A quick and dirty usability scale} United Kingdom. Redhatch Consulting.
+Brooke, J. 1986. \emph{SUS - A quick and dirty usability scale} United Kingdom. Redhatch Consulting.
+
+\emph{Brookhaven Experiment}. 2016. [software]. HTC Vive. Phosphor Games.
 
 Brusilovsky, P. 2000. \emph{Adaptive Hypermedia and Adaptive Web-Based Systems} Italy. Springer.
 
 Bye, K. 2016. \emph{Five Universal Tasks of 3D User Interfaces with Doug Bowman} Voices of VR. Available at: \url{http://voicesofvr.com/five-universal-tasks-of-3d-user-interfaces-with-doug-bowman/} [Accessed November 2016]
 
+\emph{Fantastic Contraption}. 2016. [software]. HTC Vive. Northway Games.
+
+Gordon, R. 2015. \emph{Nintendo Claims Current VR is 'Not Fun'} GAMERANT. Available at: \url{https://gamerant.com/nintendo-virtual-reality-fun-127/} [Accessed April 2017]
+
+IGN. 2016. \emph{PlayStation VR vs PC Oculus Rift vs Vive Comparison Chart} Available at: \url{http://uk.ign.com/wikis/playstation-4/PlayStation_VR_vs_PC_Oculus_Rift_vs_Vive_Comparison_Chart} [Accessed April 2017]
+
+Jarvis, M. 2016. \emph{Unreal Engine editor shown working inside of virtual reality} develop. Available at: \url{http://www.develop-online.net/news/unreal-engine-editor-shown-working-inside-of-virtual-reality/0216323} [Accessed April 2017]
+
 Jen, H. 2016. \emph{Designing for VR: Applying Usability Heuristics to Virtual Reality} Omobono. 
+
+\emph{Job Simulator}. 2016. [software]. HTC Vive. Owlchemy Labs.
+
+Johnson, D. 2015. \emph{VR Interfaces}. Utah. College of Engineering.
 
 Lacoche, J. 2014. \emph{A survey of plasticity in 3D user interfaces} Minneapolis. IEEE. 
 
@@ -782,25 +816,38 @@ Malaika, Y. 2015. \emph{Interaction Design in VR: Valve's Lessons } Available at
 
 Merki, R. 2016. \emph{How VR Analytics Makes Your Product Better} Available at: \url{http://cognitivevr.co/blog/how-vr-analytics-makes-your-product-better/} [Accessed October 2016]
 
-Meyer, R. 2015 \emph{Even Early Focus Groups Hated Clippy} Available at: \url{http://www.theatlantic.com/technology/archive/2015/06/clippy-the-microsoft-office-assistant-is-the-patriarchys-fault/396653/} [Accessed October 2016]
+Meyer, R. 2015. \emph{Even Early Focus Groups Hated Clippy} Available at: \url{http://www.theatlantic.com/technology/archive/2015/06/clippy-the-microsoft-office-assistant-is-the-patriarchys-fault/396653/} [Accessed October 2016]
 
 Morgan, K. 1998. \emph{Intelligent User Interfaces: An Introduction} San Fransisco. RUIU 
 
 Northway, C. 2016. \emph{Menus Suck} VRDC. Available at: \url{http://www.gdcvault.com/play/1023668/Menus} [Accessed November 2016]
 
-Pino, N. 2016 \emph{HTC Vive review} Available at: \url{http://www.techradar.com/reviews/wearables/htc-vive-1286775/review/3} [Accessed October 2016]
+Peissner, M. 2013. \emph{User Control in Adaptive User Interfaces for Accessibility} Nottingham. University of Nottingham.
+
+Pino, N. 2016. \emph{HTC Vive review} Available at: \url{http://www.techradar.com/reviews/wearables/htc-vive-1286775/review/3} [Accessed October 2016]
 
 Robert, Z. \emph{Look-That-There: Exploiting Gaze in Virtual Reality Interactions} Providence. Brown University. 
 
 Schwartz, A. 2015. \emph{Being There: Designing Standing VR Experiences with Tracked Controllers} Available at: \url{https://www.youtube.com/watch?v=hjc7AJwZ4DI} [Accessed October 2016]
 
-Seeto, D. 2016 \emph{Gamestop: PSVR Exceeding Expectations As More Units Are Received For Holiday Season} Available at: \url{http://attackofthefanboy.com/news/gamestop-playstation-vr-exceeding-expectations-units-received-holiday-season/} [Accessed October 2016]
+Seeto, D. 2016. \emph{Gamestop: PSVR Exceeding Expectations As More Units Are Received For Holiday Season} Available at: \url{http://attackofthefanboy.com/news/gamestop-playstation-vr-exceeding-expectations-units-received-holiday-season/} [Accessed October 2016]
 
-\emph{Tilt Brush.} 2016. [software]. HTC Vive. Google. 
+\emph{SteamVR}. 2016. [software]. Windows. Valve.
 
-\emph{Unreal Engine 4.} 2012. [software]. Windows. Epic Games. 
+Stephandis, C. 1998. \emph{Adaptable and Adaptive User Interfaces for Disabled Users} Crete. Institute of Computer Science.
 
-Wales, J. 2016 \emph{The reality of virtual reality testing} Bunnyfoot. Available at: \url{http://www.bunnyfoot.com/blog/2016/07/the-reality-of-virtual-reality-user-testing-our-top-tips/} [Accessed March 2017]
+\emph{Tilt Brush}. 2016. [software]. HTC Vive. Google. 
+
+\emph{Unreal Engine 4}. 2012. [software]. Windows. Epic Games. 
+
+\emph{Until Dawn: Rush of Blood}. 2016. [software]. PSVR. Super Massive Games.
+
+Vincent, M. 2016. \emph{What Did Virtual Boy’s Failure Teach Us About Virtual Reality?
+Lessons learned from the disastrous mid-’90s console} There Is Only VR. Available at: \url{https://thereisonlyr.com/did-virtual-boys-failure-give-nintendo-cold-feet-about-vr-1d5b6e432672} [Accessed April 2017]
+
+Wales, J. 2016. \emph{The reality of virtual reality testing} Bunnyfoot. Available at: \url{http://www.bunnyfoot.com/blog/2016/07/the-reality-of-virtual-reality-user-testing-our-top-tips/} [Accessed March 2017]
+
+
 
 
 \section{Bibliography}

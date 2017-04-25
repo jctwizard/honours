@@ -3,45 +3,45 @@
 \contentsline {subsection}{\numberline {2.1}The fall and rise of virtual reality}{2}{subsection.2.1}
 \contentsline {subsection}{\numberline {2.2}The future of immersive technologies}{3}{subsection.2.2}
 \contentsline {subsection}{\numberline {2.3}Interfaces in 3D}{4}{subsection.2.3}
-\contentsline {subsection}{\numberline {2.4}Research Question}{4}{subsection.2.4}
+\contentsline {subsection}{\numberline {2.4}Research Question}{5}{subsection.2.4}
 \contentsline {section}{\numberline {3}Literature Review}{6}{section.3}
 \contentsline {subsection}{\numberline {3.1}Adaptive User Interfaces}{6}{subsection.3.1}
 \contentsline {subsection}{\numberline {3.2}Virtual reality user interfaces}{7}{subsection.3.2}
-\contentsline {subsection}{\numberline {3.3}Usability in Virtual Reality}{8}{subsection.3.3}
+\contentsline {subsection}{\numberline {3.3}Usability in Virtual Reality}{9}{subsection.3.3}
 \contentsline {subsection}{\numberline {3.4}Testing virtual reality applications}{9}{subsection.3.4}
 \contentsline {section}{\numberline {4}Methodology}{10}{section.4}
 \contentsline {subsection}{\numberline {4.1}Application}{10}{subsection.4.1}
 \contentsline {subsubsection}{\numberline {4.1.1}Overview and design}{10}{subsubsection.4.1.1}
 \contentsline {subsubsection}{\numberline {4.1.2}Implementation and Iteration}{11}{subsubsection.4.1.2}
-\contentsline {subsection}{\numberline {4.2}Adaptive Techniques}{12}{subsection.4.2}
-\contentsline {subsubsection}{\numberline {4.2.1}Overview}{12}{subsubsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2}Adaptive Techniques}{13}{subsection.4.2}
+\contentsline {subsubsection}{\numberline {4.2.1}Overview}{13}{subsubsection.4.2.1}
 \contentsline {subsubsection}{\numberline {4.2.2}Error Analysis}{13}{subsubsection.4.2.2}
-\contentsline {subsubsection}{\numberline {4.2.3}Dynamic Scaling}{14}{subsubsection.4.2.3}
-\contentsline {subsubsection}{\numberline {4.2.4}Further considerations}{15}{subsubsection.4.2.4}
+\contentsline {subsubsection}{\numberline {4.2.3}Dynamic Scaling}{15}{subsubsection.4.2.3}
+\contentsline {subsubsection}{\numberline {4.2.4}Further considerations}{16}{subsubsection.4.2.4}
 \contentsline {subsection}{\numberline {4.3}Evaluation}{16}{subsection.4.3}
 \contentsline {subsubsection}{\numberline {4.3.1}Overview}{16}{subsubsection.4.3.1}
-\contentsline {subsubsection}{\numberline {4.3.2}Data Gathering}{16}{subsubsection.4.3.2}
-\contentsline {subsubsection}{\numberline {4.3.3}Questionnaire}{17}{subsubsection.4.3.3}
+\contentsline {subsubsection}{\numberline {4.3.2}Data Gathering}{17}{subsubsection.4.3.2}
+\contentsline {subsubsection}{\numberline {4.3.3}Questionnaire}{18}{subsubsection.4.3.3}
 \contentsline {section}{\numberline {5}Results and Discussion}{19}{section.5}
 \contentsline {subsection}{\numberline {5.1}Qualitative Data}{19}{subsection.5.1}
 \contentsline {subsubsection}{\numberline {5.1.1}Overview of Results}{19}{subsubsection.5.1.1}
 \contentsline {subsubsection}{\numberline {5.1.2}Breakdown of responses}{20}{subsubsection.5.1.2}
-\contentsline {subsubsection}{\numberline {5.1.3}Analysis}{21}{subsubsection.5.1.3}
+\contentsline {subsubsection}{\numberline {5.1.3}Analysis}{22}{subsubsection.5.1.3}
 \contentsline {subsection}{\numberline {5.2}Quantitative Data}{22}{subsection.5.2}
 \contentsline {subsubsection}{\numberline {5.2.1}Overview of Results}{22}{subsubsection.5.2.1}
 \contentsline {subsubsection}{\numberline {5.2.2}Breakdown of data gathered}{23}{subsubsection.5.2.2}
 \contentsline {subsubsection}{\numberline {5.2.3}Successful grabs}{24}{subsubsection.5.2.3}
-\contentsline {subsubsection}{\numberline {5.2.4}Failed grabs}{24}{subsubsection.5.2.4}
-\contentsline {subsubsection}{\numberline {5.2.5}Incorrect grabs}{24}{subsubsection.5.2.5}
+\contentsline {subsubsection}{\numberline {5.2.4}Failed grabs}{25}{subsubsection.5.2.4}
+\contentsline {subsubsection}{\numberline {5.2.5}Incorrect grabs}{25}{subsubsection.5.2.5}
 \contentsline {subsubsection}{\numberline {5.2.6}Analysis}{25}{subsubsection.5.2.6}
-\contentsline {subsection}{\numberline {5.3}Comparison of results}{25}{subsection.5.3}
+\contentsline {subsection}{\numberline {5.3}Comparison of results}{26}{subsection.5.3}
 \contentsline {section}{\numberline {6}Conclusion}{26}{section.6}
 \contentsline {subsection}{\numberline {6.1}Adaptive techniques in 3d}{26}{subsection.6.1}
-\contentsline {subsection}{\numberline {6.2}Further Development}{27}{subsection.6.2}
+\contentsline {subsection}{\numberline {6.2}Further Development}{28}{subsection.6.2}
 \contentsline {subsection}{\numberline {6.3}The future of interaction}{28}{subsection.6.3}
-\contentsline {section}{\numberline {7}Appendices}{29}{section.7}
-\contentsline {subsection}{\numberline {7.1}Appendix A}{29}{subsection.7.1}
-\contentsline {subsection}{\numberline {7.2}Appendix B}{29}{subsection.7.2}
-\contentsline {subsection}{\numberline {7.3}Appendix C}{30}{subsection.7.3}
-\contentsline {section}{\numberline {8}References}{31}{section.8}
-\contentsline {section}{\numberline {9}Bibliography}{33}{section.9}
+\contentsline {section}{\numberline {7}Appendices}{30}{section.7}
+\contentsline {subsection}{\numberline {7.1}Appendix A}{30}{subsection.7.1}
+\contentsline {subsection}{\numberline {7.2}Appendix B}{30}{subsection.7.2}
+\contentsline {subsection}{\numberline {7.3}Appendix C}{31}{subsection.7.3}
+\contentsline {section}{\numberline {8}References}{32}{section.8}
+\contentsline {section}{\numberline {9}Bibliography}{35}{section.9}
